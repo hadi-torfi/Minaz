@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/report"
+    app:startDestination="@id/reportFragment">
+
+    <fragment
+        android:id="@+id/reportFragment"
+        android:name="com.haditorfi.minaz.feature.report.ReportFragment"
+        android:label="report_fragment"
+        tools:layout="@layout/report_fragment" />
+</navigation>
