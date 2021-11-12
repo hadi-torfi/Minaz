@@ -8,5 +8,23 @@
         android:id="@+id/dashboardFragment"
         android:name="com.haditorfi.minaz.feature.dashboard.DashboardFragment"
         android:label="dashboard_fragment"
-        tools:layout="@layout/dashboard_fragment" />
+        tools:layout="@layout/dashboard_fragment" >
+        <action
+            android:id="@+id/action_dashboard_to_customer"
+            app:destination="@id/customerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/customerFragment"
+        android:name="com.haditorfi.minaz.feature.customer.CustomerFragment"
+        android:label="customer_fragment"
+        tools:layout="@layout/customer_fragment" >
+        <action
+            android:id="@+id/action_customer_to_editCustomer"
+            app:destination="@id/editCustomerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/editCustomerFragment"
+        android:name="com.haditorfi.minaz.feature.customer.EditCustomerFragment"
+        android:label="fragment_edit_customer"
+        tools:layout="@layout/fragment_edit_customer" />
 </navigation>

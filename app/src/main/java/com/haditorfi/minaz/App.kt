@@ -4,7 +4,10 @@ import android.app.Application
 import android.content.SharedPreferences
 import androidx.room.Room
 import com.facebook.drawee.backends.pipeline.Fresco
+import com.haditorfi.minaz.data.customer.CustomerRepository
+import com.haditorfi.minaz.data.customer.CustomerRepositoryImpl
 import com.haditorfi.minaz.data.db.AppDatabase
+import com.haditorfi.minaz.feature.customer.CustomerViewModel
 import com.haditorfi.minaz.feature.dashboard.DashboardViewModel
 import com.haditorfi.minaz.services.FrescoImageLoadingService
 import com.haditorfi.minaz.services.ImageLoadingService
@@ -37,7 +40,9 @@ class App : Application() {
                 )
             }
 
-            viewModel { DashboardViewModel(get<AppDatabase>().customerDao()) }
+            factory<CustomerRepository> { CustomerRepositoryImpl(get<AppDatabase>().customerDao()) }
+
+            viewModel { CustomerViewModel(get()) }
         }
 
         startKoin {
