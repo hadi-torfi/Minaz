@@ -7,22 +7,21 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.haditorfi.minaz.R
 import com.haditorfi.minaz.common.MyFragment
-import kotlinx.android.synthetic.main.dashboard_fragment.*
-import org.koin.android.viewmodel.ext.android.viewModel
-import timber.log.Timber
+import com.haditorfi.minaz.databinding.DashboardFragmentBinding
 
 class DashboardFragment : MyFragment() {
-
+    lateinit var binding: DashboardFragmentBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.dashboard_fragment, container, false)
+    ): View {
+        binding = DashboardFragmentBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        btn_customer_list.setOnClickListener {
+        binding.btnCustomerList.setOnClickListener {
             findNavController().navigate(R.id.action_dashboard_to_customer)
         }
     }

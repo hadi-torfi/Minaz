@@ -1,12 +1,14 @@
 package com.haditorfi.minaz.data.customer
 
+import androidx.lifecycle.LiveData
+
 interface CustomerRepository {
 
-    fun getAll(): List<Customer>
+    val getAll: LiveData<List<Customer>>
 
-    fun insert(customers: Customer)
+    suspend fun insert(customers: Customer)
 
-    fun delete(id: Long)
+    suspend fun delete(id: Long)
 
-    fun update(customer: Customer)
+    suspend fun update(customer: Customer)
 }

@@ -1,5 +1,6 @@
 package com.haditorfi.minaz.data.customer
 
+import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
@@ -9,14 +10,14 @@ import androidx.room.Update
 interface CustomerLocalDataSource : CustomerDataSource {
 
     @Query("SELECT * FROM customer")
-    override fun getAll(): List<Customer>
+    override fun getAll(): LiveData<List<Customer>>
 
     @Insert
-    override fun insert(customers: Customer)
+    override suspend fun insert(customers: Customer)
 
     @Query("DELETE FROM customer WHERE id = :id")
-    override fun delete(id: Long)
+    override suspend fun delete(id: Long)
 
     @Update
-    override fun update(customer: Customer)
+    override suspend fun update(customer: Customer)
 }

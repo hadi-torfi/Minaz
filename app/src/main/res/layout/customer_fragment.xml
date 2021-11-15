@@ -13,4 +13,4 @@
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent"
     tools:context=".feature.customer.CustomerFragment"
-    tools:listitem="@layout/customer_view_item"/>
+    tools:listitem="@layout/item_customer"/>

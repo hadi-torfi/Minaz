@@ -4,10 +4,13 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/dev/workspace/Minaz/app/src/main/res/layout/activity_main.xml" value="0.20260416666666667" />
+        <entry key="..\:/dev/workspace/Minaz/app/src/main/res/layout/add_customer_fragment.xml" value="0.18055555555555555" />
         <entry key="..\:/dev/workspace/Minaz/app/src/main/res/layout/customer_fragment.xml" value="0.20260416666666667" />
-        <entry key="..\:/dev/workspace/Minaz/app/src/main/res/layout/customer_view_item.xml" value="0.20260416666666667" />
+        <entry key="..\:/dev/workspace/Minaz/app/src/main/res/layout/customer_view_item.xml" value="0.22" />
         <entry key="..\:/dev/workspace/Minaz/app/src/main/res/layout/dashboard_fragment.xml" value="0.1962962962962963" />
         <entry key="..\:/dev/workspace/Minaz/app/src/main/res/layout/fragment_edit_customer.xml" value="0.20260416666666667" />
+        <entry key="..\:/dev/workspace/Minaz/app/src/main/res/layout/item_customer.xml" value="0.20260416666666667" />
+        <entry key="..\:/dev/workspace/Minaz/app/src/main/res/layout/view_toolbar.xml" value="0.20260416666666667" />
       </map>
     </option>
   </component>

@@ -1,18 +1,16 @@
 package com.haditorfi.minaz.data.customer
 
-import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import kotlinx.android.parcel.Parcelize
+import java.io.Serializable
 
 @Entity
-@Parcelize
 data class Customer(
     @PrimaryKey(autoGenerate = true)
     val id: Long,
     val name: String,
     val tel: String,
     val mobile: String,
-) : Parcelable {
+) : Serializable {
     constructor(name: String, tel: String, mobile: String) : this(0, name, tel, mobile)
 }

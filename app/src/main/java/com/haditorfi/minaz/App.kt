@@ -8,7 +8,6 @@ import com.haditorfi.minaz.data.customer.CustomerRepository
 import com.haditorfi.minaz.data.customer.CustomerRepositoryImpl
 import com.haditorfi.minaz.data.db.AppDatabase
 import com.haditorfi.minaz.feature.customer.CustomerViewModel
-import com.haditorfi.minaz.feature.dashboard.DashboardViewModel
 import com.haditorfi.minaz.services.FrescoImageLoadingService
 import com.haditorfi.minaz.services.ImageLoadingService
 import org.koin.android.ext.koin.androidContext
@@ -30,7 +29,6 @@ class App : Application() {
                     this@App,
                     AppDatabase::class.java, "db-minaz"
                 )
-                    .allowMainThreadQueries()
                     .build()
             }
             single<SharedPreferences> {

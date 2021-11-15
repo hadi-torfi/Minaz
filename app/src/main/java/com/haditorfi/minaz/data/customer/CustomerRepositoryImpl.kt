@@ -1,12 +1,15 @@
 package com.haditorfi.minaz.data.customer
 
+import androidx.lifecycle.LiveData
+
 class CustomerRepositoryImpl(private val customerLocalDataSource: CustomerLocalDataSource) :
     CustomerRepository {
-    override fun getAll(): List<Customer> = customerLocalDataSource.getAll()
 
-    override fun insert(customers: Customer) = customerLocalDataSource.insert(customers)
+    override val getAll: LiveData<List<Customer>> = customerLocalDataSource.getAll()
 
-    override fun delete(id: Long) = customerLocalDataSource.delete(id)
+    override suspend fun insert(customers: Customer) = customerLocalDataSource.insert(customers)
 
-    override fun update(customer: Customer) = customerLocalDataSource.update(customer)
+    override suspend fun delete(id: Long) = customerLocalDataSource.delete(id)
+
+    override suspend fun update(customer: Customer) = customerLocalDataSource.update(customer)
 }

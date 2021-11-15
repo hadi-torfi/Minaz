@@ -1,28 +1,31 @@
 package com.haditorfi.minaz.feature.customer
 
-import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
 import com.haditorfi.minaz.common.MyViewModel
 import com.haditorfi.minaz.data.customer.Customer
 import com.haditorfi.minaz.data.customer.CustomerRepository
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class CustomerViewModel(private val customerRepository: CustomerRepository) : MyViewModel() {
-    val customersLiveData = MutableLiveData<List<Customer>>()
 
-    init {
-         /*val customer = Customer("هادی طرفی", "06142828513", "09352623050")
-        insertCustomer(customer)*/
-        getAllCustomer()
+    val customersLiveData = customerRepository.getAll
+
+    fun insertCustomer(customer: Customer) {
+        viewModelScope.launch(Dispatchers.IO) {
+            customerRepository.insert(customer)
+        }
     }
 
-    private fun getAllCustomer() {
-        customersLiveData.value = customerRepository.getAll()
+    fun updateCustomer(customer: Customer) {
+        viewModelScope.launch(Dispatchers.IO) {
+            customerRepository.update(customer)
+        }
     }
 
-    private fun insertCustomer(customer: Customer) {
-        customerRepository.insert(customer)
-    }
-
-    private fun deleteCustomer(id: Long) {
-        customerRepository.delete(id)
+    fun deleteCustomer(id: Long) {
+        viewModelScope.launch(Dispatchers.IO) {
+            customerRepository.delete(id)
+        }
     }
 }
