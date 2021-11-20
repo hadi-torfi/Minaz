@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="myService"
+            type="com.haditorfi.minaz.data.service.Service" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/item_service_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="8dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/background_light">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/avatar"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_centerVertical="true"
+                android:layout_margin="8dp"
+                android:background="@color/purple"
+                android:scaleType="center"
+                android:src="@drawable/ic_cart"
+                app:shapeAppearance="@style/Avatar"
+                app:strokeWidth="1dp" />
+
+
+            <TextView
+                android:id="@+id/txt_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_toEndOf="@id/avatar"
+                android:text="@{myService.name}"
+                android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                android:textSize="22sp"
+                tools:text="نام خدمات" />
+
+            <TextView
+                android:id="@+id/txt_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txt_name"
+                android:layout_margin="8dp"
+                android:layout_toEndOf="@id/avatar"
+                android:text="@{myService.price}"
+                android:textSize="16sp"
+                tools:text="قیمت : 120,000 تومان" />
+
+            <TextView
+                android:id="@+id/txt_count"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txt_name"
+                android:layout_margin="8dp"
+                android:layout_toEndOf="@id/txt_price"
+                android:textAlignment="textEnd"
+                android:text="@{myService.price}"
+                android:textSize="16sp"
+                tools:text="تعداد : 5 عدد" />
+
+            <ImageView
+                android:id="@+id/btn_more"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginBottom="8dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/ic_more"
+                app:menu="@menu/options" />
+
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+</layout>

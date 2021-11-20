@@ -5,5 +5,26 @@
     <string name="report">گزارشات</string>
     <string name="manage">مدیریت</string>
     <string name="orders">سفارشات</string>
+    <string name="service_list">لیست خدمات</string>
+    <string name="service_name">نام خدمات</string>
+    <string name="price">قیمت</string>
+    <string name="count">تعداد</string>
+    <string name="service_new">ارائه خدمات</string>
     <string name="customer_list">لیست مشتریان</string>
+    <string name="customer_new"> مشتری جدید</string>
+    <string name="personnel_new"> پرسنل جدید</string>
+    <string name="product">فروش کالا</string>
+    <string name="delete">حذف</string>
+    <string name="delete_message">آیتم مورد نظر حذف شود؟</string>
+    <string name="edit">ویرایش</string>
+    <string name="cancel">انصراف</string>
+    <string name="accept">تایید</string>
+    <string name="user_name">نام و نام خانوادگی</string>
+    <string name="mobile">موبایل</string>
+    <string name="address">آدرس (اختیاری)</string>
+    <string name="save">ذخیره</string>
+    <string name="success">عملیات با موفقیت انجام شد.</string>
+    <string name="mobil_require">شماره موبایل را وارد نمایید.</string>
+    <string name="name_require">نام و نام خانوادگی را وارد نمایید.</string>
+    <string name="isPhone_message">لطفا شماره موبایل را صحیح وارد نمایید.</string>
 </resources>

@@ -11,20 +11,39 @@
         tools:layout="@layout/dashboard_fragment" >
         <action
             android:id="@+id/action_dashboard_to_customer"
-            app:destination="@id/customerFragment" />
+            app:destination="@id/navCustomerList" />
+        <action
+            android:id="@+id/action_dashboard_to_AddCustomer"
+            app:destination="@id/navAddOrEditCustomer" />
+        <action
+            android:id="@+id/action_dashboard_to_AddService"
+            app:destination="@id/navAddService" />
     </fragment>
     <fragment
-        android:id="@+id/customerFragment"
+        android:id="@+id/navCustomerList"
         android:name="com.haditorfi.minaz.feature.customer.CustomerFragment"
         android:label="customer_fragment"
         tools:layout="@layout/customer_fragment" >
         <action
             android:id="@+id/action_customer_to_editCustomer"
-            app:destination="@id/editCustomerFragment" />
+            app:destination="@id/navAddOrEditCustomer" />
+
     </fragment>
     <fragment
-        android:id="@+id/editCustomerFragment"
-        android:name="com.haditorfi.minaz.feature.customer.EditCustomerFragment"
-        android:label="fragment_edit_customer"
-        tools:layout="@layout/fragment_edit_customer" />
+        android:id="@+id/navAddOrEditCustomer"
+        android:name="com.haditorfi.minaz.feature.customer.AddOrEditCustomerFragment"
+        android:label="fragment_add_or_edit_customer"
+        tools:layout="@layout/customer_add_fragment" >
+        <argument
+            android:name="customData"
+            app:argType="com.haditorfi.minaz.data.customer.Customer" />
+    </fragment>
+    <fragment
+        android:id="@+id/navAddService"
+        android:name="com.haditorfi.minaz.feature.service.AddServiceFragment"
+        android:label="AddServiceFragment" >
+        <argument
+            android:name="addService"
+            app:argType="com.haditorfi.minaz.data.service.Service" />
+    </fragment>
 </navigation>

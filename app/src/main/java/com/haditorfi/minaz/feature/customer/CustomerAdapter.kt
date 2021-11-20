@@ -1,48 +1,44 @@
 package com.haditorfi.minaz.feature.customer
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import androidx.core.os.bundleOf
-import androidx.navigation.findNavController
+import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.haditorfi.minaz.R
-import com.haditorfi.minaz.common.DATA_KEY
 import com.haditorfi.minaz.data.customer.Customer
+import com.haditorfi.minaz.databinding.CustomerItemBinding
 
-class CustomerAdapter(private val values: List<Customer>) :
-    RecyclerView.Adapter<CustomerAdapter.ViewHolder>() {
-    class ViewHolder(val item: View) : RecyclerView.ViewHolder(item)
+class CustomerAdapter(
+    val context: Context,
+    private val values: List<Customer>,
+    var IItemClickListener: (
+        view: View,
+        customer: Customer
+    ) -> Unit
+) :
+    RecyclerView.Adapter<CustomerAdapter.MyViewHolder>() {
 
-    override fun onCreateViewHolder(
-        parent: ViewGroup,
-        viewType: Int
-    ): ViewHolder {
-        val itemView = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_customer, parent, false)
-        return ViewHolder(itemView)
+    class MyViewHolder(val binding: CustomerItemBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        fun setDataCustomer(customer: Customer) {
+            binding.myCustomer = customer
+        }
     }
 
-    override fun onBindViewHolder(
-        holder: ViewHolder,
-        position: Int
-    ) {
-        holder.item.findViewById<TextView>(R.id.txt_customer_name).text =
-            values[position].name
-        holder.item.findViewById<TextView>(R.id.txt_customer_mobile).text =
-            values[position].mobile
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
+        val inflater = LayoutInflater.from(context)
+        val binding: CustomerItemBinding =
+            DataBindingUtil.inflate(inflater, R.layout.customer_item, parent, false)
+        return MyViewHolder(binding)
+    }
 
-        holder.item.setOnClickListener {
-            val bundle =
-                bundleOf(
-                    DATA_KEY to values[position]
-                )
+    override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
+        holder.setDataCustomer(values[position])
 
-            holder.item.findNavController().navigate(
-                R.id.action_customer_to_editCustomer,
-                bundle
-            )
+        holder.binding.btnMore.setOnClickListener {
+            IItemClickListener(it, values[position])
         }
     }
 

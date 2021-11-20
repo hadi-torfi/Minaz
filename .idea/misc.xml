@@ -3,14 +3,34 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/dev/workspace/Minaz/app/src/main/res/drawable/fab_label_background.xml" value="0.19722222222222222" />
+        <entry key="..\:/dev/workspace/Minaz/app/src/main/res/drawable/ic_cart.xml" value="0.18055555555555555" />
+        <entry key="..\:/dev/workspace/Minaz/app/src/main/res/drawable/ic_delete.xml" value="0.21875" />
+        <entry key="..\:/dev/workspace/Minaz/app/src/main/res/drawable/ic_edit.xml" value="0.21875" />
+        <entry key="..\:/dev/workspace/Minaz/app/src/main/res/drawable/ic_error.xml" value="0.20051282051282052" />
+        <entry key="..\:/dev/workspace/Minaz/app/src/main/res/drawable/ic_more.xml" value="0.18055555555555555" />
+        <entry key="..\:/dev/workspace/Minaz/app/src/main/res/drawable/ic_person.xml" value="0.20051282051282052" />
+        <entry key="..\:/dev/workspace/Minaz/app/src/main/res/drawable/ic_user.xml" value="0.18055555555555555" />
         <entry key="..\:/dev/workspace/Minaz/app/src/main/res/layout/activity_main.xml" value="0.20260416666666667" />
         <entry key="..\:/dev/workspace/Minaz/app/src/main/res/layout/add_customer_fragment.xml" value="0.18055555555555555" />
+        <entry key="..\:/dev/workspace/Minaz/app/src/main/res/layout/customer_add_fragment.xml" value="0.25" />
         <entry key="..\:/dev/workspace/Minaz/app/src/main/res/layout/customer_fragment.xml" value="0.20260416666666667" />
+        <entry key="..\:/dev/workspace/Minaz/app/src/main/res/layout/customer_item.xml" value="0.20260416666666667" />
+        <entry key="..\:/dev/workspace/Minaz/app/src/main/res/layout/customer_show_fragment.xml" value="0.15" />
         <entry key="..\:/dev/workspace/Minaz/app/src/main/res/layout/customer_view_item.xml" value="0.22" />
         <entry key="..\:/dev/workspace/Minaz/app/src/main/res/layout/dashboard_fragment.xml" value="0.1962962962962963" />
+        <entry key="..\:/dev/workspace/Minaz/app/src/main/res/layout/fragment_add_or_edit_customer.xml" value="0.25" />
         <entry key="..\:/dev/workspace/Minaz/app/src/main/res/layout/fragment_edit_customer.xml" value="0.20260416666666667" />
+        <entry key="..\:/dev/workspace/Minaz/app/src/main/res/layout/fragment_show_customer.xml" value="0.17037037037037037" />
         <entry key="..\:/dev/workspace/Minaz/app/src/main/res/layout/item_customer.xml" value="0.20260416666666667" />
-        <entry key="..\:/dev/workspace/Minaz/app/src/main/res/layout/view_toolbar.xml" value="0.20260416666666667" />
+        <entry key="..\:/dev/workspace/Minaz/app/src/main/res/layout/manage_fragment.xml" value="0.19948717948717948" />
+        <entry key="..\:/dev/workspace/Minaz/app/src/main/res/layout/personnel_item.xml" value="0.15" />
+        <entry key="..\:/dev/workspace/Minaz/app/src/main/res/layout/personnel_item_list.xml" value="0.15" />
+        <entry key="..\:/dev/workspace/Minaz/app/src/main/res/layout/service_add_fragment.xml" value="0.33" />
+        <entry key="..\:/dev/workspace/Minaz/app/src/main/res/layout/service_fragment.xml" value="0.20260416666666667" />
+        <entry key="..\:/dev/workspace/Minaz/app/src/main/res/layout/service_item.xml" value="0.33" />
+        <entry key="..\:/dev/workspace/Minaz/app/src/main/res/layout/view_toolbar.xml" value="0.5" />
+        <entry key="..\:/dev/workspace/Minaz/app/src/main/res/menu/options.xml" value="0.17037037037037037" />
       </map>
     </option>
   </component>

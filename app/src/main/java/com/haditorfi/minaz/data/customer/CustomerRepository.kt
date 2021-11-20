@@ -6,9 +6,9 @@ interface CustomerRepository {
 
     val getAll: LiveData<List<Customer>>
 
-    suspend fun insert(customers: Customer)
+    suspend fun insert(customer: Customer)
 
-    suspend fun delete(id: Long)
+    suspend fun delete(customer: Customer)
 
     suspend fun update(customer: Customer)
 }

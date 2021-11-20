@@ -23,9 +23,9 @@ class CustomerViewModel(private val customerRepository: CustomerRepository) : My
         }
     }
 
-    fun deleteCustomer(id: Long) {
+    fun deleteCustomer(customer: Customer) {
         viewModelScope.launch(Dispatchers.IO) {
-            customerRepository.delete(id)
+            customerRepository.delete(customer)
         }
     }
 }

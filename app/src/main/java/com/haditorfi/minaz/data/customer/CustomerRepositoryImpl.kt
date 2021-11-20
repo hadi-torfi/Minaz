@@ -7,9 +7,9 @@ class CustomerRepositoryImpl(private val customerLocalDataSource: CustomerLocalD
 
     override val getAll: LiveData<List<Customer>> = customerLocalDataSource.getAll()
 
-    override suspend fun insert(customers: Customer) = customerLocalDataSource.insert(customers)
+    override suspend fun insert(customer: Customer) = customerLocalDataSource.insert(customer)
 
-    override suspend fun delete(id: Long) = customerLocalDataSource.delete(id)
+    override suspend fun delete(customer: Customer) = customerLocalDataSource.delete(customer)
 
     override suspend fun update(customer: Customer) = customerLocalDataSource.update(customer)
 }

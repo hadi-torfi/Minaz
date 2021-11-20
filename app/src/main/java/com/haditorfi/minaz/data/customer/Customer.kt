@@ -1,6 +1,7 @@
 package com.haditorfi.minaz.data.customer
 
 import androidx.room.Entity
+import androidx.room.Ignore
 import androidx.room.PrimaryKey
 import java.io.Serializable
 
@@ -9,8 +10,19 @@ data class Customer(
     @PrimaryKey(autoGenerate = true)
     val id: Long,
     val name: String,
-    val tel: String,
     val mobile: String,
+    val address: String = "",
+    var activeEditMode:Boolean = false
 ) : Serializable {
-    constructor(name: String, tel: String, mobile: String) : this(0, name, tel, mobile)
+    constructor(name: String, mobile: String, address: String) : this(
+        0,
+        name,
+        mobile,
+        address,
+        false
+    )
+
+    val strMobile get() = " موبایل: $mobile"
+    val strAddress get() = " آدرس: $address"
+
 }
