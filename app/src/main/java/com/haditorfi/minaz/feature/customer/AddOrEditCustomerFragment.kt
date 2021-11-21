@@ -38,8 +38,9 @@ class AddOrEditCustomerFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        activeEditMode()
+
         binding.apply {
+            activeEditMode()
             edtCustomer = args.customData
 
             include.toolbarBtn.setOnClickListener {
@@ -60,10 +61,10 @@ class AddOrEditCustomerFragment : Fragment() {
             else
                 viewModel.insertCustomer(customer)
 
-            binding.root.toast(getString(R.string.success))
+            root.toast(getString(R.string.success))
             findNavController().navigateUp()
         } else {
-            binding.root.toast(errorMessage)
+            root.toast(errorMessage)
         }
     }
 
@@ -84,10 +85,10 @@ class AddOrEditCustomerFragment : Fragment() {
         return false
     }
 
-    private fun activeEditMode() {
+    private fun CustomerAddFragmentBinding.activeEditMode() {
         if (args.customData.activeEditMode) {
-            binding.include.toolbarTitleTv.text = getString(R.string.edit)
-            binding.include.toolbarBtn.text = getString(R.string.edit)
+            include.toolbarTitleTv.text = getString(R.string.edit)
+            include.toolbarBtn.text = getString(R.string.edit)
         }
     }
 }

@@ -10,46 +10,38 @@ import com.haditorfi.minaz.common.MyFragment
 import com.haditorfi.minaz.data.customer.Customer
 import com.haditorfi.minaz.data.service.Service
 import com.haditorfi.minaz.databinding.DashboardFragmentBinding
+import com.haditorfi.minaz.feature.service.ServiceViewModel
+import org.koin.android.ext.android.inject
+import org.koin.android.viewmodel.ext.android.viewModel
 
 class DashboardFragment : MyFragment() {
     lateinit var binding: DashboardFragmentBinding
+    private val customerInject: Customer by inject()
+    private val serviceInject: Service by inject()
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = DashboardFragmentBinding.inflate(inflater, container, false)
+        binding.include.toolbarTitleTv.text = getString(R.string.dashboard)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
-            btnCustomerList.setOnClickListener {
-                findNavController().navigate(R.id.action_dashboard_to_customer)
-            }
+
             miAddCustomer.setOnClickListener {
-                goToAddCustomerFragment()
+                val action =
+                    DashboardFragmentDirections.actionDashboardToAddCustomer(customerInject)
+                findNavController().navigate(action)
             }
+
             miAddService.setOnClickListener {
-                goToAddServiceFragment()
+                val action = DashboardFragmentDirections.actionDashboardToAddService(serviceInject)
+                findNavController().navigate(action)
             }
         }
-
-    }
-
-    private fun goToAddServiceFragment() {
-        val action =
-            DashboardFragmentDirections.actionDashboardToAddService(
-                Service("", 0, 0)
-            )
-        findNavController().navigate(action)
-    }
-
-    private fun goToAddCustomerFragment() {
-        val action =
-            DashboardFragmentDirections.actionDashboardToAddCustomer(
-                Customer(0, "", "", "", false)
-            )
-        findNavController().navigate(action)
     }
 }

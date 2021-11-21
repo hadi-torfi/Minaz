@@ -7,7 +7,7 @@
 
     <include app:graph="@navigation/dashboard" />
     <include app:graph="@navigation/manage" />
-    <include app:graph="@navigation/order" />
+    <include app:graph="@navigation/service" />
     <include app:graph="@navigation/report" />
 
 </navigation>

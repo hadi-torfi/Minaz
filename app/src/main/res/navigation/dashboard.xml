@@ -10,24 +10,11 @@
         android:label="dashboard_fragment"
         tools:layout="@layout/dashboard_fragment" >
         <action
-            android:id="@+id/action_dashboard_to_customer"
-            app:destination="@id/navCustomerList" />
-        <action
             android:id="@+id/action_dashboard_to_AddCustomer"
             app:destination="@id/navAddOrEditCustomer" />
         <action
             android:id="@+id/action_dashboard_to_AddService"
             app:destination="@id/navAddService" />
-    </fragment>
-    <fragment
-        android:id="@+id/navCustomerList"
-        android:name="com.haditorfi.minaz.feature.customer.CustomerFragment"
-        android:label="customer_fragment"
-        tools:layout="@layout/customer_fragment" >
-        <action
-            android:id="@+id/action_customer_to_editCustomer"
-            app:destination="@id/navAddOrEditCustomer" />
-
     </fragment>
     <fragment
         android:id="@+id/navAddOrEditCustomer"
@@ -43,7 +30,15 @@
         android:name="com.haditorfi.minaz.feature.service.AddServiceFragment"
         android:label="AddServiceFragment" >
         <argument
-            android:name="addService"
+            android:name="serviceData"
             app:argType="com.haditorfi.minaz.data.service.Service" />
+    </fragment>
+    <fragment
+        android:id="@+id/serviceFragment"
+        android:name="com.haditorfi.minaz.feature.service.ServiceFragment"
+        android:label="ServiceFragment" >
+        <action
+            android:id="@+id/action_service_to_AddService"
+            app:destination="@id/navAddService" />
     </fragment>
 </navigation>

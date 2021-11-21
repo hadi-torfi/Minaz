@@ -9,5 +9,25 @@
         android:id="@+id/manageFragment"
         android:name="com.haditorfi.minaz.feature.manage.ManageFragment"
         android:label="manage_fragment"
-        tools:layout="@layout/manage_fragment" />
+        tools:layout="@layout/manage_fragment" >
+        <action
+            android:id="@+id/action_manage_to_customer"
+            app:destination="@id/navCustomerList" />
+    </fragment>
+    <fragment
+        android:id="@+id/navCustomerList"
+        android:name="com.haditorfi.minaz.feature.customer.CustomerFragment"
+        android:label="CustomerFragment" >
+        <action
+            android:id="@+id/action_customer_to_addOrEditCustomer"
+            app:destination="@id/addOrEditCustomerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addOrEditCustomerFragment"
+        android:name="com.haditorfi.minaz.feature.customer.AddOrEditCustomerFragment"
+        android:label="AddOrEditCustomerFragment" >
+        <argument
+            android:name="customData"
+            app:argType="com.haditorfi.minaz.data.customer.Customer" />
+    </fragment>
 </navigation>

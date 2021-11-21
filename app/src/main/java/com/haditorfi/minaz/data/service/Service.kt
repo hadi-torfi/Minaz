@@ -9,8 +9,12 @@ data class Service(
     @PrimaryKey(autoGenerate = true)
     val id: Long,
     val name: String,
-    val price: Int,
-    val count: Int,
-):Serializable {
-    constructor(name: String, price: Int, count: Int) : this(0, name, price, count)
+    val price: String,
+    val count: String,
+    var activeEditMode: Boolean = false,
+) : Serializable {
+    constructor(name: String, price: String, count: String) : this(0, name, price, count, false)
+
+    val strCount get() = " تعداد : $count عدد "
+    val strPrice get() = " قیمت : $price  تومان "
 }

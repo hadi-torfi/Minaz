@@ -5,6 +5,7 @@
     <string name="report">گزارشات</string>
     <string name="manage">مدیریت</string>
     <string name="orders">سفارشات</string>
+    <string name="service">خدمات</string>
     <string name="service_list">لیست خدمات</string>
     <string name="service_name">نام خدمات</string>
     <string name="price">قیمت</string>
@@ -25,6 +26,8 @@
     <string name="save">ذخیره</string>
     <string name="success">عملیات با موفقیت انجام شد.</string>
     <string name="mobil_require">شماره موبایل را وارد نمایید.</string>
+    <string name="price_require">لطفا قیمت را وارد نمایید.</string>
+    <string name="count_require">لطفا تعداد را وارد نمایید.</string>
     <string name="name_require">نام و نام خانوادگی را وارد نمایید.</string>
     <string name="isPhone_message">لطفا شماره موبایل را صحیح وارد نمایید.</string>
 </resources>

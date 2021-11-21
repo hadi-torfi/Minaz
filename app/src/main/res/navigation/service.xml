@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/service"
+    app:startDestination="@id/navService">
+    <fragment
+        android:id="@+id/navService"
+        android:name="com.haditorfi.minaz.feature.service.ServiceFragment"
+        android:label="ServiceFragment">
+        <action
+            android:id="@+id/action_service_to_addService"
+            app:destination="@id/addServiceFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addServiceFragment"
+        android:name="com.haditorfi.minaz.feature.service.AddServiceFragment"
+        android:label="service_add_fragment"
+        tools:layout="@layout/service_add_fragment">
+        <argument
+            android:name="serviceData"
+            app:argType="com.haditorfi.minaz.data.service.Service" />
+    </fragment>
+</navigation>

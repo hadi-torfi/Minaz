@@ -5,8 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <include
+        android:id="@+id/include"
+        layout="@layout/view_toolbar_for_nav"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_customer_list"
+        android:id="@+id/rv_service"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginBottom="4dp"
@@ -16,10 +23,26 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/include"
         tools:context=".feature.service.ServiceFragment"
         tools:listitem="@layout/service_item">
 
     </androidx.recyclerview.widget.RecyclerView>
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btn_add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:src="@drawable/ic_add"
+        app:backgroundTint="@color/purple"
+        app:fab_shadowColor="#66000000"
+        app:fab_shadowRadius="8dp"
+        app:fab_shadowXOffset="1dp"
+        app:fab_shadowYOffset="3dp"
+        app:fab_showShadow="true"
+        android:layout_marginBottom="28dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:contentDescription="@string/service" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -12,11 +12,13 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.haditorfi.minaz.R
 import com.haditorfi.minaz.data.customer.Customer
 import com.haditorfi.minaz.databinding.CustomerFragmentBinding
+import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class CustomerFragment : Fragment() {
     private lateinit var binding: CustomerFragmentBinding
     private val viewModel: CustomerViewModel by viewModel()
+    private val customerInject: Customer by inject()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,7 +38,7 @@ class CustomerFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.include.toolbarBtn.setOnClickListener {
-            goToAddOrEditFragment(Customer(0,"", "", "",false))
+            goToEditFragment(customerInject)
         }
         viewModel.customersLiveData.observe(viewLifecycleOwner) {
             if (it.isEmpty()) addCustomer()
@@ -53,18 +55,6 @@ class CustomerFragment : Fragment() {
         }
     }
 
-    private fun goToAddOrEditFragment(
-        customer: Customer,
-        editModeTrue: Boolean = false
-    ) {
-        customer.activeEditMode = editModeTrue
-        val action =
-            CustomerFragmentDirections.actionCustomerToEditCustomer(
-                customer
-            )
-        findNavController().navigate(action)
-    }
-
     private fun popUp(view: View, customer: Customer) {
         val popup = PopupMenu(context, view)
         val inflater: MenuInflater = popup.menuInflater
@@ -73,7 +63,7 @@ class CustomerFragment : Fragment() {
         popup.setOnMenuItemClickListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.edit_menu -> {
-                    goToAddOrEditFragment(customer, true)
+                    goToEditFragment(customer, true)
                     return@setOnMenuItemClickListener true
                 }
                 R.id.delete_menu -> {
@@ -94,6 +84,18 @@ class CustomerFragment : Fragment() {
             }
         }
         popup.show()
+    }
+
+    private fun goToEditFragment(
+        customer: Customer,
+        editModeTrue: Boolean = false
+    ) {
+        customer.activeEditMode = editModeTrue
+        val action =
+            CustomerFragmentDirections.actionCustomerToAddOrEditCustomer(
+                customer
+            )
+        findNavController().navigate(action)
     }
 
     private fun addCustomer() {

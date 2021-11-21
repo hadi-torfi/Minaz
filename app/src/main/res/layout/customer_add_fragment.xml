@@ -46,7 +46,9 @@
                     android:id="@+id/edt_customer_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:autofillHints="@string/user_name"
                     android:hint="@string/user_name"
+                    android:inputType="text"
                     android:singleLine="true"
                     android:text="@{edtCustomer.name}" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -64,6 +66,7 @@
                     android:id="@+id/edt_customer_mobile"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:autofillHints="@string/mobile"
                     android:hint="@string/mobile"
                     android:inputType="number"
                     android:maxLength="11"
@@ -82,6 +85,7 @@
                     android:id="@+id/edt_customer_address"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:autofillHints="@string/address"
                     android:hint="@string/address"
                     android:inputType="textMultiLine|textPostalAddress"
                     android:maxLines="5"

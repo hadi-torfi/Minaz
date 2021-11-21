@@ -14,7 +14,7 @@
         android:id="@+id/item_service_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
+        android:layout_margin="4dp"
         app:cardCornerRadius="8dp"
         app:cardElevation="8dp">
 
@@ -54,7 +54,7 @@
                 android:layout_below="@id/txt_name"
                 android:layout_margin="8dp"
                 android:layout_toEndOf="@id/avatar"
-                android:text="@{myService.price}"
+                android:text="@{myService.strPrice}"
                 android:textSize="16sp"
                 tools:text="قیمت : 120,000 تومان" />
 
@@ -63,10 +63,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/txt_name"
-                android:layout_margin="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
                 android:layout_toEndOf="@id/txt_price"
+                android:text="@{myService.strCount}"
                 android:textAlignment="textEnd"
-                android:text="@{myService.price}"
                 android:textSize="16sp"
                 tools:text="تعداد : 5 عدد" />
 
