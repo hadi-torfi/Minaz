@@ -38,7 +38,7 @@ class CustomerFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.include.toolbarBtn.setOnClickListener {
-            goToEditFragment(customerInject)
+            goToAddOrEditFragment(customerInject)
         }
         viewModel.customersLiveData.observe(viewLifecycleOwner) {
             if (it.isEmpty()) addCustomer()
@@ -63,7 +63,7 @@ class CustomerFragment : Fragment() {
         popup.setOnMenuItemClickListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.edit_menu -> {
-                    goToEditFragment(customer, true)
+                    goToAddOrEditFragment(customer, true)
                     return@setOnMenuItemClickListener true
                 }
                 R.id.delete_menu -> {
@@ -86,7 +86,7 @@ class CustomerFragment : Fragment() {
         popup.show()
     }
 
-    private fun goToEditFragment(
+    private fun goToAddOrEditFragment(
         customer: Customer,
         editModeTrue: Boolean = false
     ) {

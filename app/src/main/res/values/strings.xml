@@ -13,6 +13,7 @@
     <string name="service_new">ارائه خدمات</string>
     <string name="customer_list">لیست مشتریان</string>
     <string name="customer_new"> مشتری جدید</string>
+    <string name="personnel_list">لیست پرسنل</string>
     <string name="personnel_new"> پرسنل جدید</string>
     <string name="product">فروش کالا</string>
     <string name="delete">حذف</string>

@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_manage_to_customer"
             app:destination="@id/navCustomerList" />
+        <action
+            android:id="@+id/action_manage_to_personnel"
+            app:destination="@id/navPersonnelList" />
     </fragment>
     <fragment
         android:id="@+id/navCustomerList"
@@ -29,5 +32,22 @@
         <argument
             android:name="customData"
             app:argType="com.haditorfi.minaz.data.customer.Customer" />
+    </fragment>
+    <fragment
+        android:id="@+id/navPersonnelList"
+        android:name="com.haditorfi.minaz.feature.personnel.PersonnelFragment"
+        android:label="PersonnelFragment" >
+        <action
+            android:id="@+id/action_personnel_to_addPersonnel"
+            app:destination="@id/addPersonnelFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addPersonnelFragment"
+        android:name="com.haditorfi.minaz.feature.personnel.AddPersonnelFragment"
+        android:label="personnel_add_fragment"
+        tools:layout="@layout/personnel_add_fragment" >
+        <argument
+            android:name="personnelData"
+            app:argType="com.haditorfi.minaz.data.personnel.Personnel" />
     </fragment>
 </navigation>

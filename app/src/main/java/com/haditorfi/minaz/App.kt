@@ -1,21 +1,20 @@
 package com.haditorfi.minaz
 
 import android.app.Application
-import android.content.SharedPreferences
 import androidx.room.Room
-import com.facebook.drawee.backends.pipeline.Fresco
 import com.haditorfi.minaz.data.customer.Customer
 import com.haditorfi.minaz.data.customer.CustomerRepository
 import com.haditorfi.minaz.data.customer.CustomerRepositoryImpl
 import com.haditorfi.minaz.data.db.AppDatabase
+import com.haditorfi.minaz.data.personnel.Personnel
+import com.haditorfi.minaz.data.personnel.PersonnelRepository
+import com.haditorfi.minaz.data.personnel.PersonnelRepositoryImpl
 import com.haditorfi.minaz.data.service.Service
 import com.haditorfi.minaz.data.service.ServiceRepository
 import com.haditorfi.minaz.data.service.ServiceRepositoryImpl
 import com.haditorfi.minaz.feature.customer.CustomerViewModel
-import com.haditorfi.minaz.feature.service.ServiceFragment
+import com.haditorfi.minaz.feature.personnel.PersonnelViewModel
 import com.haditorfi.minaz.feature.service.ServiceViewModel
-import com.haditorfi.minaz.services.FrescoImageLoadingService
-import com.haditorfi.minaz.services.ImageLoadingService
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.core.context.startKoin
@@ -26,10 +25,8 @@ class App : Application() {
     override fun onCreate() {
         super.onCreate()
         Timber.plant(Timber.DebugTree())
-        Fresco.initialize(this)
 
         val appModules = module {
-            single<ImageLoadingService> { FrescoImageLoadingService() }
             single {
                 Room.databaseBuilder(
                     this@App,
@@ -37,29 +34,37 @@ class App : Application() {
                 )
                     .build()
             }
-            single<SharedPreferences> {
-                this@App.getSharedPreferences(
-                    "app_settings",
-                    MODE_PRIVATE
-                )
-            }
+        }
 
+        val dataClassModules = module {
             factory { Customer(0, "", "", "", false) }
 
             factory { Service(0, "", "", "", false) }
+
+            factory { Personnel(0, "", "", "", "", "", "", false) }
+
+        }
+
+        val repositoryModules = module {
 
             factory<CustomerRepository> { CustomerRepositoryImpl(get<AppDatabase>().customerDao()) }
 
             factory<ServiceRepository> { ServiceRepositoryImpl(get<AppDatabase>().serviceDao()) }
 
+            factory<PersonnelRepository> { PersonnelRepositoryImpl(get<AppDatabase>().personnelDao()) }
+        }
+
+        val viewModelModules = module {
             viewModel { CustomerViewModel(get()) }
 
             viewModel { ServiceViewModel(get()) }
+
+            viewModel { PersonnelViewModel(get()) }
         }
 
         startKoin {
             androidContext(this@App)
-            modules(appModules)
+            modules(listOf(appModules, dataClassModules, repositoryModules, viewModelModules))
         }
     }
 }
