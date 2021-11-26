@@ -25,15 +25,10 @@ class CustomerFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = CustomerFragmentBinding.inflate(inflater, container, false)
-        binding.apply {
-            include.toolbarTitleTv.text = getString(R.string.customer_list)
-            include.toolbarBtn.text = getString(R.string.customer_new)
-            include.backBtn.setOnClickListener {
-                findNavController().navigateUp()
-            }
-        }
+        initToolbar()
         return binding.root
     }
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -96,6 +91,16 @@ class CustomerFragment : Fragment() {
                 customer
             )
         findNavController().navigate(action)
+    }
+
+    private fun initToolbar() {
+        binding.apply {
+            include.toolbarTitleTv.text = getString(R.string.customer_list)
+            include.toolbarBtn.text = getString(R.string.customer_new)
+            include.toolbarBackBtn.setOnClickListener {
+                findNavController().navigateUp()
+            }
+        }
     }
 
     private fun addCustomer() {

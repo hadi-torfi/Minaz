@@ -6,6 +6,7 @@ import androidx.room.*
 @Dao
 interface PersonnelLocalDataSource : PersonnelDataSource {
 
+    @Transaction
     @Query("SELECT * FROM personnel")
     override fun getAll(): LiveData<List<Personnel>>
 

@@ -11,11 +11,20 @@ import java.text.NumberFormat
 const val DATA_KEY = "data"
 const val ID_KEY = "id"
 
-fun formatPrice(price: Int): String {
+fun formatPriceWithLabel(price: Int): String {
     val currencyLabel = "تومان"
     val formatter: NumberFormat = DecimalFormat("#,###")
     val formattedNumber = formatter.format(price)
     return "$formattedNumber $currencyLabel"
+}
+
+fun formatPrice(price: String): String {
+    val formatter: NumberFormat = DecimalFormat("#,###")
+    return formatter.format(price)
+}
+
+fun unFormatPrice(price: String): Int {
+    return price.replace(",", "").toInt()
 }
 
 fun View.showKeyboard() {

@@ -25,14 +25,7 @@ class PersonnelFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = PersonnelFragmentBinding.inflate(inflater, container, false)
-
-        binding.apply {
-            include.toolbarTitleTv.text = getString(R.string.personnel_list)
-            include.toolbarBtn.text = getString(R.string.personnel_new)
-            include.backBtn.setOnClickListener {
-                findNavController().navigateUp()
-            }
-        }
+        initToolbar()
         return binding.root
     }
 
@@ -44,10 +37,11 @@ class PersonnelFragment : Fragment() {
         }
 
         viewModel.allPersonnel.observe(viewLifecycleOwner) {
+            if (it.isEmpty()) createPersonnelAndSkill()
+
             val viewAdapter =
                 PersonnelAdapter(requireContext(), it, IItemClickListener = { item, personnel ->
                     popUp(item, personnel)
-
                 })
 
             binding.rvPersonnel.run {
@@ -98,5 +92,22 @@ class PersonnelFragment : Fragment() {
                 personnel
             )
         findNavController().navigate(action)
+    }
+
+    private fun initToolbar() {
+        binding.apply {
+            include.toolbarTitleTv.text = getString(R.string.personnel_list)
+            include.toolbarBtn.text = getString(R.string.personnel_new)
+            include.toolbarBackBtn.setOnClickListener {
+                findNavController().navigateUp()
+            }
+        }
+    }
+
+    private fun createPersonnelAndSkill() {
+        val p1 = Personnel("مینا عبدالنبی", "09166424196", "تهران", "admin")
+        val p2 = Personnel("نازنین طرفی", "09352623050", "شوش", "user")
+        viewModel.insertPersonnel(p1)
+        viewModel.insertPersonnel(p2)
     }
 }

@@ -37,11 +37,11 @@ class App : Application() {
         }
 
         val dataClassModules = module {
-            factory { Customer(0, "", "", "", false) }
+            factory { Customer(0, "", "", "") }
 
-            factory { Service(0, "", "", "", false) }
+            factory { Service(0, "", "") }
 
-            factory { Personnel(0, "", "", "", "", "", "", false) }
+            factory { Personnel(0, "", "", "", "") }
 
         }
 

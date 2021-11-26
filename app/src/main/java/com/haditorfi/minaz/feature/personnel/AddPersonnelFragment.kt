@@ -18,14 +18,18 @@ class AddPersonnelFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = PersonnelAddFragmentBinding.inflate(inflater, container, false)
+        initToolbar()
+        return binding.root
+    }
+
+    private fun initToolbar() {
         binding.apply {
             include.toolbarTitleTv.text = getString(R.string.personnel_new)
             include.toolbarBtn.text = getString(R.string.save)
-            include.backBtn.setOnClickListener {
+            include.toolbarBackBtn.setOnClickListener {
                 findNavController().navigateUp()
             }
         }
-        return binding.root
     }
 
 }

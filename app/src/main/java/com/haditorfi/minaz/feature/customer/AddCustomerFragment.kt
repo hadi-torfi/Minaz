@@ -15,9 +15,9 @@ import com.haditorfi.minaz.data.customer.Customer
 import com.haditorfi.minaz.databinding.CustomerAddFragmentBinding
 import org.koin.android.viewmodel.ext.android.viewModel
 
-class AddOrEditCustomerFragment : Fragment() {
+class AddCustomerFragment : Fragment() {
     private lateinit var binding: CustomerAddFragmentBinding
-    private val args by navArgs<AddOrEditCustomerFragmentArgs>()
+    private val args by navArgs<AddCustomerFragmentArgs>()
     private val viewModel: CustomerViewModel by viewModel()
     private var errorMessage = ""
 
@@ -26,13 +26,7 @@ class AddOrEditCustomerFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = CustomerAddFragmentBinding.inflate(inflater, container, false)
-        binding.apply {
-            include.toolbarTitleTv.text = getString(R.string.customer_new)
-            include.toolbarBtn.text = getString(R.string.save)
-            include.backBtn.setOnClickListener {
-                findNavController().navigateUp()
-            }
-        }
+        initToolbar()
         return binding.root
     }
 
@@ -89,6 +83,16 @@ class AddOrEditCustomerFragment : Fragment() {
         if (args.customData.activeEditMode) {
             include.toolbarTitleTv.text = getString(R.string.edit)
             include.toolbarBtn.text = getString(R.string.edit)
+        }
+    }
+
+    private fun initToolbar() {
+        binding.apply {
+            include.toolbarTitleTv.text = getString(R.string.customer_new)
+            include.toolbarBtn.text = getString(R.string.save)
+            include.toolbarBackBtn.setOnClickListener {
+                findNavController().navigateUp()
+            }
         }
     }
 }

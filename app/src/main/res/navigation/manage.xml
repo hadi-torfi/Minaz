@@ -27,7 +27,7 @@
     </fragment>
     <fragment
         android:id="@+id/addOrEditCustomerFragment"
-        android:name="com.haditorfi.minaz.feature.customer.AddOrEditCustomerFragment"
+        android:name="com.haditorfi.minaz.feature.customer.AddCustomerFragment"
         android:label="AddOrEditCustomerFragment" >
         <argument
             android:name="customData"

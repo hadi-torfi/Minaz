@@ -18,7 +18,7 @@
     </fragment>
     <fragment
         android:id="@+id/navAddOrEditCustomer"
-        android:name="com.haditorfi.minaz.feature.customer.AddOrEditCustomerFragment"
+        android:name="com.haditorfi.minaz.feature.customer.AddCustomerFragment"
         android:label="fragment_add_or_edit_customer"
         tools:layout="@layout/customer_add_fragment" >
         <argument

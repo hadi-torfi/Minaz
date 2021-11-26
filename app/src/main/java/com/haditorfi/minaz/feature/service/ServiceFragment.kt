@@ -25,7 +25,7 @@ class ServiceFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = ServiceFragmentBinding.inflate(inflater, container, false)
-        binding.include.toolbarTitleTv.text = getString(R.string.service)
+        initToolbar()
         return binding.root
     }
 
@@ -33,13 +33,14 @@ class ServiceFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
             viewModel.allService.observe(viewLifecycleOwner) {
+                if (it.isEmpty()) createService()
                 val serviceViewAdapter =
                     ServiceAdapter(requireContext(), it, IItemClickListener = { item, service ->
                         popUp(item, service)
                     })
                 rvService.adapter = serviceViewAdapter
             }
-            btnAdd.setOnClickListener {
+            include.toolbarBtn.setOnClickListener {
                 goToAddOrEditFragment(serviceInject)
             }
         }
@@ -87,4 +88,21 @@ class ServiceFragment : Fragment() {
             )
         findNavController().navigate(action)
     }
+
+    private fun initToolbar() {
+        binding.apply {
+            include.toolbarTitleTv.text = getString(R.string.service)
+            include.toolbarBtn.visibility = View.VISIBLE
+            include.toolbarBtn.text = getString(R.string.service_new)
+        }
+    }
+
+    private fun createService() {
+        val s1 = Service("اپیلاسیون تمام بدن", "180000")
+        val s2 = Service("شمع صورت", "30000")
+
+        viewModel.insertService(s1)
+        viewModel.insertService(s2)
+    }
+
 }

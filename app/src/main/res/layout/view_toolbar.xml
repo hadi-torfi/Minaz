@@ -8,7 +8,7 @@
     android:elevation="8dp">
 
     <ImageView
-        android:id="@+id/backBtn"
+        android:id="@+id/toolbarBackBtn"
         android:layout_width="32dp"
         android:layout_height="32dp"
         android:layout_gravity="center_vertical|start"

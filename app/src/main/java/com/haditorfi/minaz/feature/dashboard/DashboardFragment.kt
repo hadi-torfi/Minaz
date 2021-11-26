@@ -10,9 +10,7 @@ import com.haditorfi.minaz.common.MyFragment
 import com.haditorfi.minaz.data.customer.Customer
 import com.haditorfi.minaz.data.service.Service
 import com.haditorfi.minaz.databinding.DashboardFragmentBinding
-import com.haditorfi.minaz.feature.service.ServiceViewModel
 import org.koin.android.ext.android.inject
-import org.koin.android.viewmodel.ext.android.viewModel
 
 class DashboardFragment : MyFragment() {
     lateinit var binding: DashboardFragmentBinding
@@ -24,7 +22,7 @@ class DashboardFragment : MyFragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = DashboardFragmentBinding.inflate(inflater, container, false)
-        binding.include.toolbarTitleTv.text = getString(R.string.dashboard)
+        initToolbar()
         return binding.root
     }
 
@@ -43,5 +41,9 @@ class DashboardFragment : MyFragment() {
                 findNavController().navigate(action)
             }
         }
+    }
+
+    private fun initToolbar() {
+        binding.include.toolbarTitleTv.text = getString(R.string.dashboard)
     }
 }

@@ -2,6 +2,7 @@ package com.haditorfi.minaz.data.service
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.haditorfi.minaz.common.formatPriceWithLabel
 import java.io.Serializable
 
 @Entity
@@ -10,11 +11,9 @@ data class Service(
     val id: Long,
     val name: String,
     val price: String,
-    val count: String,
-    var activeEditMode: Boolean = false,
 ) : Serializable {
-    constructor(name: String, price: String, count: String) : this(0, name, price, count, false)
+    constructor(name: String, price: String) : this(0, name, price)
 
-    val strCount get() = " تعداد : $count عدد "
-    val strPrice get() = " قیمت : $price  تومان "
+    var activeEditMode: Boolean = false
+    val strPrice get() = "  قیمت :  ${formatPriceWithLabel(price.toInt())}"
 }

@@ -5,6 +5,7 @@
     tools:context=".feature.service.AddServiceFragment">
 
     <data>
+
         <variable
             name="addService"
             type="com.haditorfi.minaz.data.service.Service" />
@@ -27,7 +28,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
             android:orientation="vertical"
-            android:padding="4dp"
+            android:padding="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -44,11 +45,11 @@
                     android:id="@+id/edt_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/service_name"
-                    android:singleLine="true"
-                    android:text="@{addService.name}"
                     android:autofillHints="@string/service_name"
-                    android:inputType="text" />
+                    android:hint="@string/service_name"
+                    android:inputType="text"
+                    android:singleLine="true"
+                    android:text="@{addService.name}" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -62,27 +63,9 @@
                     android:id="@+id/edt_price"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:autofillHints="@string/price"
                     android:hint="@string/price"
-                    android:inputType="number"
-                    android:text="@{addService.price}"
-                    android:autofillHints="@string/price" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                app:startIconDrawable="@drawable/ic_monetization">
-
-                <EditText
-                    android:id="@+id/edt_count"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/count"
-                    android:inputType="number"
-                    android:text="@{addService.count}"
-                    android:autofillHints="@string/count" />
+                    android:text="@{addService.price}" />
             </com.google.android.material.textfield.TextInputLayout>
 
         </LinearLayout>

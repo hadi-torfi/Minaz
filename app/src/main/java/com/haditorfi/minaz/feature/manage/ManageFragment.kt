@@ -17,7 +17,7 @@ class ManageFragment : MyFragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = ManageFragmentBinding.inflate(inflater, container, false)
-        binding.include.toolbarTitleTv.text = getString(R.string.manage)
+        initToolbar()
         return binding.root
     }
 
@@ -34,4 +34,11 @@ class ManageFragment : MyFragment() {
             }
         }
     }
+
+    private fun initToolbar() {
+        binding.apply {
+            include.toolbarTitleTv.text = getString(R.string.manage)
+        }
+    }
+
 }

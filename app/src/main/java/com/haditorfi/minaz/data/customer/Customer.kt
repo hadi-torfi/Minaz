@@ -11,16 +11,15 @@ data class Customer(
     val name: String,
     val mobile: String,
     val address: String = "",
-    var activeEditMode: Boolean = false
 ) : Serializable {
     constructor(name: String, mobile: String, address: String) : this(
         0,
         name,
         mobile,
-        address,
-        false
+        address
     )
 
+    var activeEditMode: Boolean = false
     val strMobile get() = " موبایل: $mobile"
     val strAddress get() = " آدرس: $address"
 
