@@ -10,6 +10,9 @@ import java.text.NumberFormat
 
 const val DATA_KEY = "data"
 const val ID_KEY = "id"
+const val MANAGER = "manager"
+const val PERSONNEL = "personnel"
+const val SECRETARY = "secretary"
 
 fun formatPriceWithLabel(price: Int): String {
     val currencyLabel = "تومان"

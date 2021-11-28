@@ -2,7 +2,11 @@ package com.haditorfi.minaz.data.personnel
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.haditorfi.minaz.R
+import com.haditorfi.minaz.common.MANAGER
+import com.haditorfi.minaz.common.SECRETARY
 import java.io.Serializable
+
 
 @Entity
 data class Personnel(
@@ -22,5 +26,19 @@ data class Personnel(
 
     var activeEditMode: Boolean = false
     val strMobile get() = " موبایل: $mobile"
-    val strAddress get() = " آدرس: $address"
+    fun strRole(): String {
+        return when (role) {
+            MANAGER -> "مدیر سالن"
+            SECRETARY -> "منشی"
+            else -> "پرسنل"
+        }
+    }
+
+    fun setRadioItemIdForRole(): Int {
+        return when (role) {
+            MANAGER -> R.id.radioManager
+            SECRETARY -> R.id.radioSecretary
+            else -> R.id.radioPersonnel
+        }
+    }
 }

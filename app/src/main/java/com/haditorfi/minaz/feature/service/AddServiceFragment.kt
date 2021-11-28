@@ -1,23 +1,18 @@
 package com.haditorfi.minaz.feature.service
 
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.haditorfi.minaz.R
-import com.haditorfi.minaz.common.formatPrice
 import com.haditorfi.minaz.common.hideKeyboard
 import com.haditorfi.minaz.common.toast
 import com.haditorfi.minaz.data.service.Service
 import com.haditorfi.minaz.databinding.ServiceAddFragmentBinding
 import org.koin.android.viewmodel.ext.android.viewModel
-import timber.log.Timber
 
 class AddServiceFragment : Fragment() {
     private lateinit var binding: ServiceAddFragmentBinding
@@ -38,9 +33,6 @@ class AddServiceFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
-            edtPrice.doAfterTextChanged{
-                edtPrice.setText("ha")
-            }
             activeEditMode()
             addService = args.serviceData
             include.toolbarBtn.setOnClickListener {
@@ -50,7 +42,6 @@ class AddServiceFragment : Fragment() {
     }
 
     private fun ServiceAddFragmentBinding.save() {
-
         val name = edtName.text.toString()
         val price = edtPrice.text.toString()
 

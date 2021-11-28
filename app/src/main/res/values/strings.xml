@@ -23,6 +23,7 @@
     <string name="accept">تایید</string>
     <string name="user_name">نام و نام خانوادگی</string>
     <string name="mobile">موبایل</string>
+    <string name="role">سمت</string>
     <string name="address">آدرس (اختیاری)</string>
     <string name="save">ذخیره</string>
     <string name="success">عملیات با موفقیت انجام شد.</string>
@@ -32,4 +33,7 @@
     <string name="name_require">نام و نام خانوادگی را وارد نمایید.</string>
     <string name="name_service_require">نام خدمات را وارد نمایید.</string>
     <string name="isPhone_message">لطفا شماره موبایل را صحیح وارد نمایید.</string>
+    <string name="manager">مدیر</string>
+    <string name="personnel">پرسنل</string>
+    <string name="secretary">منشی</string>
 </resources>

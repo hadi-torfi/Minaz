@@ -10,6 +10,9 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.haditorfi.minaz.R
+import com.haditorfi.minaz.common.MANAGER
+import com.haditorfi.minaz.common.PERSONNEL
+import com.haditorfi.minaz.common.SECRETARY
 import com.haditorfi.minaz.data.personnel.Personnel
 import com.haditorfi.minaz.databinding.PersonnelFragmentBinding
 import org.koin.android.ext.android.inject
@@ -105,9 +108,11 @@ class PersonnelFragment : Fragment() {
     }
 
     private fun createPersonnelAndSkill() {
-        val p1 = Personnel("مینا عبدالنبی", "09166424196", "تهران", "admin")
-        val p2 = Personnel("نازنین طرفی", "09352623050", "شوش", "user")
+        val p1 = Personnel("مینا عبدالنبی", "09166424196", "تهران", MANAGER)
+        val p2 = Personnel("نازنین طرفی", "09352623050", "شوش", SECRETARY)
+        val p3 = Personnel("ساره بیات", "09352625553", "تهران", PERSONNEL)
         viewModel.insertPersonnel(p1)
         viewModel.insertPersonnel(p2)
+        viewModel.insertPersonnel(p3)
     }
 }

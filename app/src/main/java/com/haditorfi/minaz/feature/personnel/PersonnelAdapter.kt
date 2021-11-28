@@ -10,6 +10,7 @@ import com.haditorfi.minaz.R
 import com.haditorfi.minaz.data.personnel.Personnel
 import com.haditorfi.minaz.databinding.PersonnelItemBinding
 
+
 class PersonnelAdapter(
     val context: Context,
     private val values: List<Personnel>,
