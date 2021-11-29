@@ -2,7 +2,7 @@ package com.haditorfi.minaz.data.service
 
 import androidx.lifecycle.LiveData
 
-class ServiceRepositoryImpl(private val serviceLocalDataSource: ServiceLocalDataSource) :
+class ServiceRepositoryImpl(private val serviceLocalDataSource: ServiceDataSource) :
     ServiceRepository {
     override val getAll: LiveData<List<Service>> = serviceLocalDataSource.getAll()
 

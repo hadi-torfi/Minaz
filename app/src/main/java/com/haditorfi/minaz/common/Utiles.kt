@@ -14,7 +14,7 @@ const val MANAGER = "manager"
 const val PERSONNEL = "personnel"
 const val SECRETARY = "secretary"
 
-fun formatPriceWithLabel(price: Int): String {
+fun formatPriceWithLabel(price: Long): String {
     val currencyLabel = "تومان"
     val formatter: NumberFormat = DecimalFormat("#,###")
     val formattedNumber = formatter.format(price)

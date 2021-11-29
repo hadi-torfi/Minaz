@@ -75,7 +75,7 @@
             android:layout_height="wrap_content"
             android:src="@drawable/ic_shopping_cart"
             fab:fab_colorNormal="@color/greenLight"
-            fab:fab_label="@string/product"
+            fab:fab_label="@string/product_new"
             fab:fab_size="mini" />
 
     </com.github.clans.fab.FloatingActionMenu>

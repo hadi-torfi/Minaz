@@ -1,4 +1,4 @@
-package com.haditorfi.minaz.feature.service
+package com.haditorfi.minaz.feature.product
 
 import android.os.Bundle
 import android.text.Editable
@@ -12,35 +12,33 @@ import androidx.navigation.fragment.navArgs
 import com.haditorfi.minaz.R
 import com.haditorfi.minaz.common.hideKeyboard
 import com.haditorfi.minaz.common.toast
-import com.haditorfi.minaz.data.service.Service
-import com.haditorfi.minaz.databinding.ServiceAddFragmentBinding
+import com.haditorfi.minaz.data.product.Product
+import com.haditorfi.minaz.databinding.ProductAddFragmentBinding
 import org.koin.android.viewmodel.ext.android.viewModel
 import java.text.DecimalFormat
 import java.text.NumberFormat
 import java.util.*
 
-
-class AddServiceFragment : Fragment() {
-    private lateinit var binding: ServiceAddFragmentBinding
-    private val viewModel: ServiceViewModel by viewModel()
-    private val args by navArgs<AddServiceFragmentArgs>()
+class AddProductFragment : Fragment() {
+    private lateinit var binding: ProductAddFragmentBinding
+    private val viewModel: ProductViewModel by viewModel()
+    private val args by navArgs<AddProductFragmentArgs>()
     private var errorMessage = ""
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
-        binding = ServiceAddFragmentBinding.inflate(inflater, container, false)
+    ): View? {
+        binding = ProductAddFragmentBinding.inflate(inflater, container, false)
         initToolbar()
         return binding.root
     }
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
             activeEditMode()
-            addService = args.serviceData
+            addProduct = args.productData
             include.toolbarBtn.setOnClickListener {
                 save()
             }
@@ -81,17 +79,18 @@ class AddServiceFragment : Fragment() {
         }
     }
 
-    private fun ServiceAddFragmentBinding.save() {
+    private fun ProductAddFragmentBinding.save() {
         val name = edtName.text.toString()
         val price = edtPrice.text.toString().replace(",", "")
+        val count = edtCount.text.toString()
 
-        if (validate(name, price)) {
-            val customer = Service(args.serviceData.id, name, price)
+        if (validate(name, price, count)) {
+            val customer = Product(args.productData.id, name, price, count)
 
-            if (args.serviceData.activeEditMode)
-                viewModel.updateService(customer)
+            if (args.productData.activeEditMode)
+                viewModel.updateProduct(customer)
             else
-                viewModel.insertService(customer)
+                viewModel.insertProduct(customer)
 
             root.toast(getString(R.string.success))
             findNavController().navigateUp()
@@ -101,11 +100,13 @@ class AddServiceFragment : Fragment() {
 
     }
 
-    private fun validate(name: String, price: String): Boolean {
+    private fun validate(name: String, price: String, count: String): Boolean {
         return if (name.isEmpty())
-            manageValidate(getString(R.string.name_service_require))
+            manageValidate(getString(R.string.name_product_require))
         else if (price.isEmpty())
             manageValidate(getString(R.string.price_require))
+        else if (count.isEmpty())
+            manageValidate(getString(R.string.count_require))
         else
             true
     }
@@ -116,8 +117,8 @@ class AddServiceFragment : Fragment() {
         return false
     }
 
-    private fun ServiceAddFragmentBinding.activeEditMode() {
-        if (args.serviceData.activeEditMode) {
+    private fun ProductAddFragmentBinding.activeEditMode() {
+        if (args.productData.activeEditMode) {
             include.toolbarTitleTv.text = getString(R.string.edit)
             include.toolbarBtn.text = getString(R.string.edit)
         }
@@ -125,7 +126,7 @@ class AddServiceFragment : Fragment() {
 
     private fun initToolbar() {
         binding.apply {
-            include.toolbarTitleTv.text = getString(R.string.service_new)
+            include.toolbarTitleTv.text = getString(R.string.product_new)
             include.toolbarBtn.text = getString(R.string.save)
             include.toolbarBackBtn.setOnClickListener {
                 findNavController().navigateUp()

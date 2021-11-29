@@ -16,6 +16,9 @@
     <string name="personnel_list">لیست پرسنل</string>
     <string name="personnel_new"> پرسنل جدید</string>
     <string name="product">فروش کالا</string>
+    <string name="product_name">نام کالا</string>
+    <string name="product_new">کالای جدید</string>
+    <string name="product_list">لیست کالا</string>
     <string name="delete">حذف</string>
     <string name="delete_message">آیتم مورد نظر حذف شود؟</string>
     <string name="edit">ویرایش</string>
@@ -32,6 +35,7 @@
     <string name="count_require">لطفا تعداد را وارد نمایید.</string>
     <string name="name_require">نام و نام خانوادگی را وارد نمایید.</string>
     <string name="name_service_require">نام خدمات را وارد نمایید.</string>
+    <string name="name_product_require">نام کالا را وارد نمایید.</string>
     <string name="isPhone_message">لطفا شماره موبایل را صحیح وارد نمایید.</string>
     <string name="manager">مدیر</string>
     <string name="personnel">پرسنل</string>

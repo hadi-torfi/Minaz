@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_manage_to_personnel"
             app:destination="@id/navPersonnelList" />
+        <action
+            android:id="@+id/action_manage_to_product"
+            app:destination="@id/productFragment" />
     </fragment>
     <fragment
         android:id="@+id/navCustomerList"
@@ -49,5 +52,23 @@
         <argument
             android:name="personnelData"
             app:argType="com.haditorfi.minaz.data.personnel.Personnel" />
+    </fragment>
+    <fragment
+        android:id="@+id/productFragment"
+        android:name="com.haditorfi.minaz.feature.product.ProductFragment"
+        android:label="product_fragment"
+        tools:layout="@layout/product_fragment" >
+        <action
+            android:id="@+id/action_product_to_addProduct"
+            app:destination="@id/addProductFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addProductFragment"
+        android:name="com.haditorfi.minaz.feature.product.AddProductFragment"
+        android:label="product_add_fragment"
+        tools:layout="@layout/product_add_fragment" >
+        <argument
+            android:name="productData"
+            app:argType="com.haditorfi.minaz.data.product.Product" />
     </fragment>
 </navigation>

@@ -9,11 +9,15 @@ import com.haditorfi.minaz.data.db.AppDatabase
 import com.haditorfi.minaz.data.personnel.Personnel
 import com.haditorfi.minaz.data.personnel.PersonnelRepository
 import com.haditorfi.minaz.data.personnel.PersonnelRepositoryImpl
+import com.haditorfi.minaz.data.product.Product
+import com.haditorfi.minaz.data.product.ProductRepository
+import com.haditorfi.minaz.data.product.ProductRepositoryImpl
 import com.haditorfi.minaz.data.service.Service
 import com.haditorfi.minaz.data.service.ServiceRepository
 import com.haditorfi.minaz.data.service.ServiceRepositoryImpl
 import com.haditorfi.minaz.feature.customer.CustomerViewModel
 import com.haditorfi.minaz.feature.personnel.PersonnelViewModel
+import com.haditorfi.minaz.feature.product.ProductViewModel
 import com.haditorfi.minaz.feature.service.ServiceViewModel
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.viewmodel.dsl.viewModel
@@ -41,6 +45,8 @@ class App : Application() {
 
             factory { Service(0, "", "") }
 
+            factory { Product(0, "", "", "") }
+
             factory { Personnel(0, "", "", "", "") }
 
         }
@@ -51,6 +57,8 @@ class App : Application() {
 
             factory<ServiceRepository> { ServiceRepositoryImpl(get<AppDatabase>().serviceDao()) }
 
+            factory<ProductRepository> { ProductRepositoryImpl(get<AppDatabase>().productDao()) }
+
             factory<PersonnelRepository> { PersonnelRepositoryImpl(get<AppDatabase>().personnelDao()) }
         }
 
@@ -58,6 +66,8 @@ class App : Application() {
             viewModel { CustomerViewModel(get()) }
 
             viewModel { ServiceViewModel(get()) }
+
+            viewModel { ProductViewModel(get()) }
 
             viewModel { PersonnelViewModel(get()) }
         }

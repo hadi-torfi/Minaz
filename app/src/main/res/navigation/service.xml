@@ -7,7 +7,8 @@
     <fragment
         android:id="@+id/navService"
         android:name="com.haditorfi.minaz.feature.service.ServiceFragment"
-        android:label="ServiceFragment">
+        android:label="ServiceFragment"
+        tools:layout="@layout/service_fragment">
         <action
             android:id="@+id/action_service_to_addService"
             app:destination="@id/addServiceFragment" />

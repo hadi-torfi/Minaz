@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".feature.service.AddServiceFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".feature.product.AddProductFragment">
 
     <data>
 
         <variable
-            name="addService"
-            type="com.haditorfi.minaz.data.service.Service" />
+            name="addProduct"
+            type="com.haditorfi.minaz.data.product.Product" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -39,17 +39,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                app:startIconDrawable="@drawable/ic_cart">
+                app:startIconDrawable="@drawable/ic_shopping_cart">
 
                 <EditText
                     android:id="@+id/edt_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:autofillHints="@string/service_name"
-                    android:hint="@string/service_name"
+                    android:autofillHints="@string/product_name"
+                    android:hint="@string/product_name"
                     android:inputType="text"
                     android:singleLine="true"
-                    android:text="@{addService.name}" />
+                    android:text="@{addProduct.name}" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -63,12 +63,30 @@
                     android:id="@+id/edt_price"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:autofillHints="@string/price"
+                    android:autofillHints="s@string/price"
                     android:hint="@string/price"
                     android:inputType="number"
-                    android:text="@{addService.price}" />
+                    android:text="@{addProduct.price}" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:startIconDrawable="@drawable/ic_arrow_left">
+
+                <EditText
+                    android:id="@+id/edt_count"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:autofillHints="@string/count"
+                    android:hint="@string/count"
+                    android:inputType="number"
+                    android:text="@{addProduct.count}" />
             </com.google.android.material.textfield.TextInputLayout>
 
         </LinearLayout>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

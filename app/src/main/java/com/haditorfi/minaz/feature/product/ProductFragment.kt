@@ -1,4 +1,4 @@
-package com.haditorfi.minaz.feature.customer
+package com.haditorfi.minaz.feature.product
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,47 +10,44 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.haditorfi.minaz.R
-import com.haditorfi.minaz.data.customer.Customer
-import com.haditorfi.minaz.databinding.CustomerFragmentBinding
+import com.haditorfi.minaz.data.product.Product
+import com.haditorfi.minaz.databinding.ProductFragmentBinding
 import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.viewModel
 
-class CustomerFragment : Fragment() {
-    private lateinit var binding: CustomerFragmentBinding
-    private val viewModel: CustomerViewModel by viewModel()
-    private val customerInject: Customer by inject()
+class ProductFragment : Fragment() {
+    lateinit var binding: ProductFragmentBinding
+    private val viewModel: ProductViewModel by viewModel()
+    private val serviceInject: Product by inject()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
-        binding = CustomerFragmentBinding.inflate(inflater, container, false)
+    ): View? {
+        binding = ProductFragmentBinding.inflate(inflater, container, false)
         initToolbar()
         return binding.root
     }
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.include.toolbarBtn.setOnClickListener {
-            goToAddOrEditFragment(customerInject)
-        }
-        viewModel.customersLiveData.observe(viewLifecycleOwner) {
-            if (it.isEmpty()) addCustomer()
-
-            val viewAdapter =
-                CustomerAdapter(requireContext(), it, IItemClickListener = { item, customer ->
-                    popUp(item, customer)
-                })
-
-            binding.rvCustomerList.run {
-                setHasFixedSize(true)
-                adapter = viewAdapter
+        binding.apply {
+            viewModel.allProduct.observe(viewLifecycleOwner) {
+                if (it.isEmpty()) createProduct()
+                val serviceViewAdapter =
+                    ProductAdapter(requireContext(), it, IItemClickListener = { item, service ->
+                        popUp(item, service)
+                    })
+                rvProduct.adapter = serviceViewAdapter
+            }
+            include.toolbarBtn.setOnClickListener {
+                goToAddOrEditFragment(serviceInject)
             }
         }
     }
 
-    private fun popUp(view: View, customer: Customer) {
+
+    private fun popUp(view: View, product: Product) {
         val popup = PopupMenu(context, view)
         val inflater: MenuInflater = popup.menuInflater
         inflater.inflate(R.menu.options, popup.menu)
@@ -58,7 +55,7 @@ class CustomerFragment : Fragment() {
         popup.setOnMenuItemClickListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.edit_menu -> {
-                    goToAddOrEditFragment(customer, true)
+                    goToAddOrEditFragment(product, true)
                     return@setOnMenuItemClickListener true
                 }
                 R.id.delete_menu -> {
@@ -69,7 +66,7 @@ class CustomerFragment : Fragment() {
                             dialog.dismiss()
                         }
                         .setPositiveButton(resources.getString(R.string.accept)) { _, _ ->
-                            viewModel.deleteCustomer(customer)
+                            viewModel.deleteProduct(product)
                         }
                         .show()
                     return@setOnMenuItemClickListener true
@@ -82,30 +79,30 @@ class CustomerFragment : Fragment() {
     }
 
     private fun goToAddOrEditFragment(
-        customer: Customer,
+        product: Product,
         editModeTrue: Boolean = false
     ) {
-        customer.activeEditMode = editModeTrue
+        product.activeEditMode = editModeTrue
         val action =
-            CustomerFragmentDirections.actionCustomerToAddOrEditCustomer(
-                customer
+            ProductFragmentDirections.actionProductToAddProduct(
+                product
             )
         findNavController().navigate(action)
     }
 
     private fun initToolbar() {
         binding.apply {
-            include.toolbarTitleTv.text = getString(R.string.customer_list)
-            include.toolbarBtn.text = getString(R.string.customer_new)
-            include.toolbarBackBtn.setOnClickListener {
-                findNavController().navigateUp()
-            }
+            include.toolbarTitleTv.text = getString(R.string.product)
+            include.toolbarBtn.visibility = View.VISIBLE
+            include.toolbarBtn.text = getString(R.string.product_new)
         }
     }
 
-    private fun addCustomer() {
-        viewModel.insertCustomer(Customer("سمانه محمدی", "09166424100", "شوش خیابان مدرس"))
-        viewModel.insertCustomer(Customer("نازنین طرفی", "09352623050", "شوش خیابان "))
-        viewModel.insertCustomer(Customer("سارینا رحمتی", "09352623055", "شوش "))
+    private fun createProduct() {
+        val p1 = Product("کرم ووکس", "180000", "5")
+        val p2 = Product("کرم ستاره", "30000", "6")
+
+        viewModel.insertProduct(p1)
+        viewModel.insertProduct(p2)
     }
 }

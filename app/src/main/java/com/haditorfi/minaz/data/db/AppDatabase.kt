@@ -6,12 +6,18 @@ import com.haditorfi.minaz.data.customer.Customer
 import com.haditorfi.minaz.data.customer.CustomerLocalDataSource
 import com.haditorfi.minaz.data.personnel.Personnel
 import com.haditorfi.minaz.data.personnel.PersonnelLocalDataSource
+import com.haditorfi.minaz.data.product.Product
+import com.haditorfi.minaz.data.product.ProductLocalDataSource
 import com.haditorfi.minaz.data.service.Service
 import com.haditorfi.minaz.data.service.ServiceLocalDataSource
 
-@Database(entities = [Customer::class, Service::class, Personnel::class], version = 1)
+@Database(
+    entities = [Customer::class, Service::class, Product::class, Personnel::class],
+    version = 1
+)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun customerDao(): CustomerLocalDataSource
     abstract fun serviceDao(): ServiceLocalDataSource
-    abstract fun personnelDao() : PersonnelLocalDataSource
+    abstract fun productDao(): ProductLocalDataSource
+    abstract fun personnelDao(): PersonnelLocalDataSource
 }

@@ -32,6 +32,10 @@ class ManageFragment : MyFragment() {
             btnPersonnelList.setOnClickListener {
                 findNavController().navigate(R.id.action_manage_to_personnel)
             }
+
+            btnProductList.setOnClickListener {
+                findNavController().navigate(R.id.action_manage_to_product)
+            }
         }
     }
 
