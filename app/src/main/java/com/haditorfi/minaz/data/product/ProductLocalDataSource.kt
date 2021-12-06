@@ -10,7 +10,7 @@ interface ProductLocalDataSource : ProductDataSource {
     override fun getAll(): LiveData<List<Product>>
 
     @Insert
-    override suspend fun insert(product: Product)
+    override suspend fun insert(vararg product: Product)
 
     @Delete
     override suspend fun delete(product: Product)

@@ -6,7 +6,7 @@ class ProductRepositoryImpl(private val productLocalDataSource: ProductDataSourc
     ProductRepository {
     override val getAll: LiveData<List<Product>> = productLocalDataSource.getAll()
 
-    override suspend fun insert(product: Product) = productLocalDataSource.insert(product)
+    override suspend fun insert(vararg product: Product) = productLocalDataSource.insert(*product)
 
     override suspend fun delete(product: Product) = productLocalDataSource.delete(product)
 

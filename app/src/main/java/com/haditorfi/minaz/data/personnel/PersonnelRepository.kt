@@ -6,7 +6,7 @@ interface PersonnelRepository {
 
     val getAll: LiveData<List<Personnel>>
 
-    suspend fun insert(personnel: Personnel)
+    suspend fun insert(vararg personnel: Personnel)
 
     suspend fun update(personnel: Personnel)
 

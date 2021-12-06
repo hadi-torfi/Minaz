@@ -12,18 +12,16 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.haditorfi.minaz.R
 import com.haditorfi.minaz.data.product.Product
 import com.haditorfi.minaz.databinding.ProductFragmentBinding
-import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class ProductFragment : Fragment() {
     lateinit var binding: ProductFragmentBinding
     private val viewModel: ProductViewModel by viewModel()
-    private val serviceInject: Product by inject()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = ProductFragmentBinding.inflate(inflater, container, false)
         initToolbar()
         return binding.root
@@ -41,7 +39,7 @@ class ProductFragment : Fragment() {
                 rvProduct.adapter = serviceViewAdapter
             }
             include.toolbarBtn.setOnClickListener {
-                goToAddOrEditFragment(serviceInject)
+                goToAddOrEditFragment()
             }
         }
     }
@@ -79,7 +77,7 @@ class ProductFragment : Fragment() {
     }
 
     private fun goToAddOrEditFragment(
-        product: Product,
+        product: Product = Product(),
         editModeTrue: Boolean = false
     ) {
         product.activeEditMode = editModeTrue
@@ -93,16 +91,16 @@ class ProductFragment : Fragment() {
     private fun initToolbar() {
         binding.apply {
             include.toolbarTitleTv.text = getString(R.string.product)
-            include.toolbarBtn.visibility = View.VISIBLE
             include.toolbarBtn.text = getString(R.string.product_new)
+            include.toolbarBackBtn.setOnClickListener {
+                findNavController().navigateUp()
+            }
         }
     }
 
     private fun createProduct() {
         val p1 = Product("کرم ووکس", "180000", "5")
         val p2 = Product("کرم ستاره", "30000", "6")
-
-        viewModel.insertProduct(p1)
-        viewModel.insertProduct(p2)
+        viewModel.insertProduct(p1, p2)
     }
 }

@@ -13,8 +13,11 @@
             android:id="@+id/action_dashboard_to_AddCustomer"
             app:destination="@id/navAddOrEditCustomer" />
         <action
-            android:id="@+id/action_dashboard_to_AddService"
-            app:destination="@id/navAddService" />
+            android:id="@+id/action_dashboard_to_addProduct"
+            app:destination="@id/addProductFragment2" />
+        <action
+            android:id="@+id/action_dashboard_to_addProvideService"
+            app:destination="@id/addProvideServiceFragment2" />
     </fragment>
     <fragment
         android:id="@+id/navAddOrEditCustomer"
@@ -26,19 +29,21 @@
             app:argType="com.haditorfi.minaz.data.customer.Customer" />
     </fragment>
     <fragment
-        android:id="@+id/navAddService"
-        android:name="com.haditorfi.minaz.feature.service.AddServiceFragment"
-        android:label="AddServiceFragment" >
+        android:id="@+id/addProductFragment2"
+        android:name="com.haditorfi.minaz.feature.product.AddProductFragment"
+        android:label="product_add_fragment"
+        tools:layout="@layout/product_add_fragment" >
         <argument
-            android:name="serviceData"
-            app:argType="com.haditorfi.minaz.data.service.Service" />
+            android:name="productData"
+            app:argType="com.haditorfi.minaz.data.product.Product" />
     </fragment>
     <fragment
-        android:id="@+id/serviceFragment"
-        android:name="com.haditorfi.minaz.feature.service.ServiceFragment"
-        android:label="ServiceFragment" >
-        <action
-            android:id="@+id/action_service_to_AddService"
-            app:destination="@id/navAddService" />
+        android:id="@+id/addProvideServiceFragment2"
+        android:name="com.haditorfi.minaz.feature.services.provide.AddProvideServiceFragment"
+        android:label="service_provide_add_fragment"
+        tools:layout="@layout/service_provide_add_fragment" >
+        <argument
+            android:name="serviceData"
+            app:argType="com.haditorfi.minaz.data.service.provide.ProvideService" />
     </fragment>
 </navigation>

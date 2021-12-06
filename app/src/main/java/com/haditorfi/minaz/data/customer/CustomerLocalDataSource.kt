@@ -10,7 +10,7 @@ interface CustomerLocalDataSource : CustomerDataSource {
     override fun getAll(): LiveData<List<Customer>>
 
     @Insert
-    override suspend fun insert(customer: Customer)
+    override suspend fun insert(vararg customer: Customer)
 
     @Delete
     override suspend fun delete(customer: Customer)

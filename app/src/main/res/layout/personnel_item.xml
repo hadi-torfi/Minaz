@@ -29,7 +29,7 @@
                 android:layout_height="48dp"
                 android:layout_centerVertical="true"
                 android:layout_margin="8dp"
-                android:background="@color/greenLight"
+                android:background="@color/blueDark"
                 android:scaleType="center"
                 android:src="@drawable/ic_user"
                 app:shapeAppearance="@style/Avatar"

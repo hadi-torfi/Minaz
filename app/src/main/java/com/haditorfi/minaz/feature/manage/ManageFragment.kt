@@ -36,6 +36,10 @@ class ManageFragment : MyFragment() {
             btnProductList.setOnClickListener {
                 findNavController().navigate(R.id.action_manage_to_product)
             }
+
+            btnServiceList.setOnClickListener {
+                findNavController().navigate(R.id.action_manage_to_service)
+            }
         }
     }
 
@@ -44,5 +48,4 @@ class ManageFragment : MyFragment() {
             include.toolbarTitleTv.text = getString(R.string.manage)
         }
     }
-
 }

@@ -3,23 +3,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/service"
-    app:startDestination="@id/navService">
+    app:startDestination="@id/provideServiceListFragment">
     <fragment
-        android:id="@+id/navService"
-        android:name="com.haditorfi.minaz.feature.service.ServiceFragment"
-        android:label="ServiceFragment"
-        tools:layout="@layout/service_fragment">
+        android:id="@+id/provideServiceListFragment"
+        android:name="com.haditorfi.minaz.feature.services.provide.ProvideServiceListFragment"
+        android:label="service_provide_list_fragment"
+        tools:layout="@layout/service_provide_list_fragment" >
         <action
-            android:id="@+id/action_service_to_addService"
-            app:destination="@id/addServiceFragment" />
+            android:id="@+id/action_provideServiceList_to_addProvideService"
+            app:destination="@id/addProvideServiceFragment" />
     </fragment>
     <fragment
-        android:id="@+id/addServiceFragment"
-        android:name="com.haditorfi.minaz.feature.service.AddServiceFragment"
-        android:label="service_add_fragment"
-        tools:layout="@layout/service_add_fragment">
+        android:id="@+id/addProvideServiceFragment"
+        android:name="com.haditorfi.minaz.feature.services.provide.AddProvideServiceFragment"
+        android:label="service_provide_add_fragment"
+        tools:layout="@layout/service_provide_add_fragment" >
         <argument
-            android:name="serviceData"
-            app:argType="com.haditorfi.minaz.data.service.Service" />
+            android:name="ProvideServiceData"
+            app:argType="com.haditorfi.minaz.data.service.provide.ProvideService" />
     </fragment>
 </navigation>

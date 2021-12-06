@@ -10,7 +10,7 @@ interface ServiceLocalDataSource : ServiceDataSource {
     override fun getAll(): LiveData<List<Service>>
 
     @Insert
-    override suspend fun insert(service: Service)
+    override suspend fun insert(vararg service: Service)
 
     @Delete
     override suspend fun delete(service: Service)

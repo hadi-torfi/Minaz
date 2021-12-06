@@ -3,7 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:fab="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/frameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".feature.dashboard.DashboardFragment">
@@ -14,6 +13,24 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_provide_service"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="4dp"
+        android:clipToPadding="true"
+        android:padding="4dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/include"
+        tools:context=".feature.services.service.ServiceListFragment"
+        tools:listitem="@layout/service_provide_item">
+
+    </androidx.recyclerview.widget.RecyclerView>
 
     <com.github.clans.fab.FloatingActionMenu
         android:id="@+id/menu"
@@ -52,21 +69,21 @@
         fab:menu_showShadow="true">
 
         <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/mi_provide_service"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_cart"
+            fab:fab_colorNormal="@color/purple"
+            fab:fab_label="@string/service_provide"
+            fab:fab_size="mini" />
+
+        <com.github.clans.fab.FloatingActionButton
             android:id="@+id/mi_add_customer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_user"
             fab:fab_colorNormal="@color/orange"
             fab:fab_label="@string/customer_new"
-            fab:fab_size="mini" />
-
-        <com.github.clans.fab.FloatingActionButton
-            android:id="@+id/mi_add_service"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_cart"
-            fab:fab_colorNormal="@color/purple"
-            fab:fab_label="@string/service_new"
             fab:fab_size="mini" />
 
         <com.github.clans.fab.FloatingActionButton

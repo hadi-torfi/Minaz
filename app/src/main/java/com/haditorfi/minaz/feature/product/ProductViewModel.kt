@@ -11,9 +11,9 @@ class ProductViewModel(private val productRepository: ProductRepository) : ViewM
 
     val allProduct = productRepository.getAll
 
-    fun insertProduct(product: Product) {
+    fun insertProduct(vararg product: Product) {
         viewModelScope.launch(Dispatchers.IO) {
-            productRepository.insert(product)
+            productRepository.insert(*product)
         }
     }
 

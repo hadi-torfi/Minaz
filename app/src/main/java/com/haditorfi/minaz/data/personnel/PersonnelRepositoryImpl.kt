@@ -7,7 +7,7 @@ class PersonnelRepositoryImpl(private val personnelLocalDataSource: PersonnelDat
 
     override val getAll: LiveData<List<Personnel>> = personnelLocalDataSource.getAll()
 
-    override suspend fun insert(personnel: Personnel) = personnelLocalDataSource.insert(personnel)
+    override suspend fun insert(vararg personnel: Personnel) = personnelLocalDataSource.insert(*personnel)
 
     override suspend fun update(personnel: Personnel) = personnelLocalDataSource.update(personnel)
 

@@ -21,7 +21,6 @@ import org.koin.android.ext.android.inject
 class PersonnelFragment : Fragment() {
     lateinit var binding: PersonnelFragmentBinding
     private val viewModel: PersonnelViewModel by inject()
-    private val personnel: Personnel by inject()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,7 +35,7 @@ class PersonnelFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.include.toolbarBtn.setOnClickListener {
-            goToAddOrEditFragment(personnel)
+            goToAddOrEditFragment()
         }
 
         viewModel.allPersonnel.observe(viewLifecycleOwner) {
@@ -86,7 +85,7 @@ class PersonnelFragment : Fragment() {
     }
 
     private fun goToAddOrEditFragment(
-        personnel: Personnel,
+        personnel: Personnel = Personnel(),
         editModeTrue: Boolean = false
     ) {
         personnel.activeEditMode = editModeTrue
@@ -111,8 +110,6 @@ class PersonnelFragment : Fragment() {
         val p1 = Personnel("مینا عبدالنبی", "09166424196", "تهران", MANAGER)
         val p2 = Personnel("نازنین طرفی", "09352623050", "شوش", SECRETARY)
         val p3 = Personnel("ساره بیات", "09352625553", "تهران", PERSONNEL)
-        viewModel.insertPersonnel(p1)
-        viewModel.insertPersonnel(p2)
-        viewModel.insertPersonnel(p3)
+        viewModel.insertPersonnel(p1,p2,p3)
     }
 }

@@ -6,6 +6,24 @@
     app:startDestination="@id/manageFragment">
 
     <fragment
+        android:id="@+id/navService"
+        android:name="com.haditorfi.minaz.feature.services.service.ServiceListFragment"
+        android:label="ServiceFragment"
+        tools:layout="@layout/service_list_fragment">
+        <action
+            android:id="@+id/action_service_to_addService"
+            app:destination="@id/addServiceFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addServiceFragment"
+        android:name="com.haditorfi.minaz.feature.services.service.AddServiceFragment"
+        android:label="service_add_fragment"
+        tools:layout="@layout/service_add_fragment">
+        <argument
+            android:name="serviceData"
+            app:argType="com.haditorfi.minaz.data.service.Service" />
+    </fragment>
+    <fragment
         android:id="@+id/manageFragment"
         android:name="com.haditorfi.minaz.feature.manage.ManageFragment"
         android:label="manage_fragment"
@@ -19,6 +37,9 @@
         <action
             android:id="@+id/action_manage_to_product"
             app:destination="@id/productFragment" />
+        <action
+            android:id="@+id/action_manage_to_service"
+            app:destination="@id/navService" />
     </fragment>
     <fragment
         android:id="@+id/navCustomerList"

@@ -6,7 +6,7 @@ class ServiceRepositoryImpl(private val serviceLocalDataSource: ServiceDataSourc
     ServiceRepository {
     override val getAll: LiveData<List<Service>> = serviceLocalDataSource.getAll()
 
-    override suspend fun insert(service: Service) = serviceLocalDataSource.insert(service)
+    override suspend fun insert(vararg service: Service) = serviceLocalDataSource.insert(*service)
 
     override suspend fun delete(service: Service) = serviceLocalDataSource.delete(service)
 

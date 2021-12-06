@@ -6,7 +6,7 @@ interface CustomerDataSource {
 
     fun getAll(): LiveData<List<Customer>>
 
-    suspend fun insert(customer: Customer)
+    suspend fun insert(vararg customer: Customer)
 
     suspend fun delete(customer: Customer)
 

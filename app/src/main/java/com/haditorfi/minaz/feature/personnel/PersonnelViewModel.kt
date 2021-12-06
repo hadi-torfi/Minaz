@@ -11,9 +11,9 @@ class PersonnelViewModel(private val personnelRepository: PersonnelRepository) :
 
     val allPersonnel = personnelRepository.getAll
 
-    fun insertPersonnel(personnel: Personnel) {
+    fun insertPersonnel(vararg personnel: Personnel) {
         viewModelScope.launch(Dispatchers.IO) {
-            personnelRepository.insert(personnel)
+            personnelRepository.insert(*personnel)
         }
     }
 

@@ -11,9 +11,9 @@ class CustomerViewModel(private val customerRepository: CustomerRepository) : My
 
     val customersLiveData = customerRepository.getAll
 
-    fun insertCustomer(customer: Customer) {
+    fun insertCustomer(vararg customer: Customer) {
         viewModelScope.launch(Dispatchers.IO) {
-            customerRepository.insert(customer)
+            customerRepository.insert(*customer)
         }
     }
 

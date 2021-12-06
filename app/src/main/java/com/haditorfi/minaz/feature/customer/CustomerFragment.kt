@@ -29,11 +29,10 @@ class CustomerFragment : Fragment() {
         return binding.root
     }
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.include.toolbarBtn.setOnClickListener {
-            goToAddOrEditFragment(customerInject)
+            goToAddOrEditFragment()
         }
         viewModel.customersLiveData.observe(viewLifecycleOwner) {
             if (it.isEmpty()) addCustomer()
@@ -82,7 +81,7 @@ class CustomerFragment : Fragment() {
     }
 
     private fun goToAddOrEditFragment(
-        customer: Customer,
+        customer: Customer = Customer(),
         editModeTrue: Boolean = false
     ) {
         customer.activeEditMode = editModeTrue
@@ -104,8 +103,9 @@ class CustomerFragment : Fragment() {
     }
 
     private fun addCustomer() {
-        viewModel.insertCustomer(Customer("سمانه محمدی", "09166424100", "شوش خیابان مدرس"))
-        viewModel.insertCustomer(Customer("نازنین طرفی", "09352623050", "شوش خیابان "))
-        viewModel.insertCustomer(Customer("سارینا رحمتی", "09352623055", "شوش "))
+        val c1 = Customer("سمانه محمدی", "09166424100", "شوش خیابان مدرس")
+        val c2 = Customer("نازنین طرفی", "09352623050", "شوش خیابان ")
+        val c3 = Customer("سارینا رحمتی", "09352623055", "شوش ")
+        viewModel.insertCustomer(c1, c2, c3)
     }
 }

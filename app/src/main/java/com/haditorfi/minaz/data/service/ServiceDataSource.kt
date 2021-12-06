@@ -5,7 +5,7 @@ import androidx.lifecycle.LiveData
 interface ServiceDataSource {
     fun getAll(): LiveData<List<Service>>
 
-    suspend fun insert(service: Service)
+    suspend fun insert(vararg service: Service)
 
     suspend fun delete(service: Service)
 

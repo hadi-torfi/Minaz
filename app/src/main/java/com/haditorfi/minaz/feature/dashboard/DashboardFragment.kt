@@ -7,15 +7,17 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.haditorfi.minaz.R
 import com.haditorfi.minaz.common.MyFragment
-import com.haditorfi.minaz.data.customer.Customer
-import com.haditorfi.minaz.data.service.Service
 import com.haditorfi.minaz.databinding.DashboardFragmentBinding
+import com.haditorfi.minaz.feature.services.provide.ProvideServiceAdapter
+import com.haditorfi.minaz.feature.services.provide.ProvideServiceViewModel
 import org.koin.android.ext.android.inject
+import org.koin.android.viewmodel.ext.android.viewModel
+import java.util.*
 
 class DashboardFragment : MyFragment() {
     lateinit var binding: DashboardFragmentBinding
-    private val customerInject: Customer by inject()
-    private val serviceInject: Service by inject()
+    private val viewModel: DashboardViewModel by inject()
+    private val viewModelProvideService: ProvideServiceViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,15 +31,28 @@ class DashboardFragment : MyFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
-
+            viewModelProvideService.allProvideService.observe(viewLifecycleOwner) {
+                val serviceViewAdapter =
+                    ProvideServiceAdapter(requireContext(), it, IItemClickListener = { item, service ->
+                       // popUp(item, service)
+                    })
+                rvProvideService.adapter = serviceViewAdapter
+            }
             miAddCustomer.setOnClickListener {
                 val action =
-                    DashboardFragmentDirections.actionDashboardToAddCustomer(customerInject)
+                    DashboardFragmentDirections.actionDashboardToAddCustomer(viewModel.customer)
                 findNavController().navigate(action)
             }
 
-            miAddService.setOnClickListener {
-                val action = DashboardFragmentDirections.actionDashboardToAddService(serviceInject)
+            miProvideService.setOnClickListener {
+                val action =
+                    DashboardFragmentDirections.actionDashboardToAddProvideService(viewModel.service)
+                findNavController().navigate(action)
+            }
+
+            miProduct.setOnClickListener {
+                val action =
+                    DashboardFragmentDirections.actionDashboardToAddProduct(viewModel.product)
                 findNavController().navigate(action)
             }
         }

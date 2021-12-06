@@ -1,4 +1,4 @@
-package com.haditorfi.minaz.feature.service
+package com.haditorfi.minaz.feature.services.service
 
 import android.os.Bundle
 import android.text.Editable
@@ -18,7 +18,6 @@ import org.koin.android.viewmodel.ext.android.viewModel
 import java.text.DecimalFormat
 import java.text.NumberFormat
 import java.util.*
-
 
 class AddServiceFragment : Fragment() {
     private lateinit var binding: ServiceAddFragmentBinding

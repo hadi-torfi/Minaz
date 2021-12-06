@@ -11,7 +11,7 @@ interface PersonnelLocalDataSource : PersonnelDataSource {
     override fun getAll(): LiveData<List<Personnel>>
 
     @Insert
-    override suspend fun insert(personnel: Personnel)
+    override suspend fun insert(vararg personnel: Personnel)
 
     @Update
     override suspend fun update(personnel: Personnel)

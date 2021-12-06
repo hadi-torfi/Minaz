@@ -1,4 +1,4 @@
-package com.haditorfi.minaz.feature.service
+package com.haditorfi.minaz.feature.services.service
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -11,9 +11,9 @@ class ServiceViewModel(private val serviceRepository: ServiceRepository) : ViewM
 
     val allService = serviceRepository.getAll
 
-    fun insertService(service: Service) {
+    fun insertService(vararg service: Service) {
         viewModelScope.launch(Dispatchers.IO) {
-            serviceRepository.insert(service)
+            serviceRepository.insert(*service)
         }
     }
 

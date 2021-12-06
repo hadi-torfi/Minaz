@@ -1,4 +1,4 @@
-package com.haditorfi.minaz.feature.service
+package com.haditorfi.minaz.feature.services.service
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,20 +11,19 @@ import androidx.navigation.fragment.findNavController
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.haditorfi.minaz.R
 import com.haditorfi.minaz.data.service.Service
-import com.haditorfi.minaz.databinding.ServiceFragmentBinding
-import org.koin.android.ext.android.inject
+import com.haditorfi.minaz.databinding.ServiceListFragmentBinding
 import org.koin.android.viewmodel.ext.android.viewModel
+import java.util.*
 
-class ServiceFragment : Fragment() {
-    lateinit var binding: ServiceFragmentBinding
+class ServiceListFragment : Fragment() {
+    lateinit var binding: ServiceListFragmentBinding
     private val viewModel: ServiceViewModel by viewModel()
-    private val serviceInject: Service by inject()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = ServiceFragmentBinding.inflate(inflater, container, false)
+        binding = ServiceListFragmentBinding.inflate(inflater, container, false)
         initToolbar()
         return binding.root
     }
@@ -41,7 +40,7 @@ class ServiceFragment : Fragment() {
                 rvService.adapter = serviceViewAdapter
             }
             include.toolbarBtn.setOnClickListener {
-                goToAddOrEditFragment(serviceInject)
+                goToAddOrEditFragment()
             }
         }
     }
@@ -78,12 +77,12 @@ class ServiceFragment : Fragment() {
     }
 
     private fun goToAddOrEditFragment(
-        service: Service,
+        service: Service = Service(),
         editModeTrue: Boolean = false
     ) {
         service.activeEditMode = editModeTrue
         val action =
-            ServiceFragmentDirections.actionServiceToAddService(
+            ServiceListFragmentDirections.actionServiceToAddService(
                 service
             )
         findNavController().navigate(action)
@@ -100,9 +99,8 @@ class ServiceFragment : Fragment() {
     private fun createService() {
         val s1 = Service("اپیلاسیون تمام بدن", "180000")
         val s2 = Service("شمع صورت", "30000")
-
-        viewModel.insertService(s1)
-        viewModel.insertService(s2)
+        val s3 = Service("اپیلاسیون دست و پا", "130000")
+        viewModel.insertService(s1, s2, s3)
     }
 
 }

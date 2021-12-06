@@ -1,6 +1,7 @@
 package com.haditorfi.minaz.data.personnel
 
 import androidx.room.Entity
+import androidx.room.Ignore
 import androidx.room.PrimaryKey
 import com.haditorfi.minaz.R
 import com.haditorfi.minaz.common.MANAGER
@@ -17,6 +18,7 @@ data class Personnel(
     val address: String,
     val role: String,
 ) : Serializable {
+    constructor() : this(0, "", "", "", "")
     constructor(
         name: String,
         mobile: String,
@@ -24,6 +26,7 @@ data class Personnel(
         role: String
     ) : this(0, name, mobile, address, role)
 
+    @Ignore
     var activeEditMode: Boolean = false
     val strMobile get() = " موبایل: $mobile"
     fun strRole(): String {

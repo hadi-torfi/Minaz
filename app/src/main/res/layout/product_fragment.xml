@@ -8,7 +8,7 @@
 
     <include
         android:id="@+id/include"
-        layout="@layout/view_toolbar_for_nav"
+        layout="@layout/view_toolbar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

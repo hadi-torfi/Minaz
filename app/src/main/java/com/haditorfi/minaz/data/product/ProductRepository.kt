@@ -6,7 +6,7 @@ interface ProductRepository {
 
     val getAll: LiveData<List<Product>>
 
-    suspend fun insert(product: Product)
+    suspend fun insert(vararg product: Product)
 
     suspend fun delete(product: Product)
 
