@@ -25,5 +25,6 @@ data class Customer(
     var activeEditMode: Boolean = false
     val strMobile get() = " موبایل: $mobile"
     val strAddress get() = " آدرس: $address"
+    val strName get() = " مشتری : $name"
 
 }

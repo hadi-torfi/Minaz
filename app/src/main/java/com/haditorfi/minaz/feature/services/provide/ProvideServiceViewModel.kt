@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.haditorfi.minaz.data.service.provide.ProvideService
 import com.haditorfi.minaz.data.service.provide.ProvideServiceRepository
+import com.haditorfi.minaz.data.service.provide.Provides
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -11,7 +12,6 @@ class ProvideServiceViewModel(private val provideServiceRepository: ProvideServi
     ViewModel() {
 
     val allProvideService = provideServiceRepository.getAll
-
 
     fun insertProvideService(provideService: ProvideService) {
         viewModelScope.launch(Dispatchers.IO) {
@@ -30,4 +30,5 @@ class ProvideServiceViewModel(private val provideServiceRepository: ProvideServi
             provideServiceRepository.delete(provideService)
         }
     }
+
 }

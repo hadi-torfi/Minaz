@@ -2,16 +2,18 @@ package com.haditorfi.minaz.data.service.provide
 
 import androidx.lifecycle.LiveData
 
-class ProvideServiceRepositoryImpl(private val provideServiceLocalDataSource: ProvideServiceDataSource) :
+class ProvideServiceRepositoryImpl(private val provideServiceDao: ProvideServiceDao) :
     ProvideServiceRepository {
-    override val getAll: LiveData<List<ProvideService>> = provideServiceLocalDataSource.getAll()
+
+    override val getAll: LiveData<List<Provides>> = provideServiceDao.getAll()
 
     override suspend fun insert(provideService: ProvideService) =
-        provideServiceLocalDataSource.insert(provideService)
+        provideServiceDao.insert(provideService)
 
     override suspend fun delete(provideService: ProvideService) =
-        provideServiceLocalDataSource.delete(provideService)
+        provideServiceDao.delete(provideService)
 
     override suspend fun update(provideService: ProvideService) =
-        provideServiceLocalDataSource.update(provideService)
+        provideServiceDao.update(provideService)
+
 }

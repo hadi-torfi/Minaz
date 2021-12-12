@@ -7,7 +7,7 @@
 
         <variable
             name="myProvideService"
-            type="com.haditorfi.minaz.data.service.provide.ProvideService" />
+            type="com.haditorfi.minaz.data.service.provide.Provides" />
     </data>
 
     <androidx.cardview.widget.CardView
@@ -42,21 +42,51 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:layout_toEndOf="@id/avatar"
-                android:text='@{myProvideService.serviceId + ""}'
+                android:text="@{myProvideService.service.strName}"
                 android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
                 android:textSize="22sp"
                 tools:text="نام خدمات" />
 
             <TextView
-                android:id="@+id/txt_discount"
+                android:id="@+id/txt_customer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/txt_service_name"
                 android:layout_margin="8dp"
                 android:layout_toEndOf="@id/avatar"
-                android:text="@{myProvideService.strDiscount}"
+                android:text="@{myProvideService.customer.strName}"
+                android:textColor="@color/black"
                 android:textSize="16sp"
-                tools:text="تخفیف : 20,000 تومان" />
+                tools:text="مشتری : " />
+
+            <TextView
+                android:id="@+id/txt_staff"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txt_customer"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                android:layout_toEndOf="@id/avatar"
+                android:text="@{myProvideService.personnel.strName}"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                tools:text="پرسنل : " />
+
+            <TextView
+                android:id="@+id/txt_discount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txt_staff"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                android:layout_toEndOf="@id/avatar"
+                android:text="@{myProvideService.provideService.strTotalPrice}"
+                android:textSize="16sp"
+                tools:text="مبلغ : 20,000 تومان" />
 
             <ImageView
                 android:id="@+id/btn_more"

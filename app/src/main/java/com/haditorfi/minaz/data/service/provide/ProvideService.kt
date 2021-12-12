@@ -15,16 +15,20 @@ data class ProvideService(
     var personnelId: Long,
     var serviceId: Long,
     var provideDate: Date?,
-    val discount: String,
+    var purchase: String,
+    var discount: String,
+    var totalPrice: String,
     var description: String,
 ) : Serializable {
-    constructor() : this(0, 0, 0, 0, null, "",  "")
+    constructor() : this(0, 0, 0, 0, null, "", "", "", "")
     constructor(
         customerId: Long,
         personnelId: Long,
         serviceId: Long,
         provideDate: Date?,
+        purchase: String,
         discount: String,
+        totalPrice: String,
         description: String
     ) : this(
         0,
@@ -32,11 +36,15 @@ data class ProvideService(
         personnelId,
         serviceId,
         provideDate,
+        purchase,
         discount,
+        totalPrice,
         description
     )
 
     @Ignore
     var activeEditMode: Boolean = false
     val strDiscount get() = "  تخفیف :  ${formatPriceWithLabel(discount.toLong())}"
+    val strDescription get() = "  توضیحات :  $description"
+    val strTotalPrice get() = "  قیمت :  ${formatPriceWithLabel(purchase.toLong() - discount.toLong())}"
 }

@@ -8,19 +8,20 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.haditorfi.minaz.R
 import com.haditorfi.minaz.data.service.provide.ProvideService
+import com.haditorfi.minaz.data.service.provide.Provides
 import com.haditorfi.minaz.databinding.ServiceProvideItemBinding
 
 class ProvideServiceAdapter(
     val context: Context,
-    private val values: List<ProvideService>,
+    private val values: List<Provides>,
     var IItemClickListener: (
         view: View,
-        provideService: ProvideService
+        provideService: Provides
     ) -> Unit
 ) : RecyclerView.Adapter<ProvideServiceAdapter.MyViewHolder>() {
     class MyViewHolder(val binding: ServiceProvideItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun setDataService(provideService: ProvideService) {
+        fun setDataService(provideService: Provides) {
             binding.myProvideService = provideService
         }
     }

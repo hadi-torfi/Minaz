@@ -29,6 +29,8 @@ data class Personnel(
     @Ignore
     var activeEditMode: Boolean = false
     val strMobile get() = " موبایل: $mobile"
+    val strName get() = " پرسنل : $name"
+
     fun strRole(): String {
         return when (role) {
             MANAGER -> "مدیر سالن"

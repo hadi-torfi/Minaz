@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.haditorfi.minaz.R
+import com.haditorfi.minaz.data.service.provide.Provides
 import com.haditorfi.minaz.data.service.provide.ProvideService
 import com.haditorfi.minaz.databinding.ServiceProvideListFragmentBinding
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -37,8 +38,8 @@ class ProvideServiceListFragment : Fragment() {
                     ProvideServiceAdapter(
                         requireContext(),
                         it,
-                        IItemClickListener = { item, service ->
-                            popUp(item, service)
+                        IItemClickListener = { item, provides ->
+                            popUp(item, provides)
                         })
                 rvProvideService.adapter = serviceViewAdapter
             }
@@ -48,7 +49,7 @@ class ProvideServiceListFragment : Fragment() {
         }
     }
 
-    private fun popUp(view: View, service: ProvideService) {
+    private fun popUp(view: View, provides: Provides) {
         val popup = PopupMenu(context, view)
         val inflater: MenuInflater = popup.menuInflater
         inflater.inflate(R.menu.options, popup.menu)
@@ -56,7 +57,7 @@ class ProvideServiceListFragment : Fragment() {
         popup.setOnMenuItemClickListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.edit_menu -> {
-                    goToAddOrEditFragment(service, true)
+                    goToAddOrEditFragment(provides, true)
                     return@setOnMenuItemClickListener true
                 }
                 R.id.delete_menu -> {
@@ -67,7 +68,7 @@ class ProvideServiceListFragment : Fragment() {
                             dialog.dismiss()
                         }
                         .setPositiveButton(resources.getString(R.string.accept)) { _, _ ->
-                            viewModel.deleteProvideService(service)
+                            viewModel.deleteProvideService(provides)
                         }
                         .show()
                     return@setOnMenuItemClickListener true
@@ -80,13 +81,13 @@ class ProvideServiceListFragment : Fragment() {
     }
 
     private fun goToAddOrEditFragment(
-        service: ProvideService = ProvideService(),
+        provideService: ProvideService = ProvideService(),
         editModeTrue: Boolean = false
     ) {
-        service.activeEditMode = editModeTrue
+        provideService.activeEditMode = editModeTrue
         val action =
             ProvideServiceListFragmentDirections.actionProvideServiceListToAddProvideService(
-                service
+                provideService
             )
         findNavController().navigate(action)
     }
@@ -100,8 +101,8 @@ class ProvideServiceListFragment : Fragment() {
     }
 
     private fun createProvideService() {
-        val p1 = ProvideService(1, 2, 3, Date(), "20000", "توضیحات")
-        val p2 = ProvideService(1, 2, 2, Date(), "10000", "توضیح")
+        val p1 = ProvideService(1, 2, 3, Date(), "120000","20000","100000", "توضیحات")
+        val p2 = ProvideService(2, 3, 2, Date(), "80000","30000","50000", "توضیح")
         viewModel.insertProvideService(p1)
         viewModel.insertProvideService(p2)
     }

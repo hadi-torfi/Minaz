@@ -12,7 +12,7 @@ import com.haditorfi.minaz.data.product.ProductLocalDataSource
 import com.haditorfi.minaz.data.service.Service
 import com.haditorfi.minaz.data.service.ServiceLocalDataSource
 import com.haditorfi.minaz.data.service.provide.ProvideService
-import com.haditorfi.minaz.data.service.provide.ProvideServiceLocalDataSource
+import com.haditorfi.minaz.data.service.provide.ProvideServiceDao
 
 @Database(
     entities = [Customer::class, Service::class, Product::class, Personnel::class, ProvideService::class],
@@ -22,7 +22,7 @@ import com.haditorfi.minaz.data.service.provide.ProvideServiceLocalDataSource
 abstract class AppDatabase : RoomDatabase() {
     abstract fun customerDao(): CustomerLocalDataSource
     abstract fun serviceDao(): ServiceLocalDataSource
-    abstract fun provideServiceDao(): ProvideServiceLocalDataSource
+    abstract fun provideServiceDao(): ProvideServiceDao
     abstract fun productDao(): ProductLocalDataSource
     abstract fun personnelDao(): PersonnelLocalDataSource
 }
