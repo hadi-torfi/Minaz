@@ -6,8 +6,8 @@
     <data>
 
         <variable
-            name="myPersonnel"
-            type="com.haditorfi.minaz.data.personnel.Personnel" />
+            name="myStaff"
+            type="com.haditorfi.minaz.data.staff.Staff" />
     </data>
 
     <androidx.cardview.widget.CardView
@@ -42,7 +42,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:layout_toEndOf="@id/img_avatar"
-                android:text="@{myPersonnel.name}"
+                android:text="@{myStaff.name}"
                 android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
                 android:textSize="20sp"
                 tools:text="@string/user_name" />
@@ -57,7 +57,7 @@
                 android:layout_marginEnd="8dp"
                 android:layout_marginBottom="8dp"
                 android:layout_toEndOf="@id/img_avatar"
-                android:text="@{myPersonnel.strMobile}"
+                android:text="@{myStaff.strMobile}"
                 android:textSize="16sp"
                 tools:text="09166424196" />
 
@@ -71,7 +71,7 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="8dp"
-                android:text="@{myPersonnel.strRole()}"
+                android:text="@{myStaff.strRole()}"
                 android:textColor="@color/blue"
                 android:textSize="16sp"
                 tools:text="@string/role" />

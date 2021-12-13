@@ -12,7 +12,6 @@ import com.haditorfi.minaz.feature.services.provide.ProvideServiceAdapter
 import com.haditorfi.minaz.feature.services.provide.ProvideServiceViewModel
 import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.viewModel
-import java.util.*
 
 class DashboardFragment : MyFragment() {
     lateinit var binding: DashboardFragmentBinding
@@ -32,10 +31,7 @@ class DashboardFragment : MyFragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
             viewModelProvideService.allProvideService.observe(viewLifecycleOwner) {
-                val serviceViewAdapter =
-                    ProvideServiceAdapter(requireContext(), it, IItemClickListener = { item, service ->
-                       // popUp(item, service)
-                    })
+                val serviceViewAdapter = ProvideServiceAdapter(requireContext(), it)
                 rvProvideService.adapter = serviceViewAdapter
             }
             miAddCustomer.setOnClickListener {

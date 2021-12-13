@@ -10,7 +10,6 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.haditorfi.minaz.R
-import com.haditorfi.minaz.data.service.provide.Provides
 import com.haditorfi.minaz.data.service.provide.ProvideService
 import com.haditorfi.minaz.databinding.ServiceProvideListFragmentBinding
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -37,10 +36,10 @@ class ProvideServiceListFragment : Fragment() {
                 val serviceViewAdapter =
                     ProvideServiceAdapter(
                         requireContext(),
-                        it,
-                        IItemClickListener = { item, provides ->
-                            popUp(item, provides)
-                        })
+                        it
+                    ) { item, provides ->
+                        popUp(item, provides)
+                    }
                 rvProvideService.adapter = serviceViewAdapter
             }
             include.toolbarBtn.setOnClickListener {
@@ -49,7 +48,7 @@ class ProvideServiceListFragment : Fragment() {
         }
     }
 
-    private fun popUp(view: View, provides: Provides) {
+    private fun popUp(view: View, provideService: ProvideService) {
         val popup = PopupMenu(context, view)
         val inflater: MenuInflater = popup.menuInflater
         inflater.inflate(R.menu.options, popup.menu)
@@ -57,7 +56,7 @@ class ProvideServiceListFragment : Fragment() {
         popup.setOnMenuItemClickListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.edit_menu -> {
-                    goToAddOrEditFragment(provides, true)
+                    goToAddOrEditFragment(provideService, true)
                     return@setOnMenuItemClickListener true
                 }
                 R.id.delete_menu -> {
@@ -68,7 +67,7 @@ class ProvideServiceListFragment : Fragment() {
                             dialog.dismiss()
                         }
                         .setPositiveButton(resources.getString(R.string.accept)) { _, _ ->
-                            viewModel.deleteProvideService(provides)
+                            viewModel.deleteProvideService(provideService)
                         }
                         .show()
                     return@setOnMenuItemClickListener true

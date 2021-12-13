@@ -1,4 +1,4 @@
-package com.haditorfi.minaz.data.personnel
+package com.haditorfi.minaz.data.staff
 
 import androidx.room.Entity
 import androidx.room.Ignore
@@ -10,7 +10,7 @@ import java.io.Serializable
 
 
 @Entity
-data class Personnel(
+data class Staff(
     @PrimaryKey(autoGenerate = true)
     val id: Int,
     val name: String,

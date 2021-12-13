@@ -32,8 +32,8 @@
             android:id="@+id/action_manage_to_customer"
             app:destination="@id/navCustomerList" />
         <action
-            android:id="@+id/action_manage_to_personnel"
-            app:destination="@id/navPersonnelList" />
+            android:id="@+id/action_manage_to_staff"
+            app:destination="@id/navStaffList" />
         <action
             android:id="@+id/action_manage_to_product"
             app:destination="@id/productFragment" />
@@ -58,21 +58,21 @@
             app:argType="com.haditorfi.minaz.data.customer.Customer" />
     </fragment>
     <fragment
-        android:id="@+id/navPersonnelList"
-        android:name="com.haditorfi.minaz.feature.personnel.PersonnelFragment"
-        android:label="PersonnelFragment" >
+        android:id="@+id/navStaffList"
+        android:name="com.haditorfi.minaz.feature.staff.StaffFragment"
+        android:label="StaffFragment" >
         <action
-            android:id="@+id/action_personnel_to_addPersonnel"
-            app:destination="@id/addPersonnelFragment" />
+            android:id="@+id/action_staff_to_addStaff"
+            app:destination="@id/addStaffFragment" />
     </fragment>
     <fragment
-        android:id="@+id/addPersonnelFragment"
-        android:name="com.haditorfi.minaz.feature.personnel.AddPersonnelFragment"
-        android:label="personnel_add_fragment"
-        tools:layout="@layout/personnel_add_fragment" >
+        android:id="@+id/addStaffFragment"
+        android:name="com.haditorfi.minaz.feature.staff.AddStaffFragment"
+        android:label="staff_add_fragment"
+        tools:layout="@layout/staff_add_fragment" >
         <argument
-            android:name="personnelData"
-            app:argType="com.haditorfi.minaz.data.personnel.Personnel" />
+            android:name="staffData"
+            app:argType="com.haditorfi.minaz.data.staff.Staff" />
     </fragment>
     <fragment
         android:id="@+id/productFragment"

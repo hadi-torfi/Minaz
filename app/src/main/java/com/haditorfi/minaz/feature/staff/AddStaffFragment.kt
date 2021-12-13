@@ -1,4 +1,4 @@
-package com.haditorfi.minaz.feature.personnel
+package com.haditorfi.minaz.feature.staff
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,14 +9,14 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.haditorfi.minaz.R
 import com.haditorfi.minaz.common.*
-import com.haditorfi.minaz.data.personnel.Personnel
-import com.haditorfi.minaz.databinding.PersonnelAddFragmentBinding
+import com.haditorfi.minaz.data.staff.Staff
+import com.haditorfi.minaz.databinding.StaffAddFragmentBinding
 import org.koin.android.viewmodel.ext.android.viewModel
 
-class AddPersonnelFragment : Fragment() {
-    lateinit var binding: PersonnelAddFragmentBinding
-    private val args by navArgs<AddPersonnelFragmentArgs>()
-    private val viewModel: PersonnelViewModel by viewModel()
+class AddStaffFragment : Fragment() {
+    lateinit var binding: StaffAddFragmentBinding
+    private val args by navArgs<AddStaffFragmentArgs>()
+    private val viewModel: StaffViewModel by viewModel()
     private var errorMessage = ""
     private var role = ""
 
@@ -24,7 +24,7 @@ class AddPersonnelFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = PersonnelAddFragmentBinding.inflate(inflater, container, false)
+        binding = StaffAddFragmentBinding.inflate(inflater, container, false)
         initToolbar()
         return binding.root
     }
@@ -33,7 +33,7 @@ class AddPersonnelFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
             activeEditMode()
-            edtPersonnel = args.personnelData
+            edtStaff = args.staffData
 
             include.toolbarBtn.setOnClickListener {
                 save()
@@ -41,10 +41,10 @@ class AddPersonnelFragment : Fragment() {
         }
     }
 
-    private fun PersonnelAddFragmentBinding.save() {
-        val name = edtPersonnelName.text.toString()
-        val mobile = edtPersonnelMobile.text.toString()
-        val address = edtPersonnelAddress.text.toString()
+    private fun StaffAddFragmentBinding.save() {
+        val name = edtStaffName.text.toString()
+        val mobile = edtStaffMobile.text.toString()
+        val address = edtStaffAddress.text.toString()
 
         when (radioGroup.checkedRadioButtonId) {
             R.id.radioPersonnel -> role = PERSONNEL
@@ -53,12 +53,12 @@ class AddPersonnelFragment : Fragment() {
         }
 
         if (validate(name, mobile)) {
-            val personnel = Personnel(args.personnelData.id, name, mobile, address, role)
+            val personnel = Staff(args.staffData.id, name, mobile, address, role)
 
-            if (args.personnelData.activeEditMode)
-                viewModel.updatePersonnel(personnel)
+            if (args.staffData.activeEditMode)
+                viewModel.updateStaff(personnel)
             else
-                viewModel.insertPersonnel(personnel)
+                viewModel.insertStaff(personnel)
 
             root.toast(getString(R.string.success))
             findNavController().navigateUp()
@@ -84,8 +84,8 @@ class AddPersonnelFragment : Fragment() {
         return false
     }
 
-    private fun PersonnelAddFragmentBinding.activeEditMode() {
-        if (args.personnelData.activeEditMode) {
+    private fun StaffAddFragmentBinding.activeEditMode() {
+        if (args.staffData.activeEditMode) {
             include.toolbarTitleTv.text = getString(R.string.edit)
             include.toolbarBtn.text = getString(R.string.edit)
         }
@@ -100,5 +100,4 @@ class AddPersonnelFragment : Fragment() {
             }
         }
     }
-
 }

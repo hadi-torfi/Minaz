@@ -3,9 +3,8 @@ package com.haditorfi.minaz.data.service.provide
 import androidx.room.Embedded
 import androidx.room.Ignore
 import androidx.room.Relation
-import com.haditorfi.minaz.common.formatPriceWithLabel
 import com.haditorfi.minaz.data.customer.Customer
-import com.haditorfi.minaz.data.personnel.Personnel
+import com.haditorfi.minaz.data.staff.Staff
 import com.haditorfi.minaz.data.service.Service
 import java.io.Serializable
 
@@ -21,11 +20,15 @@ data class Provides(
         parentColumn = "personnelId",
         entityColumn = "id",
     )
-    val personnel: Personnel,
+    val staff: Staff,
 
     @Relation(
         parentColumn = "personnelId",
         entityColumn = "id",
     )
     val service: Service,
-): Serializable
+): Serializable{
+    constructor() : this(ProvideService(), Customer(),Staff(),Service())
+    @Ignore
+    var activeEditMode: Boolean = false
+}

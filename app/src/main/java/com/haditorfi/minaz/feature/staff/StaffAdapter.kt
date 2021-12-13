@@ -1,4 +1,4 @@
-package com.haditorfi.minaz.feature.personnel
+package com.haditorfi.minaz.feature.staff
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -7,27 +7,27 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.haditorfi.minaz.R
-import com.haditorfi.minaz.data.personnel.Personnel
-import com.haditorfi.minaz.databinding.PersonnelItemBinding
+import com.haditorfi.minaz.data.staff.Staff
+import com.haditorfi.minaz.databinding.StaffItemBinding
 
 
-class PersonnelAdapter(
+class StaffAdapter(
     val context: Context,
-    private val values: List<Personnel>,
-    val IItemClickListener: (view: View, personnel: Personnel) -> Unit
-) : RecyclerView.Adapter<PersonnelAdapter.MyViewHolder>() {
+    private val values: List<Staff>,
+    val IItemClickListener: (view: View, staff: Staff) -> Unit
+) : RecyclerView.Adapter<StaffAdapter.MyViewHolder>() {
 
-    class MyViewHolder(val binding: PersonnelItemBinding) :
+    class MyViewHolder(val binding: StaffItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun setDataPersonnel(personnel: Personnel) {
-            binding.myPersonnel = personnel
+        fun setDataPersonnel(staff: Staff) {
+            binding.myStaff = staff
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val inflater = LayoutInflater.from(context)
-        val binding: PersonnelItemBinding =
-            DataBindingUtil.inflate(inflater, R.layout.personnel_item, parent, false)
+        val binding: StaffItemBinding =
+            DataBindingUtil.inflate(inflater, R.layout.staff_item, parent, false)
         return MyViewHolder(binding)
     }
 

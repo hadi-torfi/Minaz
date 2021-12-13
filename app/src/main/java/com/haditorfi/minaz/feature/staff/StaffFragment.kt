@@ -1,4 +1,4 @@
-package com.haditorfi.minaz.feature.personnel
+package com.haditorfi.minaz.feature.staff
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -13,20 +13,20 @@ import com.haditorfi.minaz.R
 import com.haditorfi.minaz.common.MANAGER
 import com.haditorfi.minaz.common.PERSONNEL
 import com.haditorfi.minaz.common.SECRETARY
-import com.haditorfi.minaz.data.personnel.Personnel
-import com.haditorfi.minaz.databinding.PersonnelFragmentBinding
+import com.haditorfi.minaz.data.staff.Staff
+import com.haditorfi.minaz.databinding.StaffFragmentBinding
 import org.koin.android.ext.android.inject
 
 
-class PersonnelFragment : Fragment() {
-    lateinit var binding: PersonnelFragmentBinding
-    private val viewModel: PersonnelViewModel by inject()
+class StaffFragment : Fragment() {
+    lateinit var binding: StaffFragmentBinding
+    private val viewModel: StaffViewModel by inject()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = PersonnelFragmentBinding.inflate(inflater, container, false)
+        binding = StaffFragmentBinding.inflate(inflater, container, false)
         initToolbar()
         return binding.root
     }
@@ -42,7 +42,7 @@ class PersonnelFragment : Fragment() {
             if (it.isEmpty()) createPersonnelAndSkill()
 
             val viewAdapter =
-                PersonnelAdapter(requireContext(), it, IItemClickListener = { item, personnel ->
+                StaffAdapter(requireContext(), it, IItemClickListener = { item, personnel ->
                     popUp(item, personnel)
                 })
 
@@ -53,7 +53,7 @@ class PersonnelFragment : Fragment() {
         }
     }
 
-    private fun popUp(view: View, personnel: Personnel) {
+    private fun popUp(view: View, staff: Staff) {
         val popup = PopupMenu(context, view)
         val inflater: MenuInflater = popup.menuInflater
         inflater.inflate(R.menu.options, popup.menu)
@@ -61,7 +61,7 @@ class PersonnelFragment : Fragment() {
         popup.setOnMenuItemClickListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.edit_menu -> {
-                    goToAddOrEditFragment(personnel, true)
+                    goToAddOrEditFragment(staff, true)
                     return@setOnMenuItemClickListener true
                 }
                 R.id.delete_menu -> {
@@ -72,7 +72,7 @@ class PersonnelFragment : Fragment() {
                             dialog.dismiss()
                         }
                         .setPositiveButton(resources.getString(R.string.accept)) { _, _ ->
-                            viewModel.deletePersonnel(personnel)
+                            viewModel.deleteStaff(staff)
                         }
                         .show()
                     return@setOnMenuItemClickListener true
@@ -85,13 +85,13 @@ class PersonnelFragment : Fragment() {
     }
 
     private fun goToAddOrEditFragment(
-        personnel: Personnel = Personnel(),
+        staff: Staff = Staff(),
         editModeTrue: Boolean = false
     ) {
-        personnel.activeEditMode = editModeTrue
+        staff.activeEditMode = editModeTrue
         val action =
-            PersonnelFragmentDirections.actionPersonnelToAddPersonnel(
-                personnel
+            StaffFragmentDirections.actionStaffToAddStaff(
+                staff
             )
         findNavController().navigate(action)
     }
@@ -107,9 +107,9 @@ class PersonnelFragment : Fragment() {
     }
 
     private fun createPersonnelAndSkill() {
-        val p1 = Personnel("مینا عبدالنبی", "09166424196", "تهران", MANAGER)
-        val p2 = Personnel("نازنین طرفی", "09352623050", "شوش", SECRETARY)
-        val p3 = Personnel("ساره بیات", "09352625553", "تهران", PERSONNEL)
-        viewModel.insertPersonnel(p1,p2,p3)
+        val p1 = Staff("مینا عبدالنبی", "09166424196", "تهران", MANAGER)
+        val p2 = Staff("نازنین طرفی", "09352623050", "شوش", SECRETARY)
+        val p3 = Staff("ساره بیات", "09352625553", "تهران", PERSONNEL)
+        viewModel.insertStaff(p1, p2, p3)
     }
 }

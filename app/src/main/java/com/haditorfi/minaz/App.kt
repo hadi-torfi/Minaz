@@ -5,8 +5,8 @@ import androidx.room.Room
 import com.haditorfi.minaz.data.customer.CustomerRepository
 import com.haditorfi.minaz.data.customer.CustomerRepositoryImpl
 import com.haditorfi.minaz.data.db.AppDatabase
-import com.haditorfi.minaz.data.personnel.PersonnelRepository
-import com.haditorfi.minaz.data.personnel.PersonnelRepositoryImpl
+import com.haditorfi.minaz.data.staff.StaffRepository
+import com.haditorfi.minaz.data.staff.StaffRepositoryImpl
 import com.haditorfi.minaz.data.product.ProductRepository
 import com.haditorfi.minaz.data.product.ProductRepositoryImpl
 import com.haditorfi.minaz.data.service.ServiceRepository
@@ -15,10 +15,10 @@ import com.haditorfi.minaz.data.service.provide.ProvideServiceRepository
 import com.haditorfi.minaz.data.service.provide.ProvideServiceRepositoryImpl
 import com.haditorfi.minaz.feature.customer.CustomerViewModel
 import com.haditorfi.minaz.feature.dashboard.DashboardViewModel
-import com.haditorfi.minaz.feature.personnel.PersonnelViewModel
+import com.haditorfi.minaz.feature.staff.StaffViewModel
 import com.haditorfi.minaz.feature.product.ProductViewModel
-import com.haditorfi.minaz.feature.services.service.ServiceViewModel
 import com.haditorfi.minaz.feature.services.provide.ProvideServiceViewModel
+import com.haditorfi.minaz.feature.services.service.ServiceViewModel
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.core.context.startKoin
@@ -50,7 +50,7 @@ class App : Application() {
 
             factory<ProductRepository> { ProductRepositoryImpl(get<AppDatabase>().productDao()) }
 
-            factory<PersonnelRepository> { PersonnelRepositoryImpl(get<AppDatabase>().personnelDao()) }
+            factory<StaffRepository> { StaffRepositoryImpl(get<AppDatabase>().personnelDao()) }
         }
 
         val viewModelModules = module {
@@ -64,12 +64,12 @@ class App : Application() {
 
             viewModel { ProductViewModel(get()) }
 
-            viewModel { PersonnelViewModel(get()) }
+            viewModel { StaffViewModel(get()) }
         }
 
         startKoin {
             androidContext(this@App)
-            modules(listOf(appModules, repositoryModules, viewModelModules))
+            modules(appModules, repositoryModules, viewModelModules)
         }
     }
 }

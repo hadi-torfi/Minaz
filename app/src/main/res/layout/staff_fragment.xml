@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".feature.personnel.PersonnelFragment">
+    tools:context=".feature.staff.StaffFragment">
 
     <include
         android:id="@+id/include"
@@ -15,7 +15,7 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_personnel"
-        android:name="com.haditorfi.minaz.feature.personnel.PersonnelListFragment"
+        android:name="com.haditorfi.minaz.feature.staff.myStaffListFragment"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layoutManager="LinearLayoutManager"
@@ -23,6 +23,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/include"
-        tools:context=".feature.personnel.PersonnelFragment"
-        tools:listitem="@layout/personnel_item" />
+        tools:context=".feature.staff.StaffFragment"
+        tools:listitem="@layout/staff_item" />
 </androidx.constraintlayout.widget.ConstraintLayout>
