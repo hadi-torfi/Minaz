@@ -4,6 +4,8 @@ import androidx.room.Entity
 import androidx.room.Ignore
 import androidx.room.PrimaryKey
 import com.haditorfi.minaz.common.formatPriceWithLabel
+import saman.zamani.persiandate.PersianDate
+import saman.zamani.persiandate.PersianDateFormat
 import java.io.Serializable
 import java.util.*
 
@@ -47,4 +49,7 @@ data class ProvideService(
     val strDiscount get() = "  تخفیف :  ${formatPriceWithLabel(discount.toLong())}"
     val strDescription get() = "  توضیحات :  $description"
     val strTotalPrice get() = "  قیمت :  ${formatPriceWithLabel(purchase.toLong() - discount.toLong())}"
+    val strId get() = " شماره فاکتور : $id"
+    val strTime get() = " تاریخ ثبت : ${PersianDateFormat("l Y/m/d").format(PersianDate(provideDate))}"
+
 }

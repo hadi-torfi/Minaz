@@ -23,70 +23,19 @@
             android:layout_height="wrap_content"
             android:background="@android:color/background_light">
 
-            <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/avatar"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_centerVertical="true"
-                android:layout_margin="8dp"
-                android:background="@color/purple"
-                android:scaleType="center"
-                android:src="@drawable/ic_cart"
-                app:shapeAppearance="@style/Avatar"
-                app:strokeWidth="1dp" />
-
-
             <TextView
-                android:id="@+id/txt_service_name"
+                android:id="@+id/txt_service_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:layout_toEndOf="@id/avatar"
-                android:text="@{myProvideService.service.strName}"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                android:text="@{myProvideService.provideService.strTime}"
                 android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
-                android:textSize="22sp"
-                tools:text="نام خدمات" />
-
-            <TextView
-                android:id="@+id/txt_customer"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/txt_service_name"
-                android:layout_margin="8dp"
-                android:layout_toEndOf="@id/avatar"
-                android:text="@{myProvideService.customer.strName}"
-                android:textColor="@color/black"
+                android:textColor="@color/blackLight"
                 android:textSize="16sp"
-                tools:text="مشتری : " />
-
-            <TextView
-                android:id="@+id/txt_staff"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/txt_customer"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginBottom="8dp"
-                android:layout_toEndOf="@id/avatar"
-                android:text="@{myProvideService.staff.strName}"
-                android:textColor="@color/black"
-                android:textSize="16sp"
-                tools:text="پرسنل : " />
-
-            <TextView
-                android:id="@+id/txt_discount"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/txt_staff"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginBottom="8dp"
-                android:layout_toEndOf="@id/avatar"
-                android:text="@{myProvideService.provideService.strTotalPrice}"
-                android:textSize="16sp"
-                tools:text="مبلغ : 20,000 تومان" />
+                tools:text="تاریخ ثبت : " />
 
             <ImageView
                 android:id="@+id/btn_more"
@@ -97,6 +46,64 @@
                 android:scaleType="centerInside"
                 android:src="@drawable/ic_more"
                 app:menu="@menu/options" />
+
+            <TextView
+                android:id="@+id/txt_customer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txt_service_time"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                android:text="@{myProvideService.customer.strName}"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                tools:text="مشتری : " />
+
+
+            <TextView
+                android:id="@+id/txt_staff"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txt_customer"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                android:text="@{myProvideService.staff.strName}"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                tools:text="پرسنل : " />
+
+            <TextView
+                android:id="@+id/txt_service_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txt_staff"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                android:text="@{myProvideService.provideService.strId}"
+                android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                android:textSize="16sp"
+                tools:text="شماره فاکتور : " />
+
+            <TextView
+                android:id="@+id/txt_discount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txt_staff"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="8dp"
+                android:text="@{myProvideService.provideService.strTotalPrice}"
+                android:textColor="@color/blueDark"
+                android:textSize="16sp"
+                tools:text="مبلغ : 20,000 تومان" />
 
         </RelativeLayout>
     </androidx.cardview.widget.CardView>

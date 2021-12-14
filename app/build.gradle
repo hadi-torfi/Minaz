@@ -66,4 +66,7 @@ dependencies {
 
     //FloatingActionMenu
     implementation 'com.github.clans:fab:1.6.4'
+
+    //PersianDate
+    implementation 'com.github.samanzamani:PersianDate:1.3.2'
 }
