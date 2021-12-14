@@ -14,7 +14,7 @@ import com.haditorfi.minaz.databinding.ServiceProvideItemBinding
 class ProvideServiceAdapter(
     val context: Context,
     private val values: List<Provides>,
-    var IItemClickListener: ((view: View, provideService: ProvideService) -> Unit?)? = null
+    var IItemClickListener: ((view: View, provideService: Any) -> Unit?)? = null
 ) : RecyclerView.Adapter<ProvideServiceAdapter.MyViewHolder>() {
     class MyViewHolder(val binding: ServiceProvideItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -32,7 +32,9 @@ class ProvideServiceAdapter(
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder.setDataService(values[position])
-
+        holder.binding.itemServiceLayout.setOnClickListener {
+            IItemClickListener?.let { listener -> listener(it, values[position]) }
+        }
         holder.binding.btnMore.setOnClickListener {
             IItemClickListener?.let { listener -> listener(it, values[position].provideService) }
         }

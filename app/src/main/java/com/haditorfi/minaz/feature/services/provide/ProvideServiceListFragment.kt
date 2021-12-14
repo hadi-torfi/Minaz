@@ -10,9 +10,12 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.haditorfi.minaz.R
+import com.haditorfi.minaz.data.service.Service
 import com.haditorfi.minaz.data.service.provide.ProvideService
+import com.haditorfi.minaz.data.service.provide.Provides
 import com.haditorfi.minaz.databinding.ServiceProvideListFragmentBinding
 import org.koin.android.viewmodel.ext.android.viewModel
+import timber.log.Timber
 import java.util.*
 
 class ProvideServiceListFragment : Fragment() {
@@ -38,15 +41,20 @@ class ProvideServiceListFragment : Fragment() {
                         requireContext(),
                         it
                     ) { item, provides ->
-                        popUp(item, provides)
+                        when (item.id) {
+                            R.id.item_service_layout -> goToDetailFragment(provides as Provides)
+                            R.id.btn_more -> popUp(item, provides as ProvideService)
+                        }
                     }
                 rvProvideService.adapter = serviceViewAdapter
             }
+
             include.toolbarBtn.setOnClickListener {
                 goToAddOrEditFragment()
             }
         }
     }
+
 
     private fun popUp(view: View, provideService: ProvideService) {
         val popup = PopupMenu(context, view)
@@ -79,6 +87,14 @@ class ProvideServiceListFragment : Fragment() {
         popup.show()
     }
 
+    private fun goToDetailFragment(provideService: Provides) {
+        val action =
+            ProvideServiceListFragmentDirections.actionProvideServiceListToDetailProvideService(
+                provideService
+            )
+        findNavController().navigate(action)
+    }
+
     private fun goToAddOrEditFragment(
         provideService: ProvideService = ProvideService(),
         editModeTrue: Boolean = false
@@ -100,8 +116,14 @@ class ProvideServiceListFragment : Fragment() {
     }
 
     private fun createProvideService() {
-        val p1 = ProvideService(1, 2, 3, Date(), "120000","20000","100000", "توضیحات")
-        val p2 = ProvideService(2, 3, 2, Date(), "80000","30000","50000", "توضیح")
+        val s1 = Service("serv1", "5000")
+        val s2 = Service("serv2", "1000")
+        val s3 = Service("serv3", "32000")
+        val s4 = Service("serv4", "86000")
+
+        val p1 =
+            ProvideService(1, 2, listOf(s1, s2), Date(), "120000", "20000", "100000", "توضیحات")
+        val p2 = ProvideService(2, 3, listOf(s4, s3), Date(), "80000", "30000", "50000", "توضیح")
         viewModel.insertProvideService(p1)
         viewModel.insertProvideService(p2)
     }
