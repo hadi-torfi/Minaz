@@ -6,30 +6,21 @@ import android.view.MenuInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.PopupMenu
-import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.haditorfi.minaz.R
+import com.haditorfi.minaz.common.BaseFragment
 import com.haditorfi.minaz.data.service.Service
 import com.haditorfi.minaz.databinding.ServiceListFragmentBinding
 import org.koin.android.viewmodel.ext.android.viewModel
 import java.util.*
 
-class ServiceListFragment : Fragment() {
-    lateinit var binding: ServiceListFragmentBinding
+class ServiceListFragment : BaseFragment<ServiceListFragmentBinding>() {
     private val viewModel: ServiceViewModel by viewModel()
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        binding = ServiceListFragmentBinding.inflate(inflater, container, false)
-        initToolbar()
-        return binding.root
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initToolbar()
         binding.apply {
             viewModel.allService.observe(viewLifecycleOwner) {
                 if (it.isEmpty()) createService()
@@ -102,5 +93,11 @@ class ServiceListFragment : Fragment() {
         val s3 = Service("اپیلاسیون دست و پا", "130000")
         viewModel.insertService(s1, s2, s3)
     }
+
+    override fun createViewBinging(
+        inflater: LayoutInflater,
+        container: ViewGroup?
+    ): ServiceListFragmentBinding =
+        ServiceListFragmentBinding.inflate(inflater, container, false)
 
 }

@@ -1,13 +1,13 @@
 package com.haditorfi.minaz.feature.customer
 
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.haditorfi.minaz.common.MyViewModel
 import com.haditorfi.minaz.data.customer.Customer
 import com.haditorfi.minaz.data.customer.CustomerRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class CustomerViewModel(private val customerRepository: CustomerRepository) : MyViewModel() {
+class CustomerViewModel(private val customerRepository: CustomerRepository) : ViewModel() {
 
     val customersLiveData = customerRepository.getAll
 

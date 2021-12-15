@@ -6,29 +6,20 @@ import android.view.MenuInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.PopupMenu
-import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.haditorfi.minaz.R
+import com.haditorfi.minaz.common.BaseFragment
 import com.haditorfi.minaz.data.product.Product
 import com.haditorfi.minaz.databinding.ProductFragmentBinding
 import org.koin.android.viewmodel.ext.android.viewModel
 
-class ProductFragment : Fragment() {
-    lateinit var binding: ProductFragmentBinding
+class ProductFragment : BaseFragment<ProductFragmentBinding>() {
     private val viewModel: ProductViewModel by viewModel()
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        binding = ProductFragmentBinding.inflate(inflater, container, false)
-        initToolbar()
-        return binding.root
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initToolbar()
         binding.apply {
             viewModel.allProduct.observe(viewLifecycleOwner) {
                 if (it.isEmpty()) createProduct()
@@ -103,4 +94,9 @@ class ProductFragment : Fragment() {
         val p2 = Product("کرم ستاره", "30000", "6")
         viewModel.insertProduct(p1, p2)
     }
+
+    override fun createViewBinging(
+        inflater: LayoutInflater,
+        container: ViewGroup?
+    ): ProductFragmentBinding = ProductFragmentBinding.inflate(inflater, container, false)
 }

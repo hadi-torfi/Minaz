@@ -6,31 +6,20 @@ import android.view.MenuInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.PopupMenu
-import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.haditorfi.minaz.R
+import com.haditorfi.minaz.common.BaseFragment
 import com.haditorfi.minaz.data.customer.Customer
 import com.haditorfi.minaz.databinding.CustomerFragmentBinding
-import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.viewModel
 
-class CustomerFragment : Fragment() {
-    private lateinit var binding: CustomerFragmentBinding
+class CustomerFragment : BaseFragment<CustomerFragmentBinding>() {
     private val viewModel: CustomerViewModel by viewModel()
-    private val customerInject: Customer by inject()
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        binding = CustomerFragmentBinding.inflate(inflater, container, false)
-        initToolbar()
-        return binding.root
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initToolbar()
         binding.include.toolbarBtn.setOnClickListener {
             goToAddOrEditFragment()
         }
@@ -108,4 +97,9 @@ class CustomerFragment : Fragment() {
         val c3 = Customer("سارینا رحمتی", "09352623055", "شوش ")
         viewModel.insertCustomer(c1, c2, c3)
     }
+
+    override fun createViewBinging(
+        inflater: LayoutInflater,
+        container: ViewGroup?
+    ): CustomerFragmentBinding = CustomerFragmentBinding.inflate(inflater, container, false)
 }

@@ -6,10 +6,10 @@ import android.view.MenuInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.PopupMenu
-import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.haditorfi.minaz.R
+import com.haditorfi.minaz.common.BaseFragment
 import com.haditorfi.minaz.common.MANAGER
 import com.haditorfi.minaz.common.PERSONNEL
 import com.haditorfi.minaz.common.SECRETARY
@@ -18,22 +18,12 @@ import com.haditorfi.minaz.databinding.StaffFragmentBinding
 import org.koin.android.ext.android.inject
 
 
-class StaffFragment : Fragment() {
-    lateinit var binding: StaffFragmentBinding
+class StaffFragment : BaseFragment<StaffFragmentBinding>() {
     private val viewModel: StaffViewModel by inject()
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        binding = StaffFragmentBinding.inflate(inflater, container, false)
-        initToolbar()
-        return binding.root
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        initToolbar()
         binding.include.toolbarBtn.setOnClickListener {
             goToAddOrEditFragment()
         }
@@ -112,4 +102,10 @@ class StaffFragment : Fragment() {
         val p3 = Staff("ساره بیات", "09352625553", "تهران", PERSONNEL)
         viewModel.insertStaff(p1, p2, p3)
     }
+
+    override fun createViewBinging(
+        inflater: LayoutInflater,
+        container: ViewGroup?
+    ): StaffFragmentBinding =
+        StaffFragmentBinding.inflate(inflater, container, false)
 }

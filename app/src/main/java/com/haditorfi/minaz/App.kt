@@ -5,20 +5,20 @@ import androidx.room.Room
 import com.haditorfi.minaz.data.customer.CustomerRepository
 import com.haditorfi.minaz.data.customer.CustomerRepositoryImpl
 import com.haditorfi.minaz.data.db.AppDatabase
-import com.haditorfi.minaz.data.staff.StaffRepository
-import com.haditorfi.minaz.data.staff.StaffRepositoryImpl
 import com.haditorfi.minaz.data.product.ProductRepository
 import com.haditorfi.minaz.data.product.ProductRepositoryImpl
 import com.haditorfi.minaz.data.service.ServiceRepository
 import com.haditorfi.minaz.data.service.ServiceRepositoryImpl
 import com.haditorfi.minaz.data.service.provide.ProvideServiceRepository
 import com.haditorfi.minaz.data.service.provide.ProvideServiceRepositoryImpl
+import com.haditorfi.minaz.data.staff.StaffRepository
+import com.haditorfi.minaz.data.staff.StaffRepositoryImpl
 import com.haditorfi.minaz.feature.customer.CustomerViewModel
 import com.haditorfi.minaz.feature.dashboard.DashboardViewModel
-import com.haditorfi.minaz.feature.staff.StaffViewModel
 import com.haditorfi.minaz.feature.product.ProductViewModel
 import com.haditorfi.minaz.feature.services.provide.ProvideServiceViewModel
 import com.haditorfi.minaz.feature.services.service.ServiceViewModel
+import com.haditorfi.minaz.feature.staff.StaffViewModel
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.core.context.startKoin
@@ -54,6 +54,7 @@ class App : Application() {
         }
 
         val viewModelModules = module {
+
             viewModel { DashboardViewModel() }
 
             viewModel { CustomerViewModel(get()) }

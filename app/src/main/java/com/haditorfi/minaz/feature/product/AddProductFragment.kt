@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.haditorfi.minaz.R
+import com.haditorfi.minaz.common.BaseFragment
 import com.haditorfi.minaz.common.hideKeyboard
 import com.haditorfi.minaz.common.toast
 import com.haditorfi.minaz.data.product.Product
@@ -19,23 +20,14 @@ import java.text.DecimalFormat
 import java.text.NumberFormat
 import java.util.*
 
-class AddProductFragment : Fragment() {
-    private lateinit var binding: ProductAddFragmentBinding
+class AddProductFragment : BaseFragment<ProductAddFragmentBinding>() {
     private val viewModel: ProductViewModel by viewModel()
     private val args by navArgs<AddProductFragmentArgs>()
     private var errorMessage = ""
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        binding = ProductAddFragmentBinding.inflate(inflater, container, false)
-        initToolbar()
-        return binding.root
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initToolbar()
         binding.apply {
             activeEditMode()
             addProduct = args.productData
@@ -133,4 +125,9 @@ class AddProductFragment : Fragment() {
             }
         }
     }
+
+    override fun createViewBinging(
+        inflater: LayoutInflater,
+        container: ViewGroup?
+    ): ProductAddFragmentBinding = ProductAddFragmentBinding.inflate(inflater, container, false)
 }

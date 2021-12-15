@@ -1,6 +1,7 @@
 package com.haditorfi.minaz.feature.report
 
-import com.haditorfi.minaz.common.MyViewModel
+import androidx.lifecycle.ViewModel
 
-class ReportViewModel : MyViewModel() {
+
+class ReportViewModel : ViewModel() {
 }

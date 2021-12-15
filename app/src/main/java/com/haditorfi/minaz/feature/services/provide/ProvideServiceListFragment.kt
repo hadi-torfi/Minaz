@@ -6,33 +6,23 @@ import android.view.MenuInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.PopupMenu
-import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.haditorfi.minaz.R
+import com.haditorfi.minaz.common.BaseFragment
 import com.haditorfi.minaz.data.service.Service
 import com.haditorfi.minaz.data.service.provide.ProvideService
 import com.haditorfi.minaz.data.service.provide.Provides
 import com.haditorfi.minaz.databinding.ServiceProvideListFragmentBinding
 import org.koin.android.viewmodel.ext.android.viewModel
-import timber.log.Timber
 import java.util.*
 
-class ProvideServiceListFragment : Fragment() {
-    lateinit var binding: ServiceProvideListFragmentBinding
+class ProvideServiceListFragment : BaseFragment<ServiceProvideListFragmentBinding>() {
     private val viewModel: ProvideServiceViewModel by viewModel()
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        binding = ServiceProvideListFragmentBinding.inflate(inflater, container, false)
-        initToolbar()
-        return binding.root
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initToolbar()
         binding.apply {
             viewModel.allProvideService.observe(viewLifecycleOwner) {
                 if (it.isEmpty()) createProvideService()
@@ -127,4 +117,10 @@ class ProvideServiceListFragment : Fragment() {
         viewModel.insertProvideService(p1)
         viewModel.insertProvideService(p2)
     }
+
+    override fun createViewBinging(
+        inflater: LayoutInflater,
+        container: ViewGroup?
+    ): ServiceProvideListFragmentBinding =
+        ServiceProvideListFragmentBinding.inflate(inflater, container, false)
 }

@@ -4,33 +4,23 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.haditorfi.minaz.R
 import com.haditorfi.minaz.common.*
 import com.haditorfi.minaz.data.staff.Staff
 import com.haditorfi.minaz.databinding.StaffAddFragmentBinding
-import org.koin.android.viewmodel.ext.android.viewModel
+import org.koin.android.ext.android.inject
 
-class AddStaffFragment : Fragment() {
-    lateinit var binding: StaffAddFragmentBinding
+class AddStaffFragment : BaseFragment<StaffAddFragmentBinding>() {
     private val args by navArgs<AddStaffFragmentArgs>()
-    private val viewModel: StaffViewModel by viewModel()
+    private val viewModel: StaffViewModel by inject()
     private var errorMessage = ""
     private var role = ""
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        binding = StaffAddFragmentBinding.inflate(inflater, container, false)
-        initToolbar()
-        return binding.root
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initToolbar()
         binding.apply {
             activeEditMode()
             edtStaff = args.staffData
@@ -100,4 +90,10 @@ class AddStaffFragment : Fragment() {
             }
         }
     }
+
+    override fun createViewBinging(
+        inflater: LayoutInflater,
+        container: ViewGroup?
+    ): StaffAddFragmentBinding =
+        StaffAddFragmentBinding.inflate(inflater, container, false)
 }

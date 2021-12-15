@@ -1,6 +1,7 @@
 package com.haditorfi.minaz.feature.manage
 
-import com.haditorfi.minaz.common.MyViewModel
+import androidx.lifecycle.ViewModel
 
-class ManageViewModel : MyViewModel() {
+
+class ManageViewModel : ViewModel() {
 }

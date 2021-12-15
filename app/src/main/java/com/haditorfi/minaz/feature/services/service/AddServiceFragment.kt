@@ -6,10 +6,10 @@ import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.haditorfi.minaz.R
+import com.haditorfi.minaz.common.BaseFragment
 import com.haditorfi.minaz.common.hideKeyboard
 import com.haditorfi.minaz.common.toast
 import com.haditorfi.minaz.data.service.Service
@@ -19,24 +19,14 @@ import java.text.DecimalFormat
 import java.text.NumberFormat
 import java.util.*
 
-class AddServiceFragment : Fragment() {
-    private lateinit var binding: ServiceAddFragmentBinding
+class AddServiceFragment : BaseFragment<ServiceAddFragmentBinding>() {
     private val viewModel: ServiceViewModel by viewModel()
     private val args by navArgs<AddServiceFragmentArgs>()
     private var errorMessage = ""
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        binding = ServiceAddFragmentBinding.inflate(inflater, container, false)
-        initToolbar()
-        return binding.root
-    }
-
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initToolbar()
         binding.apply {
             activeEditMode()
             addService = args.serviceData
@@ -131,4 +121,10 @@ class AddServiceFragment : Fragment() {
             }
         }
     }
+
+    override fun createViewBinging(
+        inflater: LayoutInflater,
+        container: ViewGroup?
+    ): ServiceAddFragmentBinding =
+        ServiceAddFragmentBinding.inflate(inflater, container, false)
 }

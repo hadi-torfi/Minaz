@@ -4,10 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.haditorfi.minaz.R
+import com.haditorfi.minaz.common.BaseFragment
 import com.haditorfi.minaz.common.hideKeyboard
 import com.haditorfi.minaz.common.isPhone
 import com.haditorfi.minaz.common.toast
@@ -15,24 +15,14 @@ import com.haditorfi.minaz.data.customer.Customer
 import com.haditorfi.minaz.databinding.CustomerAddFragmentBinding
 import org.koin.android.viewmodel.ext.android.viewModel
 
-class AddCustomerFragment : Fragment() {
-    private lateinit var binding: CustomerAddFragmentBinding
+class AddCustomerFragment : BaseFragment<CustomerAddFragmentBinding>() {
     private val args by navArgs<AddCustomerFragmentArgs>()
     private val viewModel: CustomerViewModel by viewModel()
     private var errorMessage = ""
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        binding = CustomerAddFragmentBinding.inflate(inflater, container, false)
-        initToolbar()
-        return binding.root
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        initToolbar()
         binding.apply {
             activeEditMode()
             edtCustomer = args.customData
@@ -95,4 +85,9 @@ class AddCustomerFragment : Fragment() {
             }
         }
     }
+
+    override fun createViewBinging(
+        inflater: LayoutInflater,
+        container: ViewGroup?
+    ): CustomerAddFragmentBinding = CustomerAddFragmentBinding.inflate(inflater, container, false)
 }

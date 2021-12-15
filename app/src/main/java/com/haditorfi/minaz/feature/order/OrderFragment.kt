@@ -4,20 +4,18 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
-import com.haditorfi.minaz.R
+import com.haditorfi.minaz.common.BaseFragment
+import com.haditorfi.minaz.databinding.OrderFragmentBinding
 
-class OrderFragment : Fragment() {
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.order_fragment, container, false)
-    }
+class OrderFragment : BaseFragment<OrderFragmentBinding>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
     }
+
+    override fun createViewBinging(
+        inflater: LayoutInflater,
+        container: ViewGroup?
+    ): OrderFragmentBinding = OrderFragmentBinding.inflate(inflater, container, false)
 }
