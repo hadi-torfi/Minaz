@@ -26,7 +26,6 @@ class AddServiceFragment : BaseFragment<ServiceAddFragmentBinding>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initToolbar()
         binding.apply {
             activeEditMode()
             addService = args.serviceData
@@ -112,12 +111,14 @@ class AddServiceFragment : BaseFragment<ServiceAddFragmentBinding>() {
         }
     }
 
-    private fun initToolbar() {
+    override fun initToolbar() {
         binding.apply {
-            include.toolbarTitleTv.text = getString(R.string.service_new)
-            include.toolbarBtn.text = getString(R.string.save)
-            include.toolbarBackBtn.setOnClickListener {
-                findNavController().navigateUp()
+            include.apply {
+                toolbarTitleTv.text = getString(R.string.service_new)
+                toolbarBtn.text = getString(R.string.save)
+                toolbarBackBtn.setOnClickListener {
+                    findNavController().navigateUp()
+                }
             }
         }
     }

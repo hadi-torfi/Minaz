@@ -6,7 +6,6 @@ import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.haditorfi.minaz.R
@@ -27,7 +26,6 @@ class AddProductFragment : BaseFragment<ProductAddFragmentBinding>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initToolbar()
         binding.apply {
             activeEditMode()
             addProduct = args.productData
@@ -116,12 +114,14 @@ class AddProductFragment : BaseFragment<ProductAddFragmentBinding>() {
         }
     }
 
-    private fun initToolbar() {
+    override fun initToolbar() {
         binding.apply {
-            include.toolbarTitleTv.text = getString(R.string.product_new)
-            include.toolbarBtn.text = getString(R.string.save)
-            include.toolbarBackBtn.setOnClickListener {
-                findNavController().navigateUp()
+            include.apply {
+                toolbarTitleTv.text = getString(R.string.product_new)
+                toolbarBtn.text = getString(R.string.save)
+                toolbarBackBtn.setOnClickListener {
+                    findNavController().navigateUp()
+                }
             }
         }
     }

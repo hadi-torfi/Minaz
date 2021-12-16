@@ -12,10 +12,9 @@ class ReportFragment : BaseFragment<ReportFragmentBinding>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initToolbar()
     }
 
-    private fun initToolbar() {
+    override fun initToolbar() {
         binding.apply {
             include.toolbarTitleTv.text = getString(R.string.report)
         }

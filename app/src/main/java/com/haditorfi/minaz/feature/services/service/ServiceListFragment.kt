@@ -20,7 +20,6 @@ class ServiceListFragment : BaseFragment<ServiceListFragmentBinding>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initToolbar()
         binding.apply {
             viewModel.allService.observe(viewLifecycleOwner) {
                 if (it.isEmpty()) createService()
@@ -79,11 +78,13 @@ class ServiceListFragment : BaseFragment<ServiceListFragmentBinding>() {
         findNavController().navigate(action)
     }
 
-    private fun initToolbar() {
+    override fun initToolbar() {
         binding.apply {
-            include.toolbarTitleTv.text = getString(R.string.service)
-            include.toolbarBtn.visibility = View.VISIBLE
-            include.toolbarBtn.text = getString(R.string.service_new)
+            include.apply {
+                toolbarTitleTv.text = getString(R.string.service)
+                toolbarBtn.visibility = View.VISIBLE
+                toolbarBtn.text = getString(R.string.service_new)
+            }
         }
     }
 

@@ -18,4 +18,7 @@ class AddProvideServiceFragment : BaseFragment<ServiceProvideAddFragmentBinding>
         container: ViewGroup?
     ): ServiceProvideAddFragmentBinding =
         ServiceProvideAddFragmentBinding.inflate(inflater, container, false)
+
+    override fun initToolbar() {
+    }
 }

@@ -10,6 +10,7 @@ import androidx.navigation.fragment.findNavController
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.haditorfi.minaz.R
 import com.haditorfi.minaz.common.BaseFragment
+import com.haditorfi.minaz.common.visible
 import com.haditorfi.minaz.data.service.Service
 import com.haditorfi.minaz.data.service.provide.ProvideService
 import com.haditorfi.minaz.data.service.provide.Provides
@@ -22,7 +23,7 @@ class ProvideServiceListFragment : BaseFragment<ServiceProvideListFragmentBindin
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initToolbar()
+       // initToolbar()
         binding.apply {
             viewModel.allProvideService.observe(viewLifecycleOwner) {
                 if (it.isEmpty()) createProvideService()
@@ -36,7 +37,10 @@ class ProvideServiceListFragment : BaseFragment<ServiceProvideListFragmentBindin
                             R.id.btn_more -> popUp(item, provides as ProvideService)
                         }
                     }
-                rvProvideService.adapter = serviceViewAdapter
+                rvProvideService.run {
+                    setHasFixedSize(true)
+                    adapter = serviceViewAdapter
+                }
             }
 
             include.toolbarBtn.setOnClickListener {
@@ -97,11 +101,13 @@ class ProvideServiceListFragment : BaseFragment<ServiceProvideListFragmentBindin
         findNavController().navigate(action)
     }
 
-    private fun initToolbar() {
+    override fun initToolbar() {
         binding.apply {
-            include.toolbarTitleTv.text = getString(R.string.service_provided)
-            include.toolbarBtn.visibility = View.VISIBLE
-            include.toolbarBtn.text = getString(R.string.service_provide)
+            include.apply {
+                toolbarTitleTv.text = getString(R.string.service_provided)
+                toolbarBtn.visible()
+                toolbarBtn.text = getString(R.string.service_provide)
+            }
         }
     }
 

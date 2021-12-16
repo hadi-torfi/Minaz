@@ -17,13 +17,11 @@ import com.haditorfi.minaz.data.staff.Staff
 import com.haditorfi.minaz.databinding.StaffFragmentBinding
 import org.koin.android.ext.android.inject
 
-
 class StaffFragment : BaseFragment<StaffFragmentBinding>() {
     private val viewModel: StaffViewModel by inject()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initToolbar()
         binding.include.toolbarBtn.setOnClickListener {
             goToAddOrEditFragment()
         }
@@ -86,12 +84,14 @@ class StaffFragment : BaseFragment<StaffFragmentBinding>() {
         findNavController().navigate(action)
     }
 
-    private fun initToolbar() {
+    override fun initToolbar() {
         binding.apply {
-            include.toolbarTitleTv.text = getString(R.string.personnel_list)
-            include.toolbarBtn.text = getString(R.string.personnel_new)
-            include.toolbarBackBtn.setOnClickListener {
-                findNavController().navigateUp()
+            include.apply {
+                toolbarTitleTv.text = getString(R.string.personnel_list)
+                toolbarBtn.text = getString(R.string.personnel_new)
+                toolbarBackBtn.setOnClickListener {
+                    findNavController().navigateUp()
+                }
             }
         }
     }

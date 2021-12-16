@@ -1,10 +1,15 @@
 package com.haditorfi.minaz.common
 
 import android.content.Context
+import android.view.MenuInflater
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
+import androidx.lifecycle.ViewModel
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
+import com.haditorfi.minaz.R
+import com.haditorfi.minaz.data.customer.Customer
 import java.text.DecimalFormat
 import java.text.NumberFormat
 
@@ -58,3 +63,14 @@ fun String.isPhone(): Boolean {
     val p = "^0([9])\\d{9}\$".toRegex()
     return matches(p)
 }
+
+fun View.visible(): View {
+    if (visibility != View.VISIBLE) visibility = View.VISIBLE
+    return this
+}
+
+fun View.invisible(): View {
+    if (visibility != View.INVISIBLE) visibility = View.INVISIBLE
+    return this
+}
+

@@ -17,6 +17,7 @@ abstract class BaseFragment<V : ViewBinding> : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = createViewBinging(inflater, container)
+        initToolbar()
         return binding.root
     }
 
@@ -26,4 +27,6 @@ abstract class BaseFragment<V : ViewBinding> : Fragment() {
     }
 
     abstract fun createViewBinging(inflater: LayoutInflater, container: ViewGroup?): V
+
+    abstract fun initToolbar()
 }

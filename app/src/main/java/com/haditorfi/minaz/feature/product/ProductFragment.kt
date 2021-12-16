@@ -19,7 +19,6 @@ class ProductFragment : BaseFragment<ProductFragmentBinding>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initToolbar()
         binding.apply {
             viewModel.allProduct.observe(viewLifecycleOwner) {
                 if (it.isEmpty()) createProduct()
@@ -27,7 +26,11 @@ class ProductFragment : BaseFragment<ProductFragmentBinding>() {
                     ProductAdapter(requireContext(), it, IItemClickListener = { item, service ->
                         popUp(item, service)
                     })
-                rvProduct.adapter = serviceViewAdapter
+
+                rvProduct.run {
+                    setHasFixedSize(true)
+                    adapter = serviceViewAdapter
+                }
             }
             include.toolbarBtn.setOnClickListener {
                 goToAddOrEditFragment()
@@ -79,12 +82,14 @@ class ProductFragment : BaseFragment<ProductFragmentBinding>() {
         findNavController().navigate(action)
     }
 
-    private fun initToolbar() {
+    override fun initToolbar() {
         binding.apply {
-            include.toolbarTitleTv.text = getString(R.string.product)
-            include.toolbarBtn.text = getString(R.string.product_new)
-            include.toolbarBackBtn.setOnClickListener {
-                findNavController().navigateUp()
+            include.apply {
+                toolbarTitleTv.text = getString(R.string.product)
+                toolbarBtn.text = getString(R.string.product_new)
+                toolbarBackBtn.setOnClickListener {
+                    findNavController().navigateUp()
+                }
             }
         }
     }

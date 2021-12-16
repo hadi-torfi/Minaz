@@ -8,6 +8,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.haditorfi.minaz.R
 import com.haditorfi.minaz.common.BaseFragment
+import com.haditorfi.minaz.common.invisible
 import com.haditorfi.minaz.databinding.ServiceProvideDetailFragmentBinding
 
 class DetailProvideServiceFragment : BaseFragment<ServiceProvideDetailFragmentBinding>() {
@@ -15,18 +16,20 @@ class DetailProvideServiceFragment : BaseFragment<ServiceProvideDetailFragmentBi
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initToolbar()
+       // initToolbar()
         binding.apply {
             data = args.data
         }
     }
 
-    private fun initToolbar() {
+    override fun initToolbar() {
         binding.apply {
-            include.toolbarTitleTv.text = getString(R.string.service_list)
-            include.toolbarBtn.visibility = View.INVISIBLE
-            include.toolbarBackBtn.setOnClickListener {
-                findNavController().navigateUp()
+            include.apply {
+                toolbarTitleTv.text = getString(R.string.service_list)
+                toolbarBtn.invisible()
+                toolbarBackBtn.setOnClickListener {
+                    findNavController().navigateUp()
+                }
             }
         }
     }

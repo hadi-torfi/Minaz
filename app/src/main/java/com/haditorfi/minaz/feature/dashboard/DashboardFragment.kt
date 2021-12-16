@@ -15,7 +15,7 @@ class DashboardFragment : BaseFragment<DashboardFragmentBinding>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initToolbar()
+       // initToolbar()
         binding.apply {
             miAddCustomer.setOnClickListener {
                 val action =
@@ -37,7 +37,7 @@ class DashboardFragment : BaseFragment<DashboardFragmentBinding>() {
         }
     }
 
-    private fun initToolbar() {
+    override fun initToolbar() {
         binding.include.toolbarTitleTv.text = getString(R.string.dashboard)
     }
 

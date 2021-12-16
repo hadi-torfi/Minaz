@@ -13,7 +13,7 @@ class ManageFragment : BaseFragment<ManageFragmentBinding>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initToolbar()
+       // initToolbar()
         binding.apply {
             btnCustomerList.setOnClickListener {
                 findNavController().navigate(R.id.action_manage_to_customer)
@@ -33,7 +33,7 @@ class ManageFragment : BaseFragment<ManageFragmentBinding>() {
         }
     }
 
-    private fun initToolbar() {
+    override fun initToolbar() {
         binding.apply {
             include.toolbarTitleTv.text = getString(R.string.manage)
         }

@@ -7,10 +7,7 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.haditorfi.minaz.R
-import com.haditorfi.minaz.common.BaseFragment
-import com.haditorfi.minaz.common.hideKeyboard
-import com.haditorfi.minaz.common.isPhone
-import com.haditorfi.minaz.common.toast
+import com.haditorfi.minaz.common.*
 import com.haditorfi.minaz.data.customer.Customer
 import com.haditorfi.minaz.databinding.CustomerAddFragmentBinding
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -22,7 +19,6 @@ class AddCustomerFragment : BaseFragment<CustomerAddFragmentBinding>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initToolbar()
         binding.apply {
             activeEditMode()
             edtCustomer = args.customData
@@ -76,12 +72,14 @@ class AddCustomerFragment : BaseFragment<CustomerAddFragmentBinding>() {
         }
     }
 
-    private fun initToolbar() {
+    override fun initToolbar() {
         binding.apply {
-            include.toolbarTitleTv.text = getString(R.string.customer_new)
-            include.toolbarBtn.text = getString(R.string.save)
-            include.toolbarBackBtn.setOnClickListener {
-                findNavController().navigateUp()
+            include.apply {
+                toolbarTitleTv.text = getString(R.string.customer_new)
+                toolbarBtn.text = getString(R.string.save)
+                toolbarBackBtn.setOnClickListener {
+                    findNavController().navigateUp()
+                }
             }
         }
     }

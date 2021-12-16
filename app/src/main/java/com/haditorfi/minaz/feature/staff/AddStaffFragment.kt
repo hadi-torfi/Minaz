@@ -20,7 +20,6 @@ class AddStaffFragment : BaseFragment<StaffAddFragmentBinding>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initToolbar()
         binding.apply {
             activeEditMode()
             edtStaff = args.staffData
@@ -81,12 +80,14 @@ class AddStaffFragment : BaseFragment<StaffAddFragmentBinding>() {
         }
     }
 
-    private fun initToolbar() {
+    override fun initToolbar() {
         binding.apply {
-            include.toolbarTitleTv.text = getString(R.string.personnel_new)
-            include.toolbarBtn.text = getString(R.string.save)
-            include.toolbarBackBtn.setOnClickListener {
-                findNavController().navigateUp()
+            include.apply {
+                toolbarTitleTv.text = getString(R.string.personnel_new)
+                toolbarBtn.text = getString(R.string.save)
+                toolbarBackBtn.setOnClickListener {
+                    findNavController().navigateUp()
+                }
             }
         }
     }
