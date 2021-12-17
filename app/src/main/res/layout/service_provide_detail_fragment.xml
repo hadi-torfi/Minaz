@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="data"
             type="com.haditorfi.minaz.data.service.provide.Provides" />
@@ -24,10 +25,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
-            android:layout_marginEnd="8dp"
             android:text='@{data.provideService.strId}'
             android:textDirection="rtl"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/include"
             tools:text="شماره فاکتور" />
@@ -37,15 +36,16 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
             android:layout_marginEnd="8dp"
             android:text="@{data.provideService.strTime}"
+            android:textAlignment="textEnd"
             android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
             android:textColor="@color/blackLight"
             android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/txt_service_id"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txt_service_id"
+            app:layout_constraintStart_toEndOf="@+id/txt_service_id"
+            app:layout_constraintTop_toTopOf="@+id/txt_service_id"
             tools:text="تاریخ ثبت : " />
 
         <TextView
@@ -61,7 +61,7 @@
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txt_service_time"
+            app:layout_constraintTop_toBottomOf="@+id/txt_staff"
             tools:text="مشتری : " />
 
         <TextView
@@ -77,55 +77,113 @@
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txt_customer"
+            app:layout_constraintTop_toBottomOf="@+id/txt_service_time"
             tools:text="پرسنل : " />
+
+        <TextView
+            android:id="@+id/txt_desc"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txt_customer"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:text="@{data.provideService.strDescription}"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_customer"
+            tools:text="توضیحات : " />
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="8dp"
+            android:background="@color/grayDark"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_desc" />
 
         <TextView
             android:id="@+id/txt_price"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_below="@id/txt_staff"
-            android:layout_alignParentEnd="true"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="16dp"
-            android:text="@{data.provideService.strPrice}"
+            android:text='@{data.provideService.strSumPrice}'
+            android:textAlignment="textEnd"
             android:textSize="16sp"
             app:layout_constraintBottom_toTopOf="@+id/txt_discount"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             tools:text="مبلغ فاکتور : 120,000 تومان" />
+
         <TextView
             android:id="@+id/txt_discount"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_below="@id/txt_staff"
-            android:layout_alignParentEnd="true"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="16dp"
             android:text="@{data.provideService.strDiscount}"
-            android:textColor="@color/orange"
+            android:textAlignment="textEnd"
+            android:textColor="@color/red"
             android:textSize="16sp"
             app:layout_constraintBottom_toTopOf="@+id/txt_total_price"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             tools:text="تخفیف : 20,000 تومان" />
+
         <TextView
             android:id="@+id/txt_total_price"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_below="@id/txt_staff"
-            android:layout_alignParentEnd="true"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="16dp"
             android:text="@{data.provideService.strTotalPrice}"
+            android:textAlignment="textEnd"
             android:textColor="@color/blueDark"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             tools:text="جمع کل : 100,000 تومان" />
+
+
+        <TextView
+            android:id="@+id/txt_services_price"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:lineSpacingExtra="34sp"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toTopOf="@+id/txt_price"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view"
+            tools:text="قیمت" />
+
+        <TextView
+            android:id="@+id/txt_services_name"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"
+            android:lineSpacingExtra="34sp"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toTopOf="@+id/txt_price"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view"
+            tools:text="خدمات" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

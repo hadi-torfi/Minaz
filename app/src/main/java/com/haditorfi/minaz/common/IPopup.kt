@@ -19,7 +19,7 @@ interface IPopup<T> {
         popup.setOnMenuItemClickListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.edit_menu -> {
-                    goToAddOrEditFromIPopup(mClass)
+                    goToAddOrEditFromIPopup(mClass,true)
                     return@setOnMenuItemClickListener true
                 }
                 R.id.delete_menu -> {

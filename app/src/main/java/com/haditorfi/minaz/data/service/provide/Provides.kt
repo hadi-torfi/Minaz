@@ -27,8 +27,9 @@ data class Provides(
         entityColumn = "id",
     )
     val service: Service,
-): Serializable{
-    constructor() : this(ProvideService(), Customer(),Staff(),Service())
+) : Serializable {
+    constructor() : this(ProvideService(), Customer(), Staff(), Service())
+
     @Ignore
     var activeEditMode: Boolean = false
 }

@@ -9,6 +9,7 @@ import androidx.navigation.fragment.navArgs
 import com.haditorfi.minaz.R
 import com.haditorfi.minaz.common.BaseFragment
 import com.haditorfi.minaz.common.invisible
+import com.haditorfi.minaz.data.service.provide.Provides
 import com.haditorfi.minaz.databinding.ServiceProvideDetailFragmentBinding
 
 class DetailProvideServiceFragment : BaseFragment<ServiceProvideDetailFragmentBinding>() {
@@ -16,9 +17,15 @@ class DetailProvideServiceFragment : BaseFragment<ServiceProvideDetailFragmentBi
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-       // initToolbar()
         binding.apply {
             data = args.data
+            val d = data as Provides
+            var row = 1
+            d.provideService.services.forEach {
+                txtServicesName.append(row.toString() + " - " + it.name +"\n")
+                txtServicesPrice.append(it.strPrice + "\n")
+                row++
+            }
         }
     }
 

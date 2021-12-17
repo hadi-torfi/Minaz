@@ -1,8 +1,9 @@
 package com.haditorfi.minaz.data.service.provide
 
-import androidx.room.*
+import androidx.room.Entity
+import androidx.room.Ignore
+import androidx.room.PrimaryKey
 import com.haditorfi.minaz.common.formatPriceWithLabel
-import com.haditorfi.minaz.data.db.ListConverter
 import com.haditorfi.minaz.data.service.Service
 import saman.zamani.persiandate.PersianDate
 import saman.zamani.persiandate.PersianDateFormat
@@ -17,20 +18,16 @@ data class ProvideService(
     var personnelId: Long,
     var services: List<Service>,
     var provideDate: Date?,
-    var purchase: String,
     var discount: String,
-    var totalPrice: String,
     var description: String,
 ) : Serializable {
-    constructor() : this(0, 0, 0, listOf(Service()), null, "", "", "", "")
+    constructor() : this(0, 0, 0, listOf(Service()), null, "", "")
     constructor(
         customerId: Long,
         personnelId: Long,
         services: List<Service>,
         provideDate: Date?,
-        purchase: String,
         discount: String,
-        totalPrice: String,
         description: String
     ) : this(
         0,
@@ -38,9 +35,7 @@ data class ProvideService(
         personnelId,
         services,
         provideDate,
-        purchase,
         discount,
-        totalPrice,
         description
     )
 
@@ -48,9 +43,18 @@ data class ProvideService(
     var activeEditMode: Boolean = false
     val strDiscount get() = "  تخفیف :  ${formatPriceWithLabel(discount.toLong())}"
     val strDescription get() = "  توضیحات :  $description"
-    val strPrice get() = "  مبلغ :  ${formatPriceWithLabel(purchase.toLong())}"
-    val strTotalPrice get() = "  جمع کل :  ${formatPriceWithLabel(purchase.toLong() - discount.toLong())}"
     val strId get() = " شماره فاکتور : $id"
     val strTime get() = " تاریخ ثبت : ${PersianDateFormat("l Y/m/d").format(PersianDate(provideDate))}"
+    val strSumPrice get() = "  مبلغ :  ${formatPriceWithLabel(sumPrice())}"
+    val strTotalPrice get() = "  جمع کل :  ${formatPriceWithLabel(sumPrice() - discount.toLong())}"
+
+    private fun sumPrice(): Long {
+        var sum: Long = 0
+        services.forEach {
+            sum += it.price.toLong()
+        }
+        return sum
+    }
+
 
 }
