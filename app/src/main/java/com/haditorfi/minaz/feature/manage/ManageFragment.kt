@@ -13,7 +13,6 @@ class ManageFragment : BaseFragment<ManageFragmentBinding>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-       // initToolbar()
         binding.apply {
             btnCustomerList.setOnClickListener {
                 findNavController().navigate(R.id.action_manage_to_customer)

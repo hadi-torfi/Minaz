@@ -2,20 +2,17 @@ package com.haditorfi.minaz.feature.services.service
 
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.MenuInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.PopupMenu
 import androidx.navigation.fragment.findNavController
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.haditorfi.minaz.R
 import com.haditorfi.minaz.common.BaseFragment
+import com.haditorfi.minaz.common.IPopup
 import com.haditorfi.minaz.data.service.Service
 import com.haditorfi.minaz.databinding.ServiceListFragmentBinding
 import org.koin.android.viewmodel.ext.android.viewModel
-import java.util.*
 
-class ServiceListFragment : BaseFragment<ServiceListFragmentBinding>() {
+class ServiceListFragment : BaseFragment<ServiceListFragmentBinding>(), IPopup<Service> {
     private val viewModel: ServiceViewModel by viewModel()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -25,57 +22,14 @@ class ServiceListFragment : BaseFragment<ServiceListFragmentBinding>() {
                 if (it.isEmpty()) createService()
                 val serviceViewAdapter =
                     ServiceAdapter(requireContext(), it, IItemClickListener = { item, service ->
-                        popUp(item, service)
+                        popUp(requireContext(), item, service)
                     })
                 rvService.adapter = serviceViewAdapter
             }
             include.toolbarBtn.setOnClickListener {
-                goToAddOrEditFragment()
+                goToAddOrEditFromIPopup(Service())
             }
         }
-    }
-
-    private fun popUp(view: View, service: Service) {
-        val popup = PopupMenu(context, view)
-        val inflater: MenuInflater = popup.menuInflater
-        inflater.inflate(R.menu.options, popup.menu)
-
-        popup.setOnMenuItemClickListener { menuItem ->
-            when (menuItem.itemId) {
-                R.id.edit_menu -> {
-                    goToAddOrEditFragment(service, true)
-                    return@setOnMenuItemClickListener true
-                }
-                R.id.delete_menu -> {
-                    MaterialAlertDialogBuilder(view.context)
-                        .setTitle(resources.getString(R.string.delete_message))
-                        .setIcon(R.drawable.ic_error)
-                        .setNeutralButton(resources.getString(R.string.cancel)) { dialog, _ ->
-                            dialog.dismiss()
-                        }
-                        .setPositiveButton(resources.getString(R.string.accept)) { _, _ ->
-                            viewModel.deleteService(service)
-                        }
-                        .show()
-                    return@setOnMenuItemClickListener true
-                }
-                else ->
-                    return@setOnMenuItemClickListener false
-            }
-        }
-        popup.show()
-    }
-
-    private fun goToAddOrEditFragment(
-        service: Service = Service(),
-        editModeTrue: Boolean = false
-    ) {
-        service.activeEditMode = editModeTrue
-        val action =
-            ServiceListFragmentDirections.actionServiceToAddService(
-                service
-            )
-        findNavController().navigate(action)
     }
 
     override fun initToolbar() {
@@ -100,5 +54,18 @@ class ServiceListFragment : BaseFragment<ServiceListFragmentBinding>() {
         container: ViewGroup?
     ): ServiceListFragmentBinding =
         ServiceListFragmentBinding.inflate(inflater, container, false)
+
+    override fun deleteFromIPopup(myClass: Service) {
+        viewModel.deleteService(myClass)
+    }
+
+    override fun goToAddOrEditFromIPopup(myClass: Service, editModeTrue: Boolean) {
+        myClass.activeEditMode = editModeTrue
+        val action =
+            ServiceListFragmentDirections.actionServiceToAddService(
+                myClass
+            )
+        findNavController().navigate(action)
+    }
 
 }

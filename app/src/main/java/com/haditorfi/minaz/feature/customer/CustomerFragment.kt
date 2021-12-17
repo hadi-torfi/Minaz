@@ -62,15 +62,15 @@ class CustomerFragment : BaseFragment<CustomerFragmentBinding>(), IPopup<Custome
         container: ViewGroup?
     ): CustomerFragmentBinding = CustomerFragmentBinding.inflate(inflater, container, false)
 
-    override fun deleteFromIPopup(mClass: Customer) {
-        viewModel.deleteCustomer(mClass)
+    override fun deleteFromIPopup(myClass: Customer) {
+        viewModel.deleteCustomer(myClass)
     }
 
-    override fun goToAddOrEditFromIPopup(mClass: Customer, editModeTrue: Boolean) {
-        mClass.activeEditMode = editModeTrue
+    override fun goToAddOrEditFromIPopup(myClass: Customer, editModeTrue: Boolean) {
+        myClass.activeEditMode = editModeTrue
         val action =
             CustomerFragmentDirections.actionCustomerToAddOrEditCustomer(
-                mClass
+                myClass
             )
         findNavController().navigate(action)
     }

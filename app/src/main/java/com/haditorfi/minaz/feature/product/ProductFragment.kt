@@ -2,19 +2,17 @@ package com.haditorfi.minaz.feature.product
 
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.MenuInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.PopupMenu
 import androidx.navigation.fragment.findNavController
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.haditorfi.minaz.R
 import com.haditorfi.minaz.common.BaseFragment
+import com.haditorfi.minaz.common.IPopup
 import com.haditorfi.minaz.data.product.Product
 import com.haditorfi.minaz.databinding.ProductFragmentBinding
 import org.koin.android.viewmodel.ext.android.viewModel
 
-class ProductFragment : BaseFragment<ProductFragmentBinding>() {
+class ProductFragment : BaseFragment<ProductFragmentBinding>(), IPopup<Product> {
     private val viewModel: ProductViewModel by viewModel()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -24,7 +22,7 @@ class ProductFragment : BaseFragment<ProductFragmentBinding>() {
                 if (it.isEmpty()) createProduct()
                 val serviceViewAdapter =
                     ProductAdapter(requireContext(), it, IItemClickListener = { item, service ->
-                        popUp(item, service)
+                        popUp(requireContext(), item, service)
                     })
 
                 rvProduct.run {
@@ -33,53 +31,9 @@ class ProductFragment : BaseFragment<ProductFragmentBinding>() {
                 }
             }
             include.toolbarBtn.setOnClickListener {
-                goToAddOrEditFragment()
+                goToAddOrEditFromIPopup(Product())
             }
         }
-    }
-
-
-    private fun popUp(view: View, product: Product) {
-        val popup = PopupMenu(context, view)
-        val inflater: MenuInflater = popup.menuInflater
-        inflater.inflate(R.menu.options, popup.menu)
-
-        popup.setOnMenuItemClickListener { menuItem ->
-            when (menuItem.itemId) {
-                R.id.edit_menu -> {
-                    goToAddOrEditFragment(product, true)
-                    return@setOnMenuItemClickListener true
-                }
-                R.id.delete_menu -> {
-                    MaterialAlertDialogBuilder(view.context)
-                        .setTitle(resources.getString(R.string.delete_message))
-                        .setIcon(R.drawable.ic_error)
-                        .setNeutralButton(resources.getString(R.string.cancel)) { dialog, _ ->
-                            dialog.dismiss()
-                        }
-                        .setPositiveButton(resources.getString(R.string.accept)) { _, _ ->
-                            viewModel.deleteProduct(product)
-                        }
-                        .show()
-                    return@setOnMenuItemClickListener true
-                }
-                else ->
-                    return@setOnMenuItemClickListener false
-            }
-        }
-        popup.show()
-    }
-
-    private fun goToAddOrEditFragment(
-        product: Product = Product(),
-        editModeTrue: Boolean = false
-    ) {
-        product.activeEditMode = editModeTrue
-        val action =
-            ProductFragmentDirections.actionProductToAddProduct(
-                product
-            )
-        findNavController().navigate(action)
     }
 
     override fun initToolbar() {
@@ -104,4 +58,17 @@ class ProductFragment : BaseFragment<ProductFragmentBinding>() {
         inflater: LayoutInflater,
         container: ViewGroup?
     ): ProductFragmentBinding = ProductFragmentBinding.inflate(inflater, container, false)
+
+    override fun deleteFromIPopup(myClass: Product) {
+        viewModel.deleteProduct(myClass)
+    }
+
+    override fun goToAddOrEditFromIPopup(myClass: Product, editModeTrue: Boolean) {
+        myClass.activeEditMode = editModeTrue
+        val action =
+            ProductFragmentDirections.actionProductToAddProduct(
+                myClass
+            )
+        findNavController().navigate(action)
+    }
 }

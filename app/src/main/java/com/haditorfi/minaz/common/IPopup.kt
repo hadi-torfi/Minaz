@@ -42,8 +42,8 @@ interface IPopup<T> {
         popup.show()
     }
 
-    fun deleteFromIPopup(mClass: T)
+    fun deleteFromIPopup(myClass: T)
 
-    fun goToAddOrEditFromIPopup(mClass: T , editModeTrue: Boolean = false)
+    fun goToAddOrEditFromIPopup(myClass: T, editModeTrue: Boolean = false)
 
 }

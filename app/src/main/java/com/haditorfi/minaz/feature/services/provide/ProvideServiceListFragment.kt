@@ -2,14 +2,12 @@ package com.haditorfi.minaz.feature.services.provide
 
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.MenuInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.PopupMenu
 import androidx.navigation.fragment.findNavController
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.haditorfi.minaz.R
 import com.haditorfi.minaz.common.BaseFragment
+import com.haditorfi.minaz.common.IPopup
 import com.haditorfi.minaz.common.visible
 import com.haditorfi.minaz.data.service.Service
 import com.haditorfi.minaz.data.service.provide.ProvideService
@@ -18,12 +16,12 @@ import com.haditorfi.minaz.databinding.ServiceProvideListFragmentBinding
 import org.koin.android.viewmodel.ext.android.viewModel
 import java.util.*
 
-class ProvideServiceListFragment : BaseFragment<ServiceProvideListFragmentBinding>() {
+class ProvideServiceListFragment : BaseFragment<ServiceProvideListFragmentBinding>(),
+    IPopup<ProvideService> {
     private val viewModel: ProvideServiceViewModel by viewModel()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-       // initToolbar()
         binding.apply {
             viewModel.allProvideService.observe(viewLifecycleOwner) {
                 if (it.isEmpty()) createProvideService()
@@ -34,7 +32,11 @@ class ProvideServiceListFragment : BaseFragment<ServiceProvideListFragmentBindin
                     ) { item, provides ->
                         when (item.id) {
                             R.id.item_service_layout -> goToDetailFragment(provides as Provides)
-                            R.id.btn_more -> popUp(item, provides as ProvideService)
+                            R.id.btn_more -> popUp(
+                                requireContext(),
+                                item,
+                                provides as ProvideService
+                            )
                         }
                     }
                 rvProvideService.run {
@@ -44,58 +46,14 @@ class ProvideServiceListFragment : BaseFragment<ServiceProvideListFragmentBindin
             }
 
             include.toolbarBtn.setOnClickListener {
-                goToAddOrEditFragment()
+                goToAddOrEditFromIPopup(ProvideService())
             }
         }
-    }
-
-
-    private fun popUp(view: View, provideService: ProvideService) {
-        val popup = PopupMenu(context, view)
-        val inflater: MenuInflater = popup.menuInflater
-        inflater.inflate(R.menu.options, popup.menu)
-
-        popup.setOnMenuItemClickListener { menuItem ->
-            when (menuItem.itemId) {
-                R.id.edit_menu -> {
-                    goToAddOrEditFragment(provideService, true)
-                    return@setOnMenuItemClickListener true
-                }
-                R.id.delete_menu -> {
-                    MaterialAlertDialogBuilder(view.context)
-                        .setTitle(resources.getString(R.string.delete_message))
-                        .setIcon(R.drawable.ic_error)
-                        .setNeutralButton(resources.getString(R.string.cancel)) { dialog, _ ->
-                            dialog.dismiss()
-                        }
-                        .setPositiveButton(resources.getString(R.string.accept)) { _, _ ->
-                            viewModel.deleteProvideService(provideService)
-                        }
-                        .show()
-                    return@setOnMenuItemClickListener true
-                }
-                else ->
-                    return@setOnMenuItemClickListener false
-            }
-        }
-        popup.show()
     }
 
     private fun goToDetailFragment(provideService: Provides) {
         val action =
             ProvideServiceListFragmentDirections.actionProvideServiceListToDetailProvideService(
-                provideService
-            )
-        findNavController().navigate(action)
-    }
-
-    private fun goToAddOrEditFragment(
-        provideService: ProvideService = ProvideService(),
-        editModeTrue: Boolean = false
-    ) {
-        provideService.activeEditMode = editModeTrue
-        val action =
-            ProvideServiceListFragmentDirections.actionProvideServiceListToAddProvideService(
                 provideService
             )
         findNavController().navigate(action)
@@ -129,4 +87,17 @@ class ProvideServiceListFragment : BaseFragment<ServiceProvideListFragmentBindin
         container: ViewGroup?
     ): ServiceProvideListFragmentBinding =
         ServiceProvideListFragmentBinding.inflate(inflater, container, false)
+
+    override fun deleteFromIPopup(myClass: ProvideService) {
+        viewModel.deleteProvideService(myClass)
+    }
+
+    override fun goToAddOrEditFromIPopup(myClass: ProvideService, editModeTrue: Boolean) {
+        myClass.activeEditMode = editModeTrue
+        val action =
+            ProvideServiceListFragmentDirections.actionProvideServiceListToAddProvideService(
+                myClass
+            )
+        findNavController().navigate(action)
+    }
 }
