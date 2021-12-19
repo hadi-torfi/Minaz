@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="deploymentTargetDropDown">
+    <multipleDevicesSelectedInDropDown value="true" />
     <runningDeviceTargetsSelectedWithDialog>
       <Target>
         <type value="RUNNING_DEVICE_TARGET" />
         <deviceKey>
           <Key>
             <type value="VIRTUAL_DEVICE_PATH" />
-            <value value="C:\Users\hadi\.android\avd\Nexus_5X_API_30.avd" />
+            <value value="C:\Users\hadi\.android\avd\Pixel_2_API_24.avd" />
           </Key>
         </deviceKey>
       </Target>
@@ -16,7 +17,7 @@
         <deviceKey>
           <Key>
             <type value="SERIAL_NUMBER" />
-            <value value="192.168.43.1:5555" />
+            <value value="5200209253cda44b" />
           </Key>
         </deviceKey>
       </Target>

@@ -19,12 +19,10 @@ class DetailProvideServiceFragment : BaseFragment<ServiceProvideDetailFragmentBi
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
             data = args.data
-            val d = data as Provides
-            var row = 1
-            d.provideService.services.forEach {
-                txtServicesName.append(row.toString() + " - " + it.name +"\n")
-                txtServicesPrice.append(it.strPrice + "\n")
-                row++
+            val mData = data as Provides
+            for ((index, service) in mData.provideService.services.withIndex()) {
+                txtServicesName.append("${index + 1} - ${service.name} \n")
+                txtServicesPrice.append("${service.strPrice} \n")
             }
         }
     }

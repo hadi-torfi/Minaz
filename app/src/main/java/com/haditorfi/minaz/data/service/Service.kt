@@ -18,6 +18,5 @@ data class Service(
 
     @Ignore
     var activeEditMode: Boolean = false
-    val strPrice get() = "  قیمت :  ${formatPriceWithLabel(price.toLong())}"
-    val strName get() = " خدمات : $name"
+    val strPrice get() = formatPriceWithLabel(price.toLong())
 }

@@ -5,12 +5,15 @@
       <map>
         <entry key="..\:/dev/workspace/Minaz/app/src/main/res/drawable/fab_label_background.xml" value="0.19722222222222222" />
         <entry key="..\:/dev/workspace/Minaz/app/src/main/res/drawable/ic_cart.xml" value="0.18055555555555555" />
+        <entry key="..\:/dev/workspace/Minaz/app/src/main/res/drawable/ic_dashboard.xml" value="0.18518518518518517" />
         <entry key="..\:/dev/workspace/Minaz/app/src/main/res/drawable/ic_delete.xml" value="0.21875" />
         <entry key="..\:/dev/workspace/Minaz/app/src/main/res/drawable/ic_edit.xml" value="0.21875" />
         <entry key="..\:/dev/workspace/Minaz/app/src/main/res/drawable/ic_error.xml" value="0.20051282051282052" />
         <entry key="..\:/dev/workspace/Minaz/app/src/main/res/drawable/ic_more.xml" value="0.18055555555555555" />
         <entry key="..\:/dev/workspace/Minaz/app/src/main/res/drawable/ic_person.xml" value="0.20051282051282052" />
+        <entry key="..\:/dev/workspace/Minaz/app/src/main/res/drawable/ic_shopping_cart.xml" value="0.18518518518518517" />
         <entry key="..\:/dev/workspace/Minaz/app/src/main/res/drawable/ic_user.xml" value="0.18055555555555555" />
+        <entry key="..\:/dev/workspace/Minaz/app/src/main/res/drawable/shape_divider.xml" value="0.2074074074074074" />
         <entry key="..\:/dev/workspace/Minaz/app/src/main/res/layout/activity_main.xml" value="0.20260416666666667" />
         <entry key="..\:/dev/workspace/Minaz/app/src/main/res/layout/add_customer_fragment.xml" value="0.18055555555555555" />
         <entry key="..\:/dev/workspace/Minaz/app/src/main/res/layout/customer_add_fragment.xml" value="0.25" />
@@ -23,7 +26,7 @@
         <entry key="..\:/dev/workspace/Minaz/app/src/main/res/layout/fragment_edit_customer.xml" value="0.20260416666666667" />
         <entry key="..\:/dev/workspace/Minaz/app/src/main/res/layout/fragment_show_customer.xml" value="0.17037037037037037" />
         <entry key="..\:/dev/workspace/Minaz/app/src/main/res/layout/item_customer.xml" value="0.20260416666666667" />
-        <entry key="..\:/dev/workspace/Minaz/app/src/main/res/layout/manage_fragment.xml" value="0.19948717948717948" />
+        <entry key="..\:/dev/workspace/Minaz/app/src/main/res/layout/manage_fragment.xml" value="0.33" />
         <entry key="..\:/dev/workspace/Minaz/app/src/main/res/layout/order_fragment.xml" value="0.20416666666666666" />
         <entry key="..\:/dev/workspace/Minaz/app/src/main/res/layout/personnel_add_fragment.xml" value="0.22" />
         <entry key="..\:/dev/workspace/Minaz/app/src/main/res/layout/personnel_fragment.xml" value="0.17962962962962964" />
@@ -39,7 +42,7 @@
         <entry key="..\:/dev/workspace/Minaz/app/src/main/res/layout/service_item.xml" value="0.33" />
         <entry key="..\:/dev/workspace/Minaz/app/src/main/res/layout/service_list_fragment.xml" value="0.20416666666666666" />
         <entry key="..\:/dev/workspace/Minaz/app/src/main/res/layout/service_provide_add_fragment.xml" value="0.20416666666666666" />
-        <entry key="..\:/dev/workspace/Minaz/app/src/main/res/layout/service_provide_detail_fragment.xml" value="0.33" />
+        <entry key="..\:/dev/workspace/Minaz/app/src/main/res/layout/service_provide_detail_fragment.xml" value="0.25" />
         <entry key="..\:/dev/workspace/Minaz/app/src/main/res/layout/service_provide_fragment.xml" value="0.20416666666666666" />
         <entry key="..\:/dev/workspace/Minaz/app/src/main/res/layout/service_provide_item.xml" value="0.33" />
         <entry key="..\:/dev/workspace/Minaz/app/src/main/res/layout/service_provide_list_fragment.xml" value="0.22" />

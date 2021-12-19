@@ -74,18 +74,22 @@ class ProvideServiceListFragment : BaseFragment<ServiceProvideListFragmentBindin
         val s2 = Service(2, "اپیلاسیون تمام بدن", "180000")
         val s3 = Service(3, "اصلاح ابرو", "32000")
         val s4 = Service(4, "کوتاهی مو", "86000")
+        val s5 = Service(5, "شنیون", "1800000")
+        val s6 = Service(6, "تاتو", "850000")
+        val s7 = Service(7, "کاشت ناخن", "250000")
+        val s8 = Service(8, "رنگ مو", "350000")
 
         val p1 =
             ProvideService(
                 1,
                 2,
-                listOf(s3, s2, s4, s1),
+                listOf(s3, s2, s4, s1, s8, s6, s5, s7),
                 Date(),
                 "20000",
                 "توضیحات"
             )
         val p2 =
-            ProvideService(2, 3, listOf(s4, s1, s3, s2), Date(),  "30000",  "توضیح")
+            ProvideService(1, 3, listOf(s4, s1, s3, s2, s4, s5, s7, s8), Date(), "50000", "توضیح")
         viewModel.insertProvideService(p1)
         viewModel.insertProvideService(p2)
     }

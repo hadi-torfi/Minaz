@@ -15,8 +15,8 @@
     <string name="count">تعداد</string>
     <string name="customer_list">لیست مشتریان</string>
     <string name="customer_new"> مشتری جدید</string>
-    <string name="personnel_list">لیست پرسنل</string>
-    <string name="personnel_new"> پرسنل جدید</string>
+    <string name="staff_list">لیست پرسنل</string>
+    <string name="staff_new"> پرسنل جدید</string>
     <string name="product">فروش کالا</string>
     <string name="product_name">نام کالا</string>
     <string name="product_new">کالای جدید</string>
@@ -40,6 +40,6 @@
     <string name="name_product_require">نام کالا را وارد نمایید.</string>
     <string name="isPhone_message">لطفا شماره موبایل را صحیح وارد نمایید.</string>
     <string name="manager">مدیر</string>
-    <string name="personnel">پرسنل</string>
+    <string name="staff">پرسنل</string>
     <string name="secretary">منشی</string>
 </resources>

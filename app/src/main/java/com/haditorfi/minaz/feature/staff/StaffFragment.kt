@@ -38,8 +38,8 @@ class StaffFragment : BaseFragment<StaffFragmentBinding>(), IPopup<Staff> {
     override fun initToolbar() {
         binding.apply {
             include.apply {
-                toolbarTitleTv.text = getString(R.string.personnel_list)
-                toolbarBtn.text = getString(R.string.personnel_new)
+                toolbarTitleTv.text = getString(R.string.staff_list)
+                toolbarBtn.text = getString(R.string.staff_new)
                 toolbarBackBtn.setOnClickListener {
                     findNavController().navigateUp()
                 }

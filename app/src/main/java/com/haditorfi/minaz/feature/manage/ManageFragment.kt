@@ -14,19 +14,19 @@ class ManageFragment : BaseFragment<ManageFragmentBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
-            btnCustomerList.setOnClickListener {
+            txtCustomerList.setOnClickListener {
                 findNavController().navigate(R.id.action_manage_to_customer)
             }
 
-            btnStaffList.setOnClickListener {
+            txtStaffList.setOnClickListener {
                 findNavController().navigate(R.id.action_manage_to_staff)
             }
 
-            btnProductList.setOnClickListener {
+            txtProductList.setOnClickListener {
                 findNavController().navigate(R.id.action_manage_to_product)
             }
 
-            btnServiceList.setOnClickListener {
+            txtServiceList.setOnClickListener {
                 findNavController().navigate(R.id.action_manage_to_service)
             }
         }

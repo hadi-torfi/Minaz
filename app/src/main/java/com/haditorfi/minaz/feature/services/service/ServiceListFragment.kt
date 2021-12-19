@@ -36,8 +36,10 @@ class ServiceListFragment : BaseFragment<ServiceListFragmentBinding>(), IPopup<S
         binding.apply {
             include.apply {
                 toolbarTitleTv.text = getString(R.string.service)
-                toolbarBtn.visibility = View.VISIBLE
                 toolbarBtn.text = getString(R.string.service_new)
+                toolbarBackBtn.setOnClickListener {
+                    findNavController().popBackStack()
+                }
             }
         }
     }

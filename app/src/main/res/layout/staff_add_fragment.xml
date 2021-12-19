@@ -104,7 +104,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.3"
-                    android:text="@string/personnel" />
+                    android:layout_marginStart="8dp"
+                    android:text="@string/staff" />
 
                 <RadioButton
                     android:id="@+id/radioSecretary"
