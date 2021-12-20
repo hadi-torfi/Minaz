@@ -51,7 +51,7 @@
                 android:id="@+id/txt_customer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/txt_service_time"
+                android:layout_below="@id/txt_staff"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
@@ -65,7 +65,7 @@
                 android:id="@+id/txt_staff"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/txt_customer"
+                android:layout_below="@id/txt_service_time"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
@@ -76,24 +76,10 @@
                 tools:text="پرسنل : " />
 
             <TextView
-                android:id="@+id/txt_service_id"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/txt_staff"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginBottom="8dp"
-                android:text="@{myProvideService.provideService.strId}"
-                android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
-                android:textSize="16sp"
-                tools:text="شماره فاکتور : " />
-
-            <TextView
                 android:id="@+id/txt_total_price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/txt_staff"
+                android:layout_below="@id/txt_customer"
                 android:layout_alignParentEnd="true"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"

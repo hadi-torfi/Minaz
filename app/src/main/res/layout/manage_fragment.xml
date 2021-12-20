@@ -31,7 +31,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="@string/product_list"
-            app:drawableStartCompat="@drawable/ic_shopping_cart" />
+            app:drawableStartCompat="@drawable/ic_shopping_cart_black" />
 
         <TextView
             android:id="@+id/txt_staff_list"
@@ -39,7 +39,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/staff_list"
-            app:drawableStartCompat="@drawable/ic_person" />
+            app:drawableStartCompat="@drawable/ic_person_black" />
 
         <TextView
             android:id="@+id/txt_service_list"
@@ -47,7 +47,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/service_list"
-            app:drawableStartCompat="@drawable/ic_cart" />
+            app:drawableStartCompat="@drawable/ic_cart_black" />
 
         <TextView
             android:id="@+id/txt_customer_list"
@@ -55,7 +55,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/customer_list"
-            app:drawableStartCompat="@drawable/ic_user" />
+            app:drawableStartCompat="@drawable/ic_user_black" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

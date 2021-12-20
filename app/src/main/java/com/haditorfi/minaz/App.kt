@@ -2,6 +2,7 @@ package com.haditorfi.minaz
 
 import android.app.Application
 import androidx.room.Room
+import com.haditorfi.minaz.common.FakeData
 import com.haditorfi.minaz.data.customer.CustomerRepository
 import com.haditorfi.minaz.data.customer.CustomerRepositoryImpl
 import com.haditorfi.minaz.data.db.AppDatabase
@@ -68,9 +69,13 @@ class App : Application() {
             viewModel { StaffViewModel(get()) }
         }
 
+        val classModules = module {
+            factory { FakeData(get(), get(), get(), get(), get()) }
+        }
+
         startKoin {
             androidContext(this@App)
-            modules(appModules, repositoryModules, viewModelModules)
+            modules(appModules, repositoryModules, viewModelModules, classModules)
         }
     }
 }

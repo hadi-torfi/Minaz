@@ -4,9 +4,9 @@ import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.haditorfi.minaz.data.customer.Customer
-import com.haditorfi.minaz.data.customer.CustomerLocalDataSource
+import com.haditorfi.minaz.data.customer.CustomerDao
 import com.haditorfi.minaz.data.product.Product
-import com.haditorfi.minaz.data.product.ProductLocalDataSource
+import com.haditorfi.minaz.data.product.ProductDao
 import com.haditorfi.minaz.data.service.Service
 import com.haditorfi.minaz.data.service.ServiceLocalDataSource
 import com.haditorfi.minaz.data.service.provide.ProvideService
@@ -20,9 +20,9 @@ import com.haditorfi.minaz.data.staff.StaffDao
 )
 @TypeConverters(ListConverter::class, DateConverter::class)
 abstract class AppDatabase : RoomDatabase() {
-    abstract fun customerDao(): CustomerLocalDataSource
+    abstract fun customerDao(): CustomerDao
     abstract fun serviceDao(): ServiceLocalDataSource
     abstract fun provideServiceDao(): ProvideServiceDao
-    abstract fun productDao(): ProductLocalDataSource
+    abstract fun productDao(): ProductDao
     abstract fun personnelDao(): StaffDao
 }

@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.haditorfi.minaz.R
 import com.haditorfi.minaz.common.BaseFragment
+import com.haditorfi.minaz.common.FakeData
 import com.haditorfi.minaz.databinding.DashboardFragmentBinding
 import org.koin.android.ext.android.inject
 
@@ -15,7 +16,6 @@ class DashboardFragment : BaseFragment<DashboardFragmentBinding>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-       // initToolbar()
         binding.apply {
             miAddCustomer.setOnClickListener {
                 val action =

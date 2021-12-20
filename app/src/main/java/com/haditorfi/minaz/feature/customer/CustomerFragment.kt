@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.haditorfi.minaz.R
 import com.haditorfi.minaz.common.BaseFragment
+import com.haditorfi.minaz.common.FakeData
 import com.haditorfi.minaz.common.IPopup
 import com.haditorfi.minaz.data.customer.Customer
 import com.haditorfi.minaz.databinding.CustomerFragmentBinding
@@ -22,8 +23,6 @@ class CustomerFragment : BaseFragment<CustomerFragmentBinding>(), IPopup<Custome
                 goToAddOrEditFromIPopup(Customer())
             }
             viewModel.customersLiveData.observe(viewLifecycleOwner) {
-                if (it.isEmpty()) addCustomer()
-
                 val viewAdapter =
                     CustomerAdapter(requireContext(), it, IItemClickListener = { item, customer ->
                         popUp(requireContext(), item, customer)
@@ -47,14 +46,6 @@ class CustomerFragment : BaseFragment<CustomerFragmentBinding>(), IPopup<Custome
                 }
             }
         }
-    }
-
-
-    private fun addCustomer() {
-        val c1 = Customer("سمانه محمدی", "09166424100", "شوش خیابان مدرس")
-        val c2 = Customer("نازنین طرفی", "09352623050", "شوش خیابان ")
-        val c3 = Customer("سارینا رحمتی", "09352623055", "شوش ")
-        viewModel.insertCustomer(c1, c2, c3)
     }
 
     override fun createViewBinging(

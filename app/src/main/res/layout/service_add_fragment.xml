@@ -39,7 +39,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                app:startIconDrawable="@drawable/ic_cart">
+                app:startIconDrawable="@drawable/ic_cart_black">
 
                 <EditText
                     android:id="@+id/edt_name"

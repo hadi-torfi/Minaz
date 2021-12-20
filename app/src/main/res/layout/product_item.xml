@@ -35,7 +35,7 @@
                 android:layout_marginBottom="8dp"
                 android:background="@color/greenLight"
                 android:scaleType="center"
-                android:src="@drawable/ic_shopping_cart"
+                android:src="@drawable/ic_shopping_cart_white"
                 app:shapeAppearance="@style/Avatar"
                 app:strokeWidth="1dp" />
 

@@ -31,7 +31,7 @@
                 android:layout_margin="8dp"
                 android:background="@color/purple"
                 android:scaleType="center"
-                android:src="@drawable/ic_cart"
+                android:src="@drawable/ic_cart_white"
                 app:shapeAppearance="@style/Avatar"
                 app:strokeWidth="1dp" />
 

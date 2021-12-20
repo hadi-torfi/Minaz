@@ -40,7 +40,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:layout_marginBottom="16dp"
-                app:startIconDrawable="@drawable/ic_user">
+                app:startIconDrawable="@drawable/ic_user_black">
 
                 <EditText
                     android:id="@+id/edt_staff_name"
@@ -76,7 +76,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
-                app:startIconDrawable="@drawable/ic_person">
+                app:startIconDrawable="@drawable/ic_person_black">
 
                 <EditText
                     android:id="@+id/edt_staff_address"

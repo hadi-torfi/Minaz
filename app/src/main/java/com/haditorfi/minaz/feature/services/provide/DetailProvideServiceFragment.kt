@@ -8,6 +8,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.haditorfi.minaz.R
 import com.haditorfi.minaz.common.BaseFragment
+import com.haditorfi.minaz.common.gone
 import com.haditorfi.minaz.common.invisible
 import com.haditorfi.minaz.data.service.provide.Provides
 import com.haditorfi.minaz.databinding.ServiceProvideDetailFragmentBinding
@@ -30,7 +31,7 @@ class DetailProvideServiceFragment : BaseFragment<ServiceProvideDetailFragmentBi
     override fun initToolbar() {
         binding.apply {
             include.apply {
-                toolbarTitleTv.text = getString(R.string.service_list)
+                toolbarTitleTv.text = getString(R.string.detail_service_provided)
                 toolbarBtn.invisible()
                 toolbarBackBtn.setOnClickListener {
                     findNavController().navigateUp()

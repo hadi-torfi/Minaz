@@ -19,7 +19,6 @@ class ServiceListFragment : BaseFragment<ServiceListFragmentBinding>(), IPopup<S
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
             viewModel.allService.observe(viewLifecycleOwner) {
-                if (it.isEmpty()) createService()
                 val serviceViewAdapter =
                     ServiceAdapter(requireContext(), it, IItemClickListener = { item, service ->
                         popUp(requireContext(), item, service)
@@ -42,13 +41,6 @@ class ServiceListFragment : BaseFragment<ServiceListFragmentBinding>(), IPopup<S
                 }
             }
         }
-    }
-
-    private fun createService() {
-        val s1 = Service("اپیلاسیون تمام بدن", "180000")
-        val s2 = Service("شمع صورت", "30000")
-        val s3 = Service("اپیلاسیون دست و پا", "130000")
-        viewModel.insertService(s1, s2, s3)
     }
 
     override fun createViewBinging(

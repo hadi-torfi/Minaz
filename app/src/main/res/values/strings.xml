@@ -11,6 +11,7 @@
     <string name="service_new">خدمات جدید</string>
     <string name="service_provide">ارائه خدمات </string>
     <string name="service_provided">خدمات ارائه شده</string>
+    <string name="detail_service_provided">جزئیات خدمات ارائه شده</string>
     <string name="price">قیمت (تومان)</string>
     <string name="count">تعداد</string>
     <string name="customer_list">لیست مشتریان</string>

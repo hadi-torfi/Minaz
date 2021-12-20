@@ -6,7 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.haditorfi.minaz.R
-import com.haditorfi.minaz.common.*
+import com.haditorfi.minaz.common.BaseFragment
+import com.haditorfi.minaz.common.IPopup
 import com.haditorfi.minaz.data.staff.Staff
 import com.haditorfi.minaz.databinding.StaffFragmentBinding
 import org.koin.android.ext.android.inject
@@ -21,8 +22,6 @@ class StaffFragment : BaseFragment<StaffFragmentBinding>(), IPopup<Staff> {
         }
 
         viewModel.allPersonnel.observe(viewLifecycleOwner) {
-            if (it.isEmpty()) createPersonnelAndSkill()
-
             val viewAdapter =
                 StaffAdapter(requireContext(), it, IItemClickListener = { item, personnel ->
                     popUp(requireContext(), item, personnel)
@@ -45,13 +44,6 @@ class StaffFragment : BaseFragment<StaffFragmentBinding>(), IPopup<Staff> {
                 }
             }
         }
-    }
-
-    private fun createPersonnelAndSkill() {
-        val p1 = Staff("مینا عبدالنبی", "09166424196", "تهران", MANAGER)
-        val p2 = Staff("نازنین طرفی", "09352623050", "شوش", SECRETARY)
-        val p3 = Staff("ساره بیات", "09352625553", "تهران", PERSONNEL)
-        viewModel.insertStaff(p1, p2, p3)
     }
 
     override fun createViewBinging(

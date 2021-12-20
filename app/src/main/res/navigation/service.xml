@@ -14,7 +14,7 @@
             app:destination="@id/addProvideServiceFragment" />
         <action
             android:id="@+id/action_provideServiceList_to_detailProvideService"
-            app:destination="@id/detailProvideServiceFragment" />
+            app:destination="@id/navDetailProvideService" />
     </fragment>
     <fragment
         android:id="@+id/addProvideServiceFragment"
@@ -26,7 +26,7 @@
             app:argType="com.haditorfi.minaz.data.service.provide.ProvideService" />
     </fragment>
     <fragment
-        android:id="@+id/detailProvideServiceFragment"
+        android:id="@+id/navDetailProvideService"
         android:name="com.haditorfi.minaz.feature.services.provide.DetailProvideServiceFragment"
         android:label="DetailProvideServiceFragment" >
         <argument

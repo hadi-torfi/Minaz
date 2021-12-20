@@ -19,7 +19,6 @@ class ProductFragment : BaseFragment<ProductFragmentBinding>(), IPopup<Product> 
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
             viewModel.allProduct.observe(viewLifecycleOwner) {
-                if (it.isEmpty()) createProduct()
                 val serviceViewAdapter =
                     ProductAdapter(requireContext(), it, IItemClickListener = { item, service ->
                         popUp(requireContext(), item, service)
@@ -46,12 +45,6 @@ class ProductFragment : BaseFragment<ProductFragmentBinding>(), IPopup<Product> 
                 }
             }
         }
-    }
-
-    private fun createProduct() {
-        val p1 = Product("کرم ووکس", "180000", "5")
-        val p2 = Product("کرم ستاره", "30000", "6")
-        viewModel.insertProduct(p1, p2)
     }
 
     override fun createViewBinging(

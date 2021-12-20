@@ -1,15 +1,10 @@
 package com.haditorfi.minaz.common
 
 import android.content.Context
-import android.view.MenuInflater
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
-import androidx.lifecycle.ViewModel
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
-import com.haditorfi.minaz.R
-import com.haditorfi.minaz.data.customer.Customer
 import java.text.DecimalFormat
 import java.text.NumberFormat
 
@@ -71,6 +66,11 @@ fun View.visible(): View {
 
 fun View.invisible(): View {
     if (visibility != View.INVISIBLE) visibility = View.INVISIBLE
+    return this
+}
+
+fun View.gone(): View {
+    if (visibility != View.GONE) visibility = View.GONE
     return this
 }
 

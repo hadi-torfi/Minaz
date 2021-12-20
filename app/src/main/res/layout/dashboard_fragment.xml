@@ -55,7 +55,7 @@
             android:id="@+id/mi_provide_service"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_cart"
+            android:src="@drawable/ic_cart_white"
             fab:fab_colorNormal="@color/purple"
             fab:fab_label="@string/service_provide"
             fab:fab_size="mini" />
@@ -64,7 +64,7 @@
             android:id="@+id/mi_add_customer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_user"
+            android:src="@drawable/ic_user_white"
             fab:fab_colorNormal="@color/orange"
             fab:fab_label="@string/customer_new"
             fab:fab_size="mini" />
@@ -73,7 +73,7 @@
             android:id="@+id/mi_product"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_shopping_cart"
+            android:src="@drawable/ic_shopping_cart_white"
             fab:fab_colorNormal="@color/greenLight"
             fab:fab_label="@string/product_new"
             fab:fab_size="mini" />

@@ -42,8 +42,9 @@ data class ProvideService(
     @Ignore
     var activeEditMode: Boolean = false
     val strDiscount get() = "  تخفیف :  ${formatPriceWithLabel(discount.toLong())}"
-    val strDescription get() = "  توضیحات :  $description"
+    val strDescription get() = if (description.isEmpty()) "توضیحات : ندارد" else "  توضیحات :  $description"
     val strId get() = " شماره فاکتور : $id"
+    val itemCount get() = " تعداد خدمات : ${services.size} "
     val strTime get() = " تاریخ ثبت : ${PersianDateFormat("l Y/m/d").format(PersianDate(provideDate))}"
     val strSumPrice get() = "  مبلغ :  ${formatPriceWithLabel(sumPrice())}"
     val strTotalPrice get() = "  جمع کل :  ${formatPriceWithLabel(sumPrice() - discount.toLong())}"
