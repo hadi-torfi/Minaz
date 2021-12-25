@@ -62,6 +62,7 @@ class ProvideServiceListFragment : BaseFragment<ServiceProvideListFragmentBindin
                 toolbarTitleTv.text = getString(R.string.service_provided)
                 toolbarBtn.visible()
                 toolbarBtn.text = getString(R.string.service_provide)
+
             }
         }
     }

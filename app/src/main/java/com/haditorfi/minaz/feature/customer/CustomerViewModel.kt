@@ -8,7 +8,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class CustomerViewModel(private val customerRepository: CustomerRepository) : ViewModel() {
-
     val customersLiveData = customerRepository.getAll
 
     fun insertCustomer(vararg customer: Customer) {
@@ -24,7 +23,7 @@ class CustomerViewModel(private val customerRepository: CustomerRepository) : Vi
     }
 
     fun deleteCustomer(customer: Customer) {
-        viewModelScope.launch(Dispatchers.IO) {
+        viewModelScope.launch {
             customerRepository.delete(customer)
         }
     }

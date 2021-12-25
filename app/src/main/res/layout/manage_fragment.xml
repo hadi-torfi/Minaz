@@ -25,21 +25,12 @@
         app:layout_constraintTop_toBottomOf="@+id/include">
 
         <TextView
-            android:id="@+id/txt_product_list"
+            android:id="@+id/txt_customer_list"
             style="@style/ManageLinks"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="@string/product_list"
-            app:drawableStartCompat="@drawable/ic_shopping_cart_black" />
-
-        <TextView
-            android:id="@+id/txt_staff_list"
-            style="@style/ManageLinks"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/staff_list"
-            app:drawableStartCompat="@drawable/ic_person_black" />
+            android:text="@string/customer_list"
+            app:drawableStartCompat="@drawable/ic_user_black" />
 
         <TextView
             android:id="@+id/txt_service_list"
@@ -50,12 +41,22 @@
             app:drawableStartCompat="@drawable/ic_cart_black" />
 
         <TextView
-            android:id="@+id/txt_customer_list"
+            android:id="@+id/txt_staff_list"
             style="@style/ManageLinks"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/customer_list"
-            app:drawableStartCompat="@drawable/ic_user_black" />
+            android:text="@string/staff_list"
+            app:drawableStartCompat="@drawable/ic_person_black" />
+
+
+        <TextView
+            android:id="@+id/txt_product_list"
+            style="@style/ManageLinks"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/product_list"
+            app:drawableStartCompat="@drawable/ic_shopping_cart_black" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

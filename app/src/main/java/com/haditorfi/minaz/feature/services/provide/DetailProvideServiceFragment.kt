@@ -8,7 +8,6 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.haditorfi.minaz.R
 import com.haditorfi.minaz.common.BaseFragment
-import com.haditorfi.minaz.common.gone
 import com.haditorfi.minaz.common.invisible
 import com.haditorfi.minaz.data.service.provide.Provides
 import com.haditorfi.minaz.databinding.ServiceProvideDetailFragmentBinding
@@ -21,8 +20,9 @@ class DetailProvideServiceFragment : BaseFragment<ServiceProvideDetailFragmentBi
         binding.apply {
             data = args.data
             val mData = data as Provides
-            for ((index, service) in mData.provideService.services.withIndex()) {
-                txtServicesName.append("${index + 1} - ${service.name} \n")
+            var i = 1
+            mData.provideService.services.forEach { service ->
+                txtServicesName.append("${i++} - ${service.name} \n")
                 txtServicesPrice.append("${service.strPrice} \n")
             }
         }

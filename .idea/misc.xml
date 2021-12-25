@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/dev/sdk/android-sdk/platforms/android-31/data/res/layout/simple_list_item_1.xml" value="0.20416666666666666" />
         <entry key="..\:/dev/workspace/Minaz/app/src/main/res/drawable-v24/ic_cart.xml" value="0.2037037037037037" />
         <entry key="..\:/dev/workspace/Minaz/app/src/main/res/drawable-v24/ic_cart_black.xml" value="0.2037037037037037" />
         <entry key="..\:/dev/workspace/Minaz/app/src/main/res/drawable/fab_label_background.xml" value="0.19722222222222222" />
@@ -51,7 +52,7 @@
         <entry key="..\:/dev/workspace/Minaz/app/src/main/res/layout/service_fragment.xml" value="0.20260416666666667" />
         <entry key="..\:/dev/workspace/Minaz/app/src/main/res/layout/service_item.xml" value="0.33" />
         <entry key="..\:/dev/workspace/Minaz/app/src/main/res/layout/service_list_fragment.xml" value="0.20416666666666666" />
-        <entry key="..\:/dev/workspace/Minaz/app/src/main/res/layout/service_provide_add_fragment.xml" value="0.20416666666666666" />
+        <entry key="..\:/dev/workspace/Minaz/app/src/main/res/layout/service_provide_add_fragment.xml" value="0.25" />
         <entry key="..\:/dev/workspace/Minaz/app/src/main/res/layout/service_provide_detail_fragment.xml" value="0.20416666666666666" />
         <entry key="..\:/dev/workspace/Minaz/app/src/main/res/layout/service_provide_fragment.xml" value="0.20416666666666666" />
         <entry key="..\:/dev/workspace/Minaz/app/src/main/res/layout/service_provide_item.xml" value="0.25" />
