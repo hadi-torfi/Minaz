@@ -38,6 +38,7 @@ class MainActivity : AppCompatActivity() {
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
                 R.id.navDetailProvideService -> bottomNavigationView.gone()
+                R.id.addProvideServiceFragment -> bottomNavigationView.gone()
                 else -> bottomNavigationView.visible()
             }
         }

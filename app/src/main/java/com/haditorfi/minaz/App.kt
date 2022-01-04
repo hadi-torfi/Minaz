@@ -47,7 +47,8 @@ class App : Application() {
 
             factory<ServiceRepository> { ServiceRepositoryImpl(get<AppDatabase>().serviceDao()) }
 
-            factory<ProvideServiceRepository> { ProvideServiceRepositoryImpl(get<AppDatabase>().provideServiceDao()) }
+            factory<ProvideServiceRepository> {
+                ProvideServiceRepositoryImpl(get<AppDatabase>().provideServiceDao()) }
 
             factory<ProductRepository> { ProductRepositoryImpl(get<AppDatabase>().productDao()) }
 

@@ -9,7 +9,7 @@ import kotlinx.coroutines.launch
 
 class StaffViewModel(private val staffRepository: StaffRepository) : ViewModel() {
 
-    val allPersonnel = staffRepository.getAll
+    val staffsLiveData = staffRepository.getAll
 
     fun insertStaff(vararg staff: Staff) {
         viewModelScope.launch(Dispatchers.IO) {

@@ -21,7 +21,7 @@ class StaffFragment : BaseFragment<StaffFragmentBinding>(), IPopup<Staff> {
             goToAddOrEditFromIPopup(Staff())
         }
 
-        viewModel.allPersonnel.observe(viewLifecycleOwner) {
+        viewModel.staffsLiveData.observe(viewLifecycleOwner) {
             val viewAdapter =
                 StaffAdapter(requireContext(), it, IItemClickListener = { item, personnel ->
                     popUp(requireContext(), item, personnel)

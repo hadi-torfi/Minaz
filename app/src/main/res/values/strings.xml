@@ -2,6 +2,8 @@
     <string name="app_name">مدیریت سالن</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="dashboard">داشبورد</string>
+    <string name="desc">توضیحات</string>
+    <string name="discount">تخفیف</string>
     <string name="report">گزارشات</string>
     <string name="manage">مدیریت</string>
     <string name="orders">سفارشات</string>
@@ -18,6 +20,7 @@
     <string name="customer_select">نام مشتری را وارد نمایید</string>
     <string name="customer_new"> مشتری جدید</string>
     <string name="staff_list">لیست پرسنل</string>
+    <string name="staff_select">نام پرسنل را وارد نمایید</string>
     <string name="staff_new"> پرسنل جدید</string>
     <string name="product">فروش کالا</string>
     <string name="product_name">نام کالا</string>
