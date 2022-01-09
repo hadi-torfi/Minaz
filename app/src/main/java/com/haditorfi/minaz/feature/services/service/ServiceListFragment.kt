@@ -10,10 +10,10 @@ import com.haditorfi.minaz.common.BaseFragment
 import com.haditorfi.minaz.common.IPopup
 import com.haditorfi.minaz.data.service.Service
 import com.haditorfi.minaz.databinding.ServiceListFragmentBinding
-import org.koin.android.viewmodel.ext.android.viewModel
+import org.koin.android.ext.android.inject
 
 class ServiceListFragment : BaseFragment<ServiceListFragmentBinding>(), IPopup<Service> {
-    private val viewModel: ServiceViewModel by viewModel()
+    private val viewModel: ServiceViewModel by inject()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

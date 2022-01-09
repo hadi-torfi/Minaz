@@ -7,12 +7,11 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.haditorfi.minaz.R
 import com.haditorfi.minaz.common.BaseFragment
-import com.haditorfi.minaz.common.FakeData
 import com.haditorfi.minaz.databinding.DashboardFragmentBinding
-import org.koin.android.ext.android.inject
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class DashboardFragment : BaseFragment<DashboardFragmentBinding>() {
-    private val viewModel: DashboardViewModel by inject()
+    private val viewModel: DashboardViewModel by viewModel()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

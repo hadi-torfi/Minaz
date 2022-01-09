@@ -14,13 +14,13 @@ import com.haditorfi.minaz.common.hideKeyboard
 import com.haditorfi.minaz.common.toast
 import com.haditorfi.minaz.data.service.Service
 import com.haditorfi.minaz.databinding.ServiceAddFragmentBinding
-import org.koin.android.viewmodel.ext.android.viewModel
+import org.koin.android.ext.android.inject
 import java.text.DecimalFormat
 import java.text.NumberFormat
 import java.util.*
 
 class AddServiceFragment : BaseFragment<ServiceAddFragmentBinding>() {
-    private val viewModel: ServiceViewModel by viewModel()
+    private val viewModel: ServiceViewModel by inject()
     private val args by navArgs<AddServiceFragmentArgs>()
     private var errorMessage = ""
 

@@ -21,8 +21,8 @@ import com.haditorfi.minaz.feature.services.provide.ProvideServiceViewModel
 import com.haditorfi.minaz.feature.services.service.ServiceViewModel
 import com.haditorfi.minaz.feature.staff.StaffViewModel
 import org.koin.android.ext.koin.androidContext
-import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.core.context.startKoin
+import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 import timber.log.Timber
 
@@ -48,7 +48,8 @@ class App : Application() {
             factory<ServiceRepository> { ServiceRepositoryImpl(get<AppDatabase>().serviceDao()) }
 
             factory<ProvideServiceRepository> {
-                ProvideServiceRepositoryImpl(get<AppDatabase>().provideServiceDao()) }
+                ProvideServiceRepositoryImpl(get<AppDatabase>().provideServiceDao())
+            }
 
             factory<ProductRepository> { ProductRepositoryImpl(get<AppDatabase>().productDao()) }
 

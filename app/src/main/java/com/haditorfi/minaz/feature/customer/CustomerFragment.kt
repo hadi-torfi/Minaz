@@ -7,14 +7,13 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.haditorfi.minaz.R
 import com.haditorfi.minaz.common.BaseFragment
-import com.haditorfi.minaz.common.FakeData
 import com.haditorfi.minaz.common.IPopup
 import com.haditorfi.minaz.data.customer.Customer
 import com.haditorfi.minaz.databinding.CustomerFragmentBinding
-import org.koin.android.ext.android.inject
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class CustomerFragment : BaseFragment<CustomerFragmentBinding>(), IPopup<Customer> {
-    private val viewModel: CustomerViewModel by inject()
+    private val viewModel: CustomerViewModel by viewModel()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

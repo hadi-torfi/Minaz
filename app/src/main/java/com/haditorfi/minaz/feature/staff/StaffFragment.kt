@@ -10,10 +10,10 @@ import com.haditorfi.minaz.common.BaseFragment
 import com.haditorfi.minaz.common.IPopup
 import com.haditorfi.minaz.data.staff.Staff
 import com.haditorfi.minaz.databinding.StaffFragmentBinding
-import org.koin.android.ext.android.inject
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class StaffFragment : BaseFragment<StaffFragmentBinding>(), IPopup<Staff> {
-    private val viewModel: StaffViewModel by inject()
+    private val viewModel: StaffViewModel by viewModel()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

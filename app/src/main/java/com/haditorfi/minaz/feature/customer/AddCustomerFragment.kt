@@ -7,10 +7,13 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.haditorfi.minaz.R
-import com.haditorfi.minaz.common.*
+import com.haditorfi.minaz.common.BaseFragment
+import com.haditorfi.minaz.common.hideKeyboard
+import com.haditorfi.minaz.common.isPhone
+import com.haditorfi.minaz.common.toast
 import com.haditorfi.minaz.data.customer.Customer
 import com.haditorfi.minaz.databinding.CustomerAddFragmentBinding
-import org.koin.android.viewmodel.ext.android.viewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class AddCustomerFragment : BaseFragment<CustomerAddFragmentBinding>() {
     private val args by navArgs<AddCustomerFragmentArgs>()

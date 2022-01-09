@@ -10,7 +10,7 @@ import com.haditorfi.minaz.common.BaseFragment
 import com.haditorfi.minaz.common.IPopup
 import com.haditorfi.minaz.data.product.Product
 import com.haditorfi.minaz.databinding.ProductFragmentBinding
-import org.koin.android.viewmodel.ext.android.viewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ProductFragment : BaseFragment<ProductFragmentBinding>(), IPopup<Product> {
     private val viewModel: ProductViewModel by viewModel()

@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <variable
             name="myProduct"
             type="com.haditorfi.minaz.data.product.Product" />

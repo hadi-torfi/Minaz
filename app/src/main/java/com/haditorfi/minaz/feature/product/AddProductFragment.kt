@@ -14,7 +14,7 @@ import com.haditorfi.minaz.common.hideKeyboard
 import com.haditorfi.minaz.common.toast
 import com.haditorfi.minaz.data.product.Product
 import com.haditorfi.minaz.databinding.ProductAddFragmentBinding
-import org.koin.android.viewmodel.ext.android.viewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.text.DecimalFormat
 import java.text.NumberFormat
 import java.util.*

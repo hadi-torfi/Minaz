@@ -5,7 +5,6 @@
     tools:context=".feature.product.AddProductFragment">
 
     <data>
-
         <variable
             name="addProduct"
             type="com.haditorfi.minaz.data.product.Product" />

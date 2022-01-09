@@ -10,11 +10,11 @@ import com.haditorfi.minaz.R
 import com.haditorfi.minaz.common.*
 import com.haditorfi.minaz.data.staff.Staff
 import com.haditorfi.minaz.databinding.StaffAddFragmentBinding
-import org.koin.android.ext.android.inject
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class AddStaffFragment : BaseFragment<StaffAddFragmentBinding>() {
     private val args by navArgs<AddStaffFragmentArgs>()
-    private val viewModel: StaffViewModel by inject()
+    private val viewModel: StaffViewModel by viewModel()
     private var errorMessage = ""
     private var role = ""
 

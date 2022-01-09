@@ -13,14 +13,14 @@ import com.haditorfi.minaz.common.toast
 import com.haditorfi.minaz.databinding.ServiceProvideAddFragmentBinding
 import com.haditorfi.minaz.feature.customer.CustomerViewModel
 import com.haditorfi.minaz.feature.staff.StaffViewModel
-import org.koin.android.ext.android.inject
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import timber.log.Timber
 import kotlin.collections.set
 
 
 class AddProvideServiceFragment : BaseFragment<ServiceProvideAddFragmentBinding>() {
-    private val customerViewModel: CustomerViewModel by inject()
-    private val staffViewModel: StaffViewModel by inject()
+    private val customerViewModel: CustomerViewModel by viewModel()
+    private val staffViewModel: StaffViewModel by viewModel()
     private val customerArray: HashMap<Long, String> = hashMapOf()
     private val staffArray: HashMap<Int, String> = hashMapOf()
     private var customerName: String = ""

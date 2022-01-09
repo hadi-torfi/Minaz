@@ -12,7 +12,7 @@ import com.haditorfi.minaz.common.visible
 import com.haditorfi.minaz.data.service.provide.ProvideService
 import com.haditorfi.minaz.data.service.provide.Provides
 import com.haditorfi.minaz.databinding.ServiceProvideListFragmentBinding
-import org.koin.android.viewmodel.ext.android.viewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ProvideServiceListFragment : BaseFragment<ServiceProvideListFragmentBinding>(),
     IPopup<ProvideService> {
