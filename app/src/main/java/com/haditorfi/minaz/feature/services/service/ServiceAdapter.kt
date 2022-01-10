@@ -7,36 +7,48 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.haditorfi.minaz.R
+import com.haditorfi.minaz.common.IViewHolder
 import com.haditorfi.minaz.data.service.Service
 import com.haditorfi.minaz.databinding.ServiceItemBinding
 
 class ServiceAdapter(
     val context: Context,
     private val values: List<Service>,
-    var IItemClickListener: (
-        view: View,
+    var ItemClickListener: ((
+        item: View,
         service: Service
-    ) -> Unit
-) : RecyclerView.Adapter<ServiceAdapter.MyViewHolder>() {
-    class MyViewHolder(val binding: ServiceItemBinding) :
-        RecyclerView.ViewHolder(binding.root) {
-        fun setDataService(service: Service) {
-            binding.myService = service
+    ) -> Unit?)? = null
+) : RecyclerView.Adapter<ServiceAdapter.ViewHolder>() {
+    inner class ViewHolder(val binding: ServiceItemBinding) :
+        RecyclerView.ViewHolder(binding.root), IViewHolder {
+        override fun setData(position: Int) {
+            binding.myService = values[position]
+        }
+
+        override fun setItemOnClickListener(position: Int) {
+            binding.btnMore.setOnClickListener { item ->
+                ItemClickListener?.let { listener ->
+                    listener(item, values[position])
+                }
+            }
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        val inflater = LayoutInflater.from(context)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding: ServiceItemBinding =
-            DataBindingUtil.inflate(inflater, R.layout.service_item, parent, false)
-        return MyViewHolder(binding)
+            DataBindingUtil.inflate(
+                LayoutInflater.from(context),
+                R.layout.service_item,
+                parent,
+                false
+            )
+        return ViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        holder.setDataService(values[position])
-
-        holder.binding.btnMore.setOnClickListener {
-            IItemClickListener(it, values[position])
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        holder.apply {
+            setData(position)
+            setItemOnClickListener(position)
         }
     }
 

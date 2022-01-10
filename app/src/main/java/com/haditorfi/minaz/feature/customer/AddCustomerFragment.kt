@@ -76,13 +76,11 @@ class AddCustomerFragment : BaseFragment<CustomerAddFragmentBinding>() {
     }
 
     override fun initToolbar() {
-        binding.apply {
-            include.apply {
-                toolbarTitleTv.text = getString(R.string.customer_new)
-                toolbarBtn.text = getString(R.string.save)
-                toolbarBackBtn.setOnClickListener {
-                    findNavController().navigateUp()
-                }
+        binding.include.apply {
+            toolbarTitleTv.text = getString(R.string.customer_new)
+            toolbarBtn.text = getString(R.string.save)
+            toolbarBackBtn.setOnClickListener {
+                findNavController().navigateUp()
             }
         }
     }

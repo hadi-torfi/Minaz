@@ -1,25 +1,23 @@
 package com.haditorfi.minaz.common
 
 import android.content.Context
-import android.view.MenuInflater
 import android.view.View
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.haditorfi.minaz.R
 
 interface IPopup<T> {
     fun popUp(
-        context: Context,
         item: View,
         mClass: T
     ) {
+        val context: Context = item.context
         val popup = android.widget.PopupMenu(context, item)
-        val inflater: MenuInflater = popup.menuInflater
-        inflater.inflate(R.menu.options, popup.menu)
+        popup.menuInflater.inflate(R.menu.options, popup.menu)
 
         popup.setOnMenuItemClickListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.edit_menu -> {
-                    goToAddOrEditFromIPopup(mClass,true)
+                    goToAddOrEditFromIPopup(mClass, true)
                     return@setOnMenuItemClickListener true
                 }
                 R.id.delete_menu -> {

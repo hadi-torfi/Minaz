@@ -23,9 +23,9 @@ class CustomerFragment : BaseFragment<CustomerFragmentBinding>(), IPopup<Custome
             }
             viewModel.customersLiveData.observe(viewLifecycleOwner) {
                 val viewAdapter =
-                    CustomerAdapter(requireContext(), it, IItemClickListener = { item, customer ->
-                        popUp(requireContext(), item, customer)
-                    })
+                    CustomerAdapter(requireContext(), it) { item, customer ->
+                        popUp(item, customer)
+                    }
 
                 rvCustomerList.run {
                     setHasFixedSize(true)

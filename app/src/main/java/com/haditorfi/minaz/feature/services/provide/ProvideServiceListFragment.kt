@@ -30,7 +30,6 @@ class ProvideServiceListFragment : BaseFragment<ServiceProvideListFragmentBindin
                         when (item.id) {
                             R.id.item_service_layout -> goToDetailFragment(provides as Provides)
                             R.id.btn_more -> popUp(
-                                requireContext(),
                                 item,
                                 provides as ProvideService
                             )
@@ -57,13 +56,10 @@ class ProvideServiceListFragment : BaseFragment<ServiceProvideListFragmentBindin
     }
 
     override fun initToolbar() {
-        binding.apply {
-            include.apply {
-                toolbarTitleTv.text = getString(R.string.service_provided)
-                toolbarBtn.visible()
-                toolbarBtn.text = getString(R.string.service_provide)
-
-            }
+        binding.include.apply {
+            toolbarTitleTv.text = getString(R.string.service_provided)
+            toolbarBtn.visible()
+            toolbarBtn.text = getString(R.string.service_provide)
         }
     }
 

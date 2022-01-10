@@ -112,13 +112,11 @@ class AddServiceFragment : BaseFragment<ServiceAddFragmentBinding>() {
     }
 
     override fun initToolbar() {
-        binding.apply {
-            include.apply {
+        binding.include.apply {
                 toolbarTitleTv.text = getString(R.string.service_new)
                 toolbarBtn.text = getString(R.string.save)
                 toolbarBackBtn.setOnClickListener {
                     findNavController().navigateUp()
-                }
             }
         }
     }

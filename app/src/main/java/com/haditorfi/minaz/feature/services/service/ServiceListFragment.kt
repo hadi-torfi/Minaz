@@ -20,10 +20,15 @@ class ServiceListFragment : BaseFragment<ServiceListFragmentBinding>(), IPopup<S
         binding.apply {
             viewModel.allService.observe(viewLifecycleOwner) {
                 val serviceViewAdapter =
-                    ServiceAdapter(requireContext(), it, IItemClickListener = { item, service ->
-                        popUp(requireContext(), item, service)
-                    })
-                rvService.adapter = serviceViewAdapter
+                    ServiceAdapter(requireContext(), it) { item, service ->
+                        popUp(item, service)
+                    }
+
+                rvService.run {
+                    setHasFixedSize(true)
+                    adapter = serviceViewAdapter
+                }
+
             }
             include.toolbarBtn.setOnClickListener {
                 goToAddOrEditFromIPopup(Service())
@@ -32,13 +37,11 @@ class ServiceListFragment : BaseFragment<ServiceListFragmentBinding>(), IPopup<S
     }
 
     override fun initToolbar() {
-        binding.apply {
-            include.apply {
-                toolbarTitleTv.text = getString(R.string.service)
-                toolbarBtn.text = getString(R.string.service_new)
-                toolbarBackBtn.setOnClickListener {
-                    findNavController().popBackStack()
-                }
+        binding.include.apply {
+            toolbarTitleTv.text = getString(R.string.service)
+            toolbarBtn.text = getString(R.string.service_new)
+            toolbarBackBtn.setOnClickListener {
+                findNavController().popBackStack()
             }
         }
     }

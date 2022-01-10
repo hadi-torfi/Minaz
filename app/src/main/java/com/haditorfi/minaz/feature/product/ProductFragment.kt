@@ -20,9 +20,9 @@ class ProductFragment : BaseFragment<ProductFragmentBinding>(), IPopup<Product> 
         binding.apply {
             viewModel.allProduct.observe(viewLifecycleOwner) {
                 val serviceViewAdapter =
-                    ProductAdapter(requireContext(), it, IItemClickListener = { item, service ->
-                        popUp(requireContext(), item, service)
-                    })
+                    ProductAdapter(requireContext(), it) { item, service ->
+                        popUp(item, service)
+                    }
 
                 rvProduct.run {
                     setHasFixedSize(true)
@@ -36,13 +36,11 @@ class ProductFragment : BaseFragment<ProductFragmentBinding>(), IPopup<Product> 
     }
 
     override fun initToolbar() {
-        binding.apply {
-            include.apply {
-                toolbarTitleTv.text = getString(R.string.product)
-                toolbarBtn.text = getString(R.string.product_new)
-                toolbarBackBtn.setOnClickListener {
-                    findNavController().navigateUp()
-                }
+        binding.include.apply {
+            toolbarTitleTv.text = getString(R.string.product)
+            toolbarBtn.text = getString(R.string.product_new)
+            toolbarBackBtn.setOnClickListener {
+                findNavController().navigateUp()
             }
         }
     }
