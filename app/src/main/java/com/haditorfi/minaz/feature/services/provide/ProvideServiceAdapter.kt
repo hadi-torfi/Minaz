@@ -11,9 +11,9 @@ import com.haditorfi.minaz.data.service.provide.Provides
 import com.haditorfi.minaz.databinding.ServiceProvideItemBinding
 
 class ProvideServiceAdapter(
-    val context: Context,
+    private val context: Context,
     private val values: List<Provides>,
-    var ItemClickListener: ((item: View, provideService: Any) -> Unit?)? = null
+    private var itemClickListener: (item: View, provideService: Any) -> Unit
 ) : RecyclerView.Adapter<ProvideServiceAdapter.ViewHolder>() {
 
     inner class ViewHolder(val binding: ServiceProvideItemBinding) :
@@ -26,15 +26,10 @@ class ProvideServiceAdapter(
         fun setOnClickListeners(position: Int) {
             binding.apply {
                 itemServiceLayout.setOnClickListener { item ->
-                    ItemClickListener?.let { listener -> listener(item, values[position]) }
+                    itemClickListener.invoke(item, values[position])
                 }
                 btnMore.setOnClickListener { item ->
-                    ItemClickListener?.let { listener ->
-                        listener(
-                            item,
-                            values[position].provideService
-                        )
-                    }
+                    itemClickListener.invoke(item, values[position].provideService)
                 }
             }
         }

@@ -11,11 +11,10 @@ import com.haditorfi.minaz.common.IViewHolder
 import com.haditorfi.minaz.data.staff.Staff
 import com.haditorfi.minaz.databinding.StaffItemBinding
 
-
 class StaffAdapter(
     val context: Context,
     private val values: List<Staff>,
-    val ItemClickListener: ((item: View, staff: Staff) -> Unit?)? = null
+    val itemClickListener: (item: View, staff: Staff) -> Unit
 ) : RecyclerView.Adapter<StaffAdapter.ViewHolder>() {
 
     inner class ViewHolder(val binding: StaffItemBinding) :
@@ -25,11 +24,9 @@ class StaffAdapter(
             binding.myStaff = values[position]
         }
 
-        override fun setItemOnClickListener(position: Int) {
+        override fun setItemClickListener(position: Int) {
             binding.btnMore.setOnClickListener { item ->
-                ItemClickListener?.let { listener ->
-                    listener(item, values[position])
-                }
+                itemClickListener.invoke(item, values[position])
             }
         }
     }
@@ -44,7 +41,7 @@ class StaffAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.apply {
             setData(position)
-            setItemOnClickListener(position)
+            setItemClickListener(position)
         }
     }
 

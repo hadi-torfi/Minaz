@@ -23,7 +23,7 @@ class StaffFragment : BaseFragment<StaffFragmentBinding>(), IPopup<Staff> {
 
         viewModel.staffsLiveData.observe(viewLifecycleOwner) {
             val viewAdapter =
-                StaffAdapter(requireContext(), it, ItemClickListener = { item, personnel ->
+                StaffAdapter(requireContext(), it, itemClickListener = { item, personnel ->
                     popUp(item, personnel)
                 })
 

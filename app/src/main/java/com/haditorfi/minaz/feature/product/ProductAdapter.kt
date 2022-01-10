@@ -14,22 +14,18 @@ import com.haditorfi.minaz.databinding.ProductItemBinding
 class ProductAdapter(
     val context: Context,
     private val values: List<Product>,
-    var ItemClickListener: ((
-        view: View,
-        product: Product
-    ) -> Unit?)? = null
+    var itemClickListener: (item: View, product: Product) -> Unit
 ) : RecyclerView.Adapter<ProductAdapter.ViewHolder>() {
+
     inner class ViewHolder(val binding: ProductItemBinding) :
         RecyclerView.ViewHolder(binding.root), IViewHolder {
         override fun setData(position: Int) {
             binding.myProduct = values[position]
         }
 
-        override fun setItemOnClickListener(position: Int) {
+        override fun setItemClickListener(position: Int) {
             binding.btnMore.setOnClickListener {
-                ItemClickListener?.let { listener ->
-                    listener(it, values[position])
-                }
+                itemClickListener.invoke(it, values[position])
             }
         }
     }
@@ -48,7 +44,7 @@ class ProductAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.apply {
             setData(position)
-            setItemOnClickListener(position)
+            setItemClickListener(position)
         }
     }
 

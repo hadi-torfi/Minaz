@@ -14,10 +14,7 @@ import com.haditorfi.minaz.databinding.CustomerItemBinding
 class CustomerAdapter(
     val context: Context,
     private val values: List<Customer>,
-    var ItemClickListener: ((
-        item: View,
-        customer: Customer
-    ) -> Unit?)? = null
+    var itemClickListener: (item: View, customer: Customer) -> Unit
 ) :
     RecyclerView.Adapter<CustomerAdapter.ViewHolder>() {
 
@@ -28,11 +25,9 @@ class CustomerAdapter(
             binding.myCustomer = values[position]
         }
 
-        override fun setItemOnClickListener(position: Int) {
+        override fun setItemClickListener(position: Int) {
             binding.btnMore.setOnClickListener { item ->
-                ItemClickListener?.let { listener ->
-                    listener(item, values[position])
-                }
+                itemClickListener.invoke(item, values[position])
             }
         }
     }
@@ -51,7 +46,7 @@ class CustomerAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.apply {
             setData(position)
-            setItemOnClickListener(position)
+            setItemClickListener(position)
         }
     }
 
