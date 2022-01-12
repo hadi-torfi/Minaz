@@ -12,7 +12,7 @@ import com.haditorfi.minaz.R
 import com.haditorfi.minaz.common.BaseFragment
 import com.haditorfi.minaz.common.hideKeyboard
 import com.haditorfi.minaz.common.toast
-import com.haditorfi.minaz.data.service.Service
+import com.haditorfi.minaz.data.service.service.Service
 import com.haditorfi.minaz.databinding.ServiceAddFragmentBinding
 import org.koin.android.ext.android.inject
 import java.text.DecimalFormat
@@ -113,10 +113,10 @@ class AddServiceFragment : BaseFragment<ServiceAddFragmentBinding>() {
 
     override fun initToolbar() {
         binding.include.apply {
-                toolbarTitleTv.text = getString(R.string.service_new)
-                toolbarBtn.text = getString(R.string.save)
-                toolbarBackBtn.setOnClickListener {
-                    findNavController().navigateUp()
+            toolbarTitleTv.text = getString(R.string.service_new)
+            toolbarBtn.text = getString(R.string.save)
+            toolbarBackBtn.setOnClickListener {
+                findNavController().navigateUp()
             }
         }
     }

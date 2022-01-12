@@ -4,7 +4,7 @@ import androidx.room.Entity
 import androidx.room.Ignore
 import androidx.room.PrimaryKey
 import com.haditorfi.minaz.common.formatPriceWithLabel
-import com.haditorfi.minaz.data.service.Service
+import com.haditorfi.minaz.data.service.service.Service
 import saman.zamani.persiandate.PersianDate
 import saman.zamani.persiandate.PersianDateFormat
 import java.io.Serializable

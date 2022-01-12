@@ -5,7 +5,7 @@ import androidx.room.Ignore
 import androidx.room.Relation
 import com.haditorfi.minaz.data.customer.Customer
 import com.haditorfi.minaz.data.staff.Staff
-import com.haditorfi.minaz.data.service.Service
+import com.haditorfi.minaz.data.service.service.Service
 import java.io.Serializable
 
 data class Provides(

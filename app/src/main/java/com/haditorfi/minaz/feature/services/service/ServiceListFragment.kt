@@ -8,7 +8,7 @@ import androidx.navigation.fragment.findNavController
 import com.haditorfi.minaz.R
 import com.haditorfi.minaz.common.BaseFragment
 import com.haditorfi.minaz.common.IPopup
-import com.haditorfi.minaz.data.service.Service
+import com.haditorfi.minaz.data.service.service.Service
 import com.haditorfi.minaz.databinding.ServiceListFragmentBinding
 import org.koin.android.ext.android.inject
 

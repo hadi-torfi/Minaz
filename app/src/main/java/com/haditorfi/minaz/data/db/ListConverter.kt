@@ -2,7 +2,7 @@ package com.haditorfi.minaz.data.db
 
 import androidx.room.TypeConverter
 import com.google.gson.Gson
-import com.haditorfi.minaz.data.service.Service
+import com.haditorfi.minaz.data.service.service.Service
 
 class ListConverter {
     @TypeConverter

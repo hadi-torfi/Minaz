@@ -6,9 +6,9 @@ interface StaffRepository {
 
     val getAll: LiveData<List<Staff>>
 
-    suspend fun insert(vararg staff: Staff)
+    fun insert(staff: Staff)
 
-    suspend fun update(staff: Staff)
+    fun update(staff: Staff)
 
-    suspend fun delete(staff: Staff)
+    fun delete(staff: Staff)
 }

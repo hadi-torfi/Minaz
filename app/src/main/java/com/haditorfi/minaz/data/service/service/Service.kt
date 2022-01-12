@@ -1,4 +1,4 @@
-package com.haditorfi.minaz.data.service
+package com.haditorfi.minaz.data.service.service
 
 import androidx.room.Entity
 import androidx.room.Ignore

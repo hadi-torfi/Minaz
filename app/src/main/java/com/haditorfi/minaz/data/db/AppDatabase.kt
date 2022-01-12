@@ -7,8 +7,8 @@ import com.haditorfi.minaz.data.customer.Customer
 import com.haditorfi.minaz.data.customer.CustomerDao
 import com.haditorfi.minaz.data.product.Product
 import com.haditorfi.minaz.data.product.ProductDao
-import com.haditorfi.minaz.data.service.Service
-import com.haditorfi.minaz.data.service.ServiceLocalDataSource
+import com.haditorfi.minaz.data.service.service.Service
+import com.haditorfi.minaz.data.service.service.ServiceLocalDataSource
 import com.haditorfi.minaz.data.service.provide.ProvideService
 import com.haditorfi.minaz.data.service.provide.ProvideServiceDao
 import com.haditorfi.minaz.data.staff.Staff

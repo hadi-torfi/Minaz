@@ -21,7 +21,7 @@
         tools:layout="@layout/service_add_fragment">
         <argument
             android:name="serviceData"
-            app:argType="com.haditorfi.minaz.data.service.Service" />
+            app:argType="com.haditorfi.minaz.data.service.service.Service" />
     </fragment>
     <fragment
         android:id="@+id/manageFragment"

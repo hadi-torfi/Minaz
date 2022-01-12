@@ -2,7 +2,7 @@ package com.haditorfi.minaz.common
 
 import com.haditorfi.minaz.data.customer.Customer
 import com.haditorfi.minaz.data.product.Product
-import com.haditorfi.minaz.data.service.Service
+import com.haditorfi.minaz.data.service.service.Service
 import com.haditorfi.minaz.data.service.provide.ProvideService
 import com.haditorfi.minaz.data.staff.Staff
 import com.haditorfi.minaz.feature.customer.CustomerViewModel
@@ -31,14 +31,19 @@ class FakeData(
         val c2 = Customer("مهسا طاهری", "09352623050", "شوش خیابان ")
         val c3 = Customer("سارینا رحمتی", "09352623055", "شوش ")
         val c4 = Customer("پانته آ بهرام", "09352623066", "شوش چهارستگاه نبش دستغیب")
-        customerViewModel.insertCustomer(c1, c2, c3,c4)
+        customerViewModel.insertCustomer(c1)
+        customerViewModel.insertCustomer(c2)
+        customerViewModel.insertCustomer(c3)
+        customerViewModel.insertCustomer(c4)
     }
 
     private fun createProduct() {
         val p1 = Product("کرم ووکس", "180000", "5")
         val p2 = Product("کرم ستاره", "30000", "6")
         val p3 = Product("کرم آبرسان آلوئه ورا", "120000", "10")
-        productViewModel.insertProduct(p1, p2, p3)
+        productViewModel.insertProduct(p1)
+        productViewModel.insertProduct(p2)
+        productViewModel.insertProduct(p3)
     }
 
     private fun createStaffAndRole() {
@@ -46,7 +51,10 @@ class FakeData(
         val p2 = Staff("نازنین طرفی", "09352623050", "شوش", SECRETARY)
         val p3 = Staff("ساره بیات", "09352625553", "تهران", PERSONNEL)
         val p4 = Staff("مهناز افشار", "09352626532", "تهران", PERSONNEL)
-        staffViewModel.insertStaff(p1, p2, p3,p4)
+        staffViewModel.insertStaff(p1)
+        staffViewModel.insertStaff(p2)
+        staffViewModel.insertStaff(p3)
+        staffViewModel.insertStaff(p4)
     }
 
     private fun createServiceAndProvideService() {
@@ -69,7 +77,14 @@ class FakeData(
         val p4 =
             ProvideService(4, 4, listOf(s7, s5, s1, s3, s4, s6, s8), Date(), "63000", "")
 
-        serviceViewModel.insertService(s1, s2, s3, s4, s5, s6, s7, s8)
+        serviceViewModel.insertService(s1)
+        serviceViewModel.insertService(s2)
+        serviceViewModel.insertService(s3)
+        serviceViewModel.insertService(s4)
+        serviceViewModel.insertService(s5)
+        serviceViewModel.insertService(s6)
+        serviceViewModel.insertService(s7)
+        serviceViewModel.insertService(s8)
 
         provideServiceViewModel.insertProvideService(p1)
         provideServiceViewModel.insertProvideService(p2)

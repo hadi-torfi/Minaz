@@ -10,7 +10,7 @@ interface CustomerDao {
     fun getAll(): LiveData<List<Customer>>
 
     @Insert
-    suspend fun insert(vararg customer: Customer)
+    suspend fun insert(customer: Customer)
 
     @Delete
     suspend fun delete(customer: Customer)

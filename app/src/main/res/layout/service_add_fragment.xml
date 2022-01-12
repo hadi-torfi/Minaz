@@ -8,7 +8,7 @@
 
         <variable
             name="addService"
-            type="com.haditorfi.minaz.data.service.Service" />
+            type="com.haditorfi.minaz.data.service.service.Service" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

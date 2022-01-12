@@ -11,7 +11,7 @@ interface StaffDao {
     fun getAll(): LiveData<List<Staff>>
 
     @Insert
-    suspend fun insert(vararg staff: Staff)
+    suspend fun insert(staff: Staff)
 
     @Update
     suspend fun update(staff: Staff)

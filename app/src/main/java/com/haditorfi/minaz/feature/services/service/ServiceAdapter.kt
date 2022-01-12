@@ -8,7 +8,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.haditorfi.minaz.R
 import com.haditorfi.minaz.common.IViewHolder
-import com.haditorfi.minaz.data.service.Service
+import com.haditorfi.minaz.data.service.service.Service
 import com.haditorfi.minaz.databinding.ServiceItemBinding
 
 class ServiceAdapter(

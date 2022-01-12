@@ -8,8 +8,8 @@ import com.haditorfi.minaz.data.customer.CustomerRepositoryImpl
 import com.haditorfi.minaz.data.db.AppDatabase
 import com.haditorfi.minaz.data.product.ProductRepository
 import com.haditorfi.minaz.data.product.ProductRepositoryImpl
-import com.haditorfi.minaz.data.service.ServiceRepository
-import com.haditorfi.minaz.data.service.ServiceRepositoryImpl
+import com.haditorfi.minaz.data.service.service.ServiceRepository
+import com.haditorfi.minaz.data.service.service.ServiceRepositoryImpl
 import com.haditorfi.minaz.data.service.provide.ProvideServiceRepository
 import com.haditorfi.minaz.data.service.provide.ProvideServiceRepositoryImpl
 import com.haditorfi.minaz.data.staff.StaffRepository
