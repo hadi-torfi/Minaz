@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 import com.haditorfi.minaz.common.formatPriceWithLabel
 import java.io.Serializable
 
-@Entity
+@Entity(tableName = "products")
 data class Product(
     @PrimaryKey(autoGenerate = true)
     val id: Long,

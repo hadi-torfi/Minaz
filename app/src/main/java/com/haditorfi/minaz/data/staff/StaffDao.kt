@@ -7,7 +7,7 @@ import androidx.room.*
 interface StaffDao {
 
     @Transaction
-    @Query("SELECT * FROM staff")
+    @Query("SELECT * FROM staffs")
     fun getAll(): LiveData<List<Staff>>
 
     @Insert

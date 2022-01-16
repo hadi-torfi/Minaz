@@ -5,25 +5,25 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
 
-class ServiceRepositoryImpl(private val serviceLocalDataSource: ServiceLocalDataSource) :
+class ServiceRepositoryImpl(private val serviceDao: ServiceDao) :
     ServiceRepository {
-    override val getAll: LiveData<List<Service>> = serviceLocalDataSource.getAll()
+    override val getAll: LiveData<List<Service>> = serviceDao.getAll()
 
     override fun insert(service: Service) {
         CoroutineScope(IO).launch {
-            serviceLocalDataSource.insert(service)
+            serviceDao.insert(service)
         }
     }
 
     override fun delete(service: Service) {
         CoroutineScope(IO).launch {
-            serviceLocalDataSource.delete(service)
+            serviceDao.delete(service)
         }
     }
 
     override fun update(service: Service) {
         CoroutineScope(IO).launch {
-            serviceLocalDataSource.update(service)
+            serviceDao.update(service)
         }
     }
 }

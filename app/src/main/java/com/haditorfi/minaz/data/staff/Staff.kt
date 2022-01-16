@@ -9,7 +9,7 @@ import com.haditorfi.minaz.common.SECRETARY
 import java.io.Serializable
 
 
-@Entity
+@Entity(tableName = "staffs")
 data class Staff(
     @PrimaryKey(autoGenerate = true)
     val id: Int,

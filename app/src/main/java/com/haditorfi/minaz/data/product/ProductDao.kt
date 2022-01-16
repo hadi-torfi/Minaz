@@ -6,7 +6,7 @@ import androidx.room.*
 @Dao
 interface ProductDao {
 
-    @Query("SELECT * FROM product")
+    @Query("SELECT * FROM products")
     fun getAll(): LiveData<List<Product>>
 
     @Insert

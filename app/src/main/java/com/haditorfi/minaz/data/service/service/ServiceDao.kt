@@ -4,9 +4,9 @@ import androidx.lifecycle.LiveData
 import androidx.room.*
 
 @Dao
-interface ServiceLocalDataSource {
+interface ServiceDao {
 
-    @Query("SELECT * FROM service")
+    @Query("SELECT * FROM services")
     fun getAll(): LiveData<List<Service>>
 
     @Insert

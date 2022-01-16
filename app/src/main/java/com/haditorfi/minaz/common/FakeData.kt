@@ -2,8 +2,8 @@ package com.haditorfi.minaz.common
 
 import com.haditorfi.minaz.data.customer.Customer
 import com.haditorfi.minaz.data.product.Product
-import com.haditorfi.minaz.data.service.service.Service
 import com.haditorfi.minaz.data.service.provide.ProvideService
+import com.haditorfi.minaz.data.service.service.Service
 import com.haditorfi.minaz.data.staff.Staff
 import com.haditorfi.minaz.feature.customer.CustomerViewModel
 import com.haditorfi.minaz.feature.product.ProductViewModel

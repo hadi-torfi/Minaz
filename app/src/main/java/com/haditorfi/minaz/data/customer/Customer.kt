@@ -5,7 +5,7 @@ import androidx.room.Ignore
 import androidx.room.PrimaryKey
 import java.io.Serializable
 
-@Entity
+@Entity(tableName = "customers")
 data class Customer(
     @PrimaryKey(autoGenerate = true)
     val id: Long,

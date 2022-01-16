@@ -7,7 +7,7 @@ import androidx.room.*
 interface ProvideServiceDao {
 
     @Transaction
-    @Query("SELECT * FROM provideService")
+    @Query("SELECT * FROM provideServices")
     fun getAll(): LiveData<List<Provides>>
 
     @Insert

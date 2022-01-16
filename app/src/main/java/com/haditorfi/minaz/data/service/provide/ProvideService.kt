@@ -10,7 +10,7 @@ import saman.zamani.persiandate.PersianDateFormat
 import java.io.Serializable
 import java.util.*
 
-@Entity
+@Entity(tableName = "provideServices")
 data class ProvideService(
     @PrimaryKey(autoGenerate = true)
     val id: Long,
