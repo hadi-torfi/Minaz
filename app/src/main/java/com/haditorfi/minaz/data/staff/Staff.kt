@@ -1,15 +1,17 @@
 package com.haditorfi.minaz.data.staff
 
+import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.Ignore
 import androidx.room.PrimaryKey
 import com.haditorfi.minaz.R
 import com.haditorfi.minaz.common.MANAGER
 import com.haditorfi.minaz.common.SECRETARY
-import java.io.Serializable
+import kotlinx.parcelize.Parcelize
 
 
 @Entity(tableName = "staffs")
+@Parcelize
 data class Staff(
     @PrimaryKey(autoGenerate = true)
     val id: Int,
@@ -17,7 +19,7 @@ data class Staff(
     val mobile: String,
     val address: String,
     val role: String,
-) : Serializable {
+) : Parcelable {
     constructor() : this(0, "", "", "", "")
     constructor(
         name: String,

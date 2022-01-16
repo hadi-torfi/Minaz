@@ -1,16 +1,18 @@
 package com.haditorfi.minaz.data.service.provide
 
+import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.Ignore
 import androidx.room.PrimaryKey
 import com.haditorfi.minaz.common.formatPriceWithLabel
 import com.haditorfi.minaz.data.service.service.Service
+import kotlinx.parcelize.Parcelize
 import saman.zamani.persiandate.PersianDate
 import saman.zamani.persiandate.PersianDateFormat
-import java.io.Serializable
 import java.util.*
 
 @Entity(tableName = "provideServices")
+@Parcelize
 data class ProvideService(
     @PrimaryKey(autoGenerate = true)
     val id: Long,
@@ -20,7 +22,7 @@ data class ProvideService(
     var provideDate: Date?,
     var discount: String,
     var description: String,
-) : Serializable {
+) : Parcelable {
     constructor() : this(0, 0, 0, listOf(Service()), null, "", "")
     constructor(
         customerId: Long,
